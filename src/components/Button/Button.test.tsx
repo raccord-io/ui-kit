@@ -6,7 +6,7 @@ describe('Components | Button', () => {
   test('it should render', () => {
     render(<Button>something</Button>);
 
-    let button = screen.getByTestId('button'); 
+    let button = screen.getByTestId('button');
 
     expect(button).toBeTruthy();
     expect(button.textContent).toBe('something');

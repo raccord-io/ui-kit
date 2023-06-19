@@ -9,4 +9,4 @@ public
 *.md
 *.mdx
 package-lock.json
-*.yml 
+*.yml

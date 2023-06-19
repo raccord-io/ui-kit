@@ -2,7 +2,7 @@
 export const colorBlack = '#1D1D1B';
 export const colorWhite = '#FFFFFF';
 export const colorWhite200 = '#F2F8F7';
-export const colorGreen300= '#6BC1B3';
+export const colorGreen300 = '#6BC1B3';
 export const colorRed300 = '#E62D37';
 export const colorBlue300 = '#004969';
 export const colorGrey300 = '#49577C';

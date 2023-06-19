@@ -19,7 +19,7 @@ export function Button(props: ButtonProps) {
     ...rest
   } = props;
 
-  interface Classes { 
+  interface Classes {
     [key: string]: string | object;
   }
 
@@ -27,7 +27,6 @@ export function Button(props: ButtonProps) {
     primary: 'default-primary',
     danger: 'default-danger',
   };
-
 
   return (
     <button

@@ -1,4 +1,4 @@
-# Raccord React TS ui-kit 
+# Raccord React TS ui-kit
 
 Tech:
 
