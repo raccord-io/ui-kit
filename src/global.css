@@ -1,0 +1,39 @@
+@layer tailwind-base, rac-custom-styles;
+@layer tailwind-base {
+  @tailwind base;
+  @tailwind components;
+}
+
+@tailwind utilities;
+
+/* global css */
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('./assets/fonts/Gotham/Gotham\ Black.otf');
+}
+
+@layer rac-custom-styles {
+  .default-button {
+    @apply rac-buttons w-full h-12;
+  }
+
+  .default-primary {
+    @apply bg-primary text-f-primary
+          hover:bg-c-hover
+          active:bg-c-pressed
+          disabled:text-f-disabled disabled:bg-c-disabled;
+  }
+
+  .default-danger {
+    @apply text-s-error border-2 border-s-error
+      hover:bg-s-error/[.15]
+      active:bg-s-error/[.3]
+      disabled:text-f-disabled disabled:bg-c-disabled disabled:border-c-disabled;
+  }
+
+  .default-icon {
+    @apply w-12 text-f-primary
+      hover:bg-tertiary;
+  }
+}
