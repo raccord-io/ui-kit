@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['@raccord', 'plugin:storybook/recommended'],
+  extends: ['@raccord', 'plugin:storybook/recommended'], 
 };

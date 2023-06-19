@@ -5,7 +5,7 @@ export default { title: 'Components/Button', component: Button };
 
 const args = {
   onClick: () => {
-    console.log('clicked');
+    console.log('clicked'); 
   },
   preIcon: <FiCheck />,
   posIcon: <FiCheck />,

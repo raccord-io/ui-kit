@@ -2,7 +2,7 @@ name: Tests
 
 on:
   push:
-  workflow_call:
+  workflow_call: 
 
 jobs:
   test:

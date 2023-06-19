@@ -4,7 +4,7 @@
   "type": "module",
   "files": [
     "src",
-    "presets"
+    "presets" 
   ],
   "main": "src/index.ts",
   "style": "src/global.css",

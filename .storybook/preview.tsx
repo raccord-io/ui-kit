@@ -21,7 +21,7 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
-  },
+  }, 
   decorators: [
     (Story: StoryFn) => (
       <>
