@@ -11,7 +11,6 @@ import {
   colorBlue300,
   colorRed300,
   colorWhite200,
-  colorGrey300,
   colorGrey200,
   colorGrey100,
   colorWarning,
@@ -41,7 +40,7 @@ module.exports = {
         's-warning': colorWarning,
         // components:
         'c-default': colorBlack,
-        'c-hover': colorGrey300,
+        'c-hover': colorGrey200,
         'c-pressed': colorBlack,
         'c-disabled': colorGrey100,
         // fonts:
@@ -60,7 +59,7 @@ module.exports = {
         's-warning': colorWarning,
         // components:
         'c-default': colorWhite,
-        'c-hover': colorWhite200,
+        'c-hover': colorGrey100,
         'c-pressed': colorWhite,
         'c-disabled': colorGrey100,
         // fonts:
@@ -71,6 +70,12 @@ module.exports = {
     }),
     plugin(function ({ addComponents, theme }) {
       addComponents({
+        '.rac-h3': {
+          fontSize: '14px',
+          fontWeight: '500',
+          fontFamily: theme('fontFamily.Gotham'),
+          lineHeight: '16px',
+        },
         '.rac-buttons': {
           fontSize: '16px',
           fontWeight: '400',
