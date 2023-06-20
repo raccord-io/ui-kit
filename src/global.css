@@ -36,4 +36,19 @@
     @apply w-12 text-f-primary
       hover:bg-tertiary;
   }
+
+  .default-input {
+    @apply border-b border-c-default outline-0
+          hover:border-c-hover
+          focus:border-c-pressed focus:text-neutral
+          bg-secondary
+          placeholder-c-disabled text-f-disabled;
+  }
+
+  /* We rely on placeholder to change the border */
+  /* once uncontrolled components not necessary have value property */
+  .default-input:not(:placeholder-shown),
+  .default-input:not([value='']) {
+    @apply border-primary text-neutral;
+  }
 }
