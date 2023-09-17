@@ -13,7 +13,7 @@ export function ThemeMode(props: ThemeProps) {
     'raccord-theme',
     'theme-light',
   );
-  const [theme, setTheme] = useState(storedTheme || 'theme-dark');
+  const [theme, setTheme] = useState(storedTheme || 'theme-light');
 
   function handleClick() {
     const newTheme = theme === 'theme-light' ? 'theme-dark' : 'theme-light';
