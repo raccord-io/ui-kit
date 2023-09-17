@@ -44,8 +44,8 @@ module.exports = {
         'c-pressed': colorBlack,
         'c-disabled': colorGrey100,
         // fonts:
-        'f-primary': colorWhite,
-        'f-secondary': colorBlack,
+        'f-primary': colorBlack,
+        'f-secondary': colorWhite,
         'f-disabled': colorGrey200,
       },
       dark: {
@@ -63,8 +63,8 @@ module.exports = {
         'c-pressed': colorWhite,
         'c-disabled': colorGrey100,
         // fonts:
-        'f-primary': colorBlack,
-        'f-secondary': colorWhite,
+        'f-primary': colorWhite,
+        'f-secondary': colorBlack,
         'f-disabled': colorGrey200,
       },
     }),
