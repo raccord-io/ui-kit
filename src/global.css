@@ -19,7 +19,7 @@
   }
 
   .default-primary {
-    @apply bg-primary text-f-primary
+    @apply bg-primary text-f-secondary
           hover:bg-c-hover
           active:bg-c-pressed
           disabled:text-f-disabled disabled:bg-c-disabled;
