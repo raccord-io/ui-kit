@@ -25,6 +25,7 @@ module.exports = {
   theme: {
     fontFamily: {
       Gotham: ['Gotham', 'sans-serif'],
+      WorkSans: ['Work Sans', 'sans-serif'],
     },
   },
   plugins: [
