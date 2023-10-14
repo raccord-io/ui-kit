@@ -71,6 +71,12 @@ module.exports = {
     }),
     plugin(function ({ addComponents, theme }) {
       addComponents({
+        '.rac-h1': {
+          fontSize: '24px',
+          fontWeight: '500',
+          fontFamily: theme('fontFamily.Gotham'),
+          lineHeight: '28px',
+        },
         '.rac-h3': {
           fontSize: '14px',
           fontWeight: '500',
@@ -81,6 +87,12 @@ module.exports = {
           fontSize: '16px',
           fontWeight: '400',
           fontFamily: theme('fontFamily.Gotham'),
+          lineHeight: '19px',
+        },
+        '.rac-body': {
+          fontSize: '16px',
+          fontWeight: '400',
+          fontFamily: theme('fontFamily.WorkSans'),
           lineHeight: '19px',
         },
       });
