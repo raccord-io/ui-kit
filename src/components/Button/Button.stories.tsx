@@ -1,5 +1,5 @@
 import { Button } from './Button';
-import { FiCheck } from 'react-icons/fi';
+import { FiCheck, FiFile } from 'react-icons/fi';
 
 export default { title: 'Components/Button', component: Button };
 
@@ -42,6 +42,23 @@ export const _Danger = {
 
       <br />
       <br />
+    </>
+  ),
+};
+
+export const _Icon = {
+  render: () => (
+    <>
+      <Button variant="icon" model="outline">
+        <FiFile />
+      </Button>
+
+      <br />
+      <br />
+
+      <Button variant="icon" model="outline" disabled>
+        <FiFile />
+      </Button>
     </>
   ),
 };

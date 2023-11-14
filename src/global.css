@@ -147,8 +147,7 @@
   }
 
   .default-icon {
-    @apply w-12 text-f-primary
-      hover:bg-tertiary;
+    @apply py-1;
   }
 
   .default-input {
