@@ -35,6 +35,7 @@ module.exports = {
         secondary: colorWhite,
         tertiary: colorWhite200,
         neutral: colorBlack,
+        'green-sheen': colorGreen300,
         // states:
         's-success': colorGreen300,
         's-error': colorRed300,
@@ -54,6 +55,7 @@ module.exports = {
         secondary: colorBlack,
         tertiary: colorBlue300,
         neutral: colorWhite,
+        'green-sheen': colorGreen300,
         // states:
         's-success': colorGreen300,
         's-error': colorRed300,

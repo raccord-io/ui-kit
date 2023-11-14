@@ -2,6 +2,8 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Button } from './Button';
 
+import { FiFile } from 'react-icons/fi';
+
 describe('Components | Button', () => {
   test('it should render', () => {
     render(<Button>something</Button>);
@@ -41,5 +43,30 @@ describe('Components | Button', () => {
 
     fireEvent.click(button);
     expect(somethingClicked).toHaveBeenCalled();
+  });
+
+  test('it should have variant icon', () => {
+    render(
+      <Button variant="icon" model="outline">
+        <FiFile />
+      </Button>,
+    );
+
+    let button = screen.getByTestId('button');
+
+    expect(button).toHaveClass('default-icon');
+  });
+
+  test('it should have variant icon with outline model', () => {
+    render(
+      <Button variant="icon" model="outline">
+        <FiFile />
+      </Button>,
+    );
+
+    let button = screen.getByTestId('button');
+
+    expect(button).toHaveClass('default-icon');
+    expect(button).toHaveClass('border-[.2px]');
   });
 });

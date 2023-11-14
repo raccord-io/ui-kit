@@ -26,10 +26,10 @@ const preview: Preview = {
     (Story: StoryFn) => (
       <>
         <div
-          className="theme-dark"
-          style={{ background: colorBlack, padding: '20px' }}
+          className="theme-light"
+          style={{ background: colorWhite, padding: '20px' }}
         >
-          <h3 style={{ padding: '20px', color: colorWhite }}>Theme Dark 👇</h3>
+          <h3 style={{ padding: '20px', color: colorBlack }}>Theme Light 👇</h3>
           <hr />
           <br />
           <Story />
@@ -38,10 +38,10 @@ const preview: Preview = {
         <br />
 
         <div
-          className="theme-light"
-          style={{ background: colorWhite, padding: '20px' }}
+          className="theme-dark"
+          style={{ background: colorBlack, padding: '20px' }}
         >
-          <h3 style={{ padding: '20px', color: colorBlack }}>Theme Light 👇</h3>
+          <h3 style={{ padding: '20px', color: colorWhite }}>Theme Dark 👇</h3>
           <hr />
           <br />
           <Story />
