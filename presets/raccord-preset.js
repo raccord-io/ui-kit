@@ -36,6 +36,8 @@ module.exports = {
         tertiary: colorWhite200,
         neutral: colorBlack,
         'green-sheen': colorGreen300,
+        'blue-ateneo': colorBlue300,
+        'red-crimson': colorRed300,
         // states:
         's-success': colorGreen300,
         's-error': colorRed300,
@@ -56,6 +58,8 @@ module.exports = {
         tertiary: colorBlue300,
         neutral: colorWhite,
         'green-sheen': colorGreen300,
+        'blue-ateneo': colorBlue300,
+        'red-crimson': colorRed300,
         // states:
         's-success': colorGreen300,
         's-error': colorRed300,
@@ -79,6 +83,12 @@ module.exports = {
           fontFamily: theme('fontFamily.Gotham'),
           lineHeight: '28px',
         },
+        '.rac-h2': {
+          fontSize: '20px',
+          fontWeight: '300',
+          fontFamily: theme('fontFamily.Gotham'),
+          lineHeight: '24px',
+        },
         '.rac-h3': {
           fontSize: '14px',
           fontWeight: '500',
@@ -96,6 +106,12 @@ module.exports = {
           fontWeight: '400',
           fontFamily: theme('fontFamily.WorkSans'),
           lineHeight: '19px',
+        },
+        '.rac-caption': {
+          fontSize: '12px',
+          fontWeight: '400',
+          fontFamily: theme('fontFamily.WorkSans'),
+          lineHeight: '16px',
         },
       });
     }),
