@@ -17,7 +17,7 @@ describe('Components | Tag', () => {
   test(`it shouldn't have cursor-pointer class`, () => {
     render(<Tag color="neutral" content="neutral color" />);
 
-    let tag = screen.getByTestId('tag');
+    let tag = screen.getByTestId('tag-button');
 
     expect(tag).not.toHaveClass('cursor-pointer');
   });
@@ -66,7 +66,7 @@ describe('Components | Tag', () => {
       />,
     );
 
-    let tag = screen.getByTestId('tag');
+    let tag = screen.getByTestId('tag-button');
 
     expect(tag).toHaveClass('cursor-pointer');
   });
