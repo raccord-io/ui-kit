@@ -6,6 +6,7 @@ export interface ItemProps {
   mode?: 'main' | 'sub'; // default: sub
   label?: string;
   children?: ItemProps[] | ReactNode[];
+  onClickInfo?: () => void;
 }
 
 interface SideBarItemsProps {
@@ -19,7 +20,7 @@ interface SideBarProps {
 
 function MainModeMenu(props: SideBarItemsProps) {
   const { idx, item } = props;
-  const { label } = item;
+  const { label, onClickInfo } = item;
 
   const [open, setOpen] = useState<boolean>(false);
 
@@ -67,6 +68,12 @@ function MainModeMenu(props: SideBarItemsProps) {
                 ))
               : null}
           </div>
+          <p
+            className="mb-4 text-center cursor-pointer underline"
+            onClick={onClickInfo}
+          >
+            Voir les informations
+          </p>
         </div>
       )}
     </div>
