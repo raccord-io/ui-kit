@@ -7,6 +7,7 @@ const items: ItemProps[] = [
   {
     mode: 'main',
     label: '1. Ext. Hôpital. Jour',
+    onClickInfo: () => console.log('clicked 1'),
     children: [
       {
         label: 'Lieux',
@@ -28,6 +29,7 @@ const items: ItemProps[] = [
   {
     mode: 'main',
     label: '2. Ext. Hôpital. Jour',
+    onClickInfo: () => console.log('clicked 2'),
     children: [
       {
         label: 'Lieux',
