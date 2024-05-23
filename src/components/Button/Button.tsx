@@ -41,7 +41,7 @@ function ButtonIcon(props: ButtonProps) {
     <button
       data-testid="button"
       type="button"
-      className={`default-button default-icon ${models[model]}`}
+      className={`default-button default-icon ${models[model]} ${customClass}`}
       {...rest}
     >
       <div className="m-auto w-fit">

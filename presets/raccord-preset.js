@@ -113,6 +113,26 @@ module.exports = {
           fontFamily: theme('fontFamily.WorkSans'),
           lineHeight: '16px',
         },
+        '.rac-menu-active': {
+          fontSize: '16px',
+          fontWeight: '600',
+          fontFamily: theme('fontFamily.WorkSans'),
+          lineHeight: '20px',
+        },
+        '.rac-menu-default': {
+          fontSize: '16px',
+          fontWeight: '500',
+          fontFamily: theme('fontFamily.WorkSans'),
+          lineHeight: '20px',
+        },
+        '.rac-menu-underline': {
+          fontSize: '16px',
+          fontWeight: '500',
+          fontFamily: theme('fontFamily.WorkSans'),
+          lineHeight: '20px',
+          textDecoration: 'underline',
+          fontStyle: 'normal',
+        },
       });
     }),
   ],

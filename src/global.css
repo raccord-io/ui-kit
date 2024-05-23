@@ -164,4 +164,16 @@
   .default-input:not([value='']) {
     @apply border-primary text-neutral;
   }
+
+  .default-tab {
+    @apply rac-menu-default antialiased flex flex-row justify-center items-center w-full border-b h-14 text-primary;
+  }
+
+  .default-tab-hover {
+    @apply hover:cursor-pointer hover:border-b-2;
+  }
+
+  .default-tab-active {
+    @apply rac-menu-active antialiased hover:border-tertiary border-tertiary border-b-2;
+  }
 }
