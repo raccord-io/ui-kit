@@ -7,7 +7,7 @@ export const _DragDrop = {
     <>
       <DragDrop
         onFileLoaded={(file) => console.log(file)}
-        placeholder="something to inform"
+        placeholder="Déposer votre fichier ici"
         allowed={['jpeg', 'png']}
       />
     </>
