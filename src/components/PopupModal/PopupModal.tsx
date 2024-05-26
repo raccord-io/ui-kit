@@ -41,12 +41,12 @@ export function PopupModalHeader(props: IPopupModalNodeProps) {
     return (
       <div
         data-testid="popup-modal-header"
-        className={`flex items-start justify-between px-10 pt-10 rounded-t ${customClassHeader}`}
+        className={`flex items-start justify-between px-8 pt-8 ${customClassHeader}`}
       >
         {children}
         <button
           data-testid="popup-modal-header-close"
-          className="text-neutral bg-secondary rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
+          className="text-neutral bg-secondary text-sm p-1.5 ml-auto inline-flex items-center
                       hover:bg-tertiary hover:text-c-primary"
           type="button"
           onClick={handleClose}
@@ -66,7 +66,7 @@ export function PopupModalContent(props: IPopupModalNodeProps) {
     return (
       <div
         data-testid="popup-modal-content"
-        className={`px-10 ${customClassContent}`}
+        className={`px-8 ${customClassContent}`}
       >
         {children}
       </div>
@@ -82,7 +82,7 @@ export function PopupModalFooter(props: IPopupModalNodeProps) {
     return (
       <div
         data-testid="popup-modal-footer"
-        className={`flex items-center px-10 pb-10 space-x-2 border-t border-tertiary rounded-b ${customClassFooter}`}
+        className={`flex items-center px-8 pb-8 space-x-2 border-t border-tertiary ${customClassFooter}`}
       >
         {children}
       </div>
@@ -134,9 +134,7 @@ export function PopupModal(props: IPopupModalProps) {
       {...rest}
     >
       <div className={`relative max-h-full w-2/3 ${customClass}`}>
-        <div
-          className={`relative bg-secondary rounded-lg shadow ${customClassNested}`}
-        >
+        <div className={`relative bg-secondary shadow ${customClassNested}`}>
           {appendedChildren}
         </div>
       </div>
