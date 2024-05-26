@@ -1,13 +1,12 @@
 import { ComponentPropsWithoutRef } from 'react';
-import { FiCircle } from 'react-icons/fi';
+import { FiSquare } from 'react-icons/fi';
 
 export interface StepperProps extends ComponentPropsWithoutRef<'ol'> {
   steps: string[];
   step: number;
 }
 
-let baseStepClass =
-  'flex items-center justify-center w-4 h-4 rounded-full shrink-0';
+let baseStepClass = 'flex items-center justify-center w-4 h-4 shrink-0';
 
 function StepIn() {
   return (
@@ -15,7 +14,7 @@ function StepIn() {
       data-testid="stepper-step-in"
       className={`${baseStepClass} bg-s-success`}
     >
-      <FiCircle className="w-1 h-1 text-f-primary fill-i-primary" />
+      <FiSquare className="w-2 h-2 text-f-primary fill-i-primary" />
     </span>
   );
 }
@@ -26,7 +25,7 @@ function StepNext() {
       data-testid="stepper-step-next"
       className={`${baseStepClass} border border-c-default bg-transparent`}
     >
-      <FiCircle className="w-1 h-1 text-f-primary fill-i-primary" />
+      <FiSquare className="w-2 h-2 text-f-primary fill-i-primary" />
     </span>
   );
 }
@@ -61,7 +60,7 @@ export function Stepper(props: StepperProps) {
           currentStep = <StepIn />;
         } else if (idx < step) {
           currentStep = <StepPast />;
-          textClass = 'text-f-tertiary';
+          textClass = 'text-f-disabled';
           flowClass = isLastStep ? 'w-fit' : edgeNextClass;
         }
 
