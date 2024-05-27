@@ -50,9 +50,8 @@ export function Tooltip(props: TooltipProps) {
       <span className="ml-2 text-neutral">{children}</span>
       <div
         className={`w-fit z-10 absolute bg-tertiary p-3 rounded-lg text-neutral opacity-0transition-opacity
-        duration-300 ${customClass} ${placementClasses[placement]} ${
-          showTooltip ? 'opacity-90' : 'opacity-0'
-    }`}
+        duration-300 ${showTooltip ? 'opacity-90' : 'opacity-0'}
+          ${customClass} ${placementClasses[placement]}`}
       >
         {content}
       </div>
