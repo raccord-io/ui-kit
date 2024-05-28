@@ -170,10 +170,10 @@
   }
 
   .default-tab-hover {
-    @apply hover:cursor-pointer hover:border-b-2;
+    @apply hover:cursor-pointer hover:border-b-2 hover:border-c-hover;
   }
 
   .default-tab-active {
-    @apply rac-menu-active antialiased hover:border-tertiary border-tertiary border-b-2;
+    @apply rac-menu-active antialiased border-blue-ateneo border-b-2 text-blue-ateneo;
   }
 }
