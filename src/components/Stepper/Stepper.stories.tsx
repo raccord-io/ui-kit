@@ -5,17 +5,17 @@ export default { title: 'Components/Stepper', component: Stepper };
 export const _Stepper = {
   render: () => (
     <>
-      Step 1/3
-      <Stepper step={0} steps={['one', 'two', 'three']} />
+      <p className="text-primary">Étape 1/3</p>
+      <Stepper step={0} steps={['une', 'deux', 'trois']} />
       <br />
-      Step 2/3
-      <Stepper step={1} steps={['one', 'two', 'three']} />
+      <p className="text-primary">Étape 2/3</p>
+      <Stepper step={1} steps={['une', 'deux', 'trois']} />
       <br />
-      Step 3/3
-      <Stepper step={2} steps={['one', 'two', 'three']} />
+      <p className="text-primary">Étape 3/3</p>
+      <Stepper step={2} steps={['une', 'deux', 'trois']} />
       <br />
-      Step 3/3 (with check completed)
-      <Stepper step={3} steps={['one', 'two', 'three']} />
+      <p className="text-primary">Étape 3/3 (avec validation complétée)</p>
+      <Stepper step={3} steps={['une', 'deux', 'trois']} />
     </>
   ),
 };
