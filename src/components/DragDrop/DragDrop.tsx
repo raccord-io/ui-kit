@@ -55,7 +55,9 @@ export function DragDrop(props: IDragDropProps) {
     // @ts-ignore
     if (!allowed.includes(file.split('.').pop())) {
       setIsLoaded(Status.FAILED);
-      setFileName(`Owh! File not allowed. Allowed: ${allowed.toString()}`);
+      setFileName(
+        `Oups! Fichier non autorisé. Autorisé: ${allowed.toString()}`,
+      );
       onFileLoaded?.(null);
       return false;
     }
@@ -127,7 +129,7 @@ export function DragDrop(props: IDragDropProps) {
       >
         <label
           className={`flex justify-center w-full h-24 px-4 transition ${loadedClass}
-                        bg-tertiary rounded-lg appearance-none cursor-pointer`}
+                        bg-tertiary appearance-none cursor-pointer`}
         >
           <span className="flex items-center space-x-2">
             {loadedIcon}
