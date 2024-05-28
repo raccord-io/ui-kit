@@ -30,7 +30,7 @@ export function Identicon(props: IdenticonProps) {
   return (
     <img
       data-testid="identicon"
-      className={`bg-secondary rounded-md ${customClass}`}
+      className={`bg-white rounded-md ${customClass}`}
       src={svgURI}
       alt={username}
       width={size.toString()}

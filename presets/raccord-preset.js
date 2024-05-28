@@ -32,8 +32,8 @@ module.exports = {
     createThemes({
       light: {
         primary: colorBlack,
-        secondary: colorWhite,
-        tertiary: colorWhite200,
+        secondary: colorWhite200,
+        tertiary: colorWhite,
         neutral: colorBlack,
         system: colorWhite200,
         'green-sheen': colorGreen300,

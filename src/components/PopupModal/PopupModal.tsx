@@ -129,7 +129,7 @@ export function PopupModal(props: IPopupModalProps) {
     <div
       data-testid="popup-modal"
       className={`${hidden} ${fullModeClass}
-                  bg-tertiary bg-opacity-75 w-full h-screen flex justify-center items-center max-h-full
+                  bg-secondary bg-opacity-75 w-full h-screen flex justify-center items-center max-h-full
                   overflow-x-hidden overflow-y-auto`}
       {...rest}
     >
