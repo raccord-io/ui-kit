@@ -6,19 +6,53 @@ export default { title: 'Components/Toast' };
 export const _Toast = {
   render: () => (
     <>
+      <p className="text-f-primary">
+        Theme dark doesn't work for Toast, you will see only theme light toats.
+      </p>
+      <br />
+      <Button onClick={() => toast.success('Uuurraa! This is a success CSS')}>
+        Create Success Toast
+      </Button>
       <Button
         onClick={() => {
           toast.error('Euhh! This is an error message!');
         }}
       >
-        Create ERROR Toast
+        Create Error Toast
       </Button>
-      <br />
-      <br />
-      <Button onClick={() => toast.success('Uuurraa! This is a success CSS')}>
-        Create SUCCESS Toast
+      <Button
+        onClick={() => {
+          toast.promise(new Promise((resolve) => setTimeout(resolve, 1000)), {
+            loading: 'Chargement en cours...',
+            success: 'Succès',
+            error: 'Erreur',
+          });
+        }}
+      >
+        Create a Success Promise Toast
       </Button>
-      <Toast theme="theme-dark" />
+      <Button
+        onClick={() => {
+          toast.promise(
+            new Promise((_resolve, reject) => setTimeout(reject, 1000)),
+            {
+              loading: 'Chargement en cours...',
+              success: 'Succès',
+              error: 'Erreur',
+            },
+          );
+        }}
+      >
+        Create an Error Promise Toast
+      </Button>
+      <Button
+        onClick={() => {
+          toast('Hello World', { icon: '👏' });
+        }}
+      >
+        Custom Icon Toast
+      </Button>
+      <Toast />
     </>
   ),
 };

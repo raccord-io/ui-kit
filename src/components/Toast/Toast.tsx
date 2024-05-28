@@ -1,104 +1,61 @@
-import { useEffect, useState, ComponentPropsWithoutRef } from 'react';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import React from 'react';
+
 import { toast as _toast, Toaster } from 'react-hot-toast';
-import { FiX, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
-import { Transition } from '@headlessui/react';
 
-import { Button } from '../Button';
-import { useLocalStorage } from '../../util/useLocalStorage';
-
-interface ToastProps extends ComponentPropsWithoutRef<'div'> {
-  error?: string;
-  success?: string;
-  theme?: string;
+export interface ToastProps {
+  durationMs?: number;
 }
 
-function Error(props: ToastProps) {
-  const { error } = props;
+// import the colors from ../../../presets/colors instead of recreating them
+// @maxime-carabina
+const colorBlack = '#1D1D1B';
+const colorGreen300 = '#6BC1B3';
+const colorRed300 = '#E62D37';
+const colorWhite = '#FFFFFF';
+const colorGrey100 = '#B4B9C4';
+const colorBlue300 = '#004969';
 
-  return (
-    <>
-      <div
-        className="inline-flex items-center justify-center flex-shrink-0
-                  w-10 h-10 text-s-error bg-s-error bg-opacity-25 rounded-lg"
-      >
-        <FiAlertCircle size={24} />
-      </div>
-      <div className="ml-3 text-sm font-normal pr-6 text-s-error">{error}</div>
-    </>
-  );
-}
-
-function Success(props: ToastProps) {
-  const { success } = props;
-
-  return (
-    <>
-      <div
-        className="inline-flex items-center justify-center flex-shrink-0
-                        w-10 h-10 text-s-success bg-s-success bg-opacity-25 rounded-lg"
-      >
-        <FiCheckCircle size={24} />
-      </div>
-      <div className="ml-3 text-sm font-normal pr-6 text-s-success">
-        {success}
-      </div>
-    </>
-  );
-}
+const defaultDurationMs = 3000;
 
 export const toast = _toast;
 
 export function Toast(props: ToastProps) {
-  const { error, theme: _theme, ...rest } = props;
-
-  const [storedTheme] = useLocalStorage<string>('rac-theme', 'theme-light');
-  const [theme, setTheme] = useState<string>(storedTheme);
-  const isError = Boolean(error);
-
-  useEffect(() => {
-    setTheme(_theme ?? storedTheme);
-  }, [_theme]);
+  const { durationMs } = props;
 
   return (
     <div data-testid="toast">
       <Toaster
-        position="top-center"
+        position="bottom-right"
         toastOptions={{
-          duration: 4000,
+          duration: durationMs ?? defaultDurationMs,
+          style: {
+            // I dont want the borders to be rounded
+            border: '2px solid ' + colorBlack,
+            color: colorBlack,
+            fontFamily: 'Work Sans, sans-serif',
+          },
+          success: {
+            iconTheme: {
+              primary: colorGreen300,
+              secondary: colorWhite,
+            },
+          },
+          error: {
+            iconTheme: {
+              primary: colorRed300,
+              secondary: colorWhite,
+            },
+          },
+          loading: {
+            iconTheme: {
+              secondary: colorGrey100,
+              primary: colorBlue300,
+            },
+          },
         }}
-      >
-        {(t) => (
-          <Transition
-            appear
-            show={t.visible}
-            // className="transform transition-all duration-200"
-            enter="transition ease-in-out transform"
-            enterFrom="-translate-y-0"
-            enterTo="translate-y-full"
-            leave="transition ease-in-out transform"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div
-              className={`${theme} flex items-center w-fit p-4 text-secondary bg-primary rounded-lg shadow`}
-              {...rest}
-            >
-              {t.type === 'error' || isError ? (
-                <Error error={t.message?.toString()} {...props} />
-              ) : (
-                <Success success={t.message?.toString()} {...props} />
-              )}
-              <Button
-                customClass="w-fit"
-                variant="icon"
-                onClick={() => toast.dismiss(t.id)}
-              >
-                <FiX />
-              </Button>
-            </div>
-          </Transition>
-        )}
-      </Toaster>
+      ></Toaster>
     </div>
   );
 }
