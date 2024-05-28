@@ -4,10 +4,13 @@ import { Tooltip } from '.';
 
 describe('Components | Toggle', () => {
   test('it should render', () => {
-    render(<Tooltip content={'Hello I am tooltip content'} />);
+    render(<Tooltip content="Tooltip"></Tooltip>);
 
-    let tooltip = screen.getByTestId('Tooltip');
+    expect(screen.getByTestId('Tooltip')).toBeInTheDocument();
+  });
+  test('it should render with custom content', () => {
+    render(<Tooltip content="Custom tooltip content">Hover over me</Tooltip>);
 
-    expect(tooltip).toBeInTheDocument();
+    expect(screen.getByText('Custom tooltip content')).toBeInTheDocument();
   });
 });
