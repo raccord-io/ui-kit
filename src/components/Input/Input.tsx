@@ -22,7 +22,7 @@ export function Input(props: InputProps) {
         <div className="inline h-12">
           <input
             data-testid="input-field"
-            className={`w-full default-input h-12 pr-10 mb-1 ${messageClass} ${customClass}`}
+            className={`w-full rac-menu-default default-input h-12 pr-10 mb-1 ${messageClass} ${customClass}`}
             type="text"
             {...rest}
           />
@@ -36,9 +36,9 @@ export function Input(props: InputProps) {
 export function InputMessage(props: InputProps) {
   const { error, warning, success } = props;
 
-  const errorClass = error ? 'text-s-error' : '';
-  const warningClass = warning ? 'text-s-warning' : '';
-  const successClass = success ? 'text-s-success' : '';
+  const errorClass = error ? 'rac-h3 text-s-error' : '';
+  const warningClass = warning ? 'rac-h3 text-s-warning' : '';
+  const successClass = success ? 'rac-h3 text-s-success' : '';
 
   const messageClass = errorClass || warningClass || successClass;
   const hasMessage = error || warning || success;
