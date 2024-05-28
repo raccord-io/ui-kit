@@ -82,7 +82,7 @@ export function PopupModalFooter(props: IPopupModalNodeProps) {
     return (
       <div
         data-testid="popup-modal-footer"
-        className={`flex items-center px-8 pb-8 space-x-2 border-t border-tertiary ${customClassFooter}`}
+        className={`flex items-center px-8 pb-8 space-x-2 border-t ${customClassFooter}`}
       >
         {children}
       </div>
@@ -134,7 +134,9 @@ export function PopupModal(props: IPopupModalProps) {
       {...rest}
     >
       <div className={`relative max-h-full w-2/3 ${customClass}`}>
-        <div className={`relative bg-secondary shadow ${customClassNested}`}>
+        <div
+          className={`relative bg-secondary shadow rounded-sm border-2 border-primary ${customClassNested}`}
+        >
           {appendedChildren}
         </div>
       </div>

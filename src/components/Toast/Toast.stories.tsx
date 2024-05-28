@@ -6,7 +6,7 @@ export default { title: 'Components/Toast' };
 export const _Toast = {
   render: () => (
     <>
-      <p className="text-f-primary">
+      <p className="text-f-primary font-Gotham rac-h3">
         Theme dark doesn't work for Toast, you will see only theme light toats.
       </p>
       <br />

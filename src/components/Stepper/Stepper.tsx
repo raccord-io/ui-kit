@@ -6,7 +6,8 @@ export interface StepperProps extends ComponentPropsWithoutRef<'ol'> {
   step: number;
 }
 
-let baseStepClass = 'flex items-center justify-center w-4 h-4 shrink-0';
+let baseStepClass =
+  'flex items-center justify-center w-4 h-4 shrink-0 rounded-sm';
 
 function StepIn() {
   return (

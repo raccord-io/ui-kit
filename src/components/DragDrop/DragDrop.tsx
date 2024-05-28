@@ -129,7 +129,7 @@ export function DragDrop(props: IDragDropProps) {
       >
         <label
           className={`flex justify-center w-full h-24 px-4 transition ${loadedClass}
-                        bg-tertiary appearance-none cursor-pointer`}
+                        bg-tertiary appearance-none cursor-pointer rounded-sm`}
         >
           <span className="flex items-center space-x-2">
             {loadedIcon}
