@@ -32,7 +32,7 @@ export function ThemeMode(props: ThemeProps) {
   return (
     <button
       data-testid="theme-mode"
-      className={`text-f-primary cursor-pointer rounded-lg w-12 h-12
+      className={`text-f-primary cursor-pointer rounded-md w-12 h-12
                   hover:bg-tertiary
                   active:bg-secondary`}
       onClick={handleClick}

@@ -22,8 +22,8 @@ export function TextArea(props: TextAreaProps) {
         data-type="text-area"
         rows={3}
         maxLength={280}
-        className={`w-full default-input rac-menu-default resize-none bg-secondary
-          px-3 py-3.5 placeholder-tertiary ${messageClass} ${customClass}`}
+        className={`w-full default-input rac-menu-default resize-none border-2 rounded-md
+          px-3 py-3.5 ${messageClass} ${customClass}`}
         {...rest}
       />
       <TextAreaMessage error={error} warning={warning} success={success} />

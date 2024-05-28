@@ -29,10 +29,11 @@ export function Toggle(props: ToggleProps) {
     >
       <input type="checkbox" {...rest} className="sr-only peer" />
       <div
-        className={`${sizeClass} bg-c-disabled
+        className={`${sizeClass} bg-c-disabled rounded-sm
                       peer-checked:bg-s-success peer
                       peer-focus:outline-none
                       peer-checked:after:translate-x-full
+                      after:rounded-sm
                       after:content-[''] after:absolute after:bg-secondary
                        after:transition-all`}
       ></div>

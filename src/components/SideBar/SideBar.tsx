@@ -24,7 +24,7 @@ function MainModeMenu(props: SideBarItemsProps) {
 
   const [open, setOpen] = useState<boolean>(false);
 
-  const borderRadiusClass = open ? '' : 'rounded-md';
+  const borderRadiusClass = open ? '' : 'rounded-sm';
   const borderColorClass = open ? 'border-green-sheen' : 'border-transparent';
   const backgroundColorClass = open
     ? 'bg-green-sheen/[.15]'
@@ -34,7 +34,7 @@ function MainModeMenu(props: SideBarItemsProps) {
   return (
     <div
       data-testid={`sidebar-item-${idx}`}
-      className={`rounded-md border-[.2px] ${borderColorClass}`}
+      className={`rounded-sm border-[.2px] ${borderColorClass}`}
     >
       <button
         className={`px-3 py-1 flex items-center gap-2 w-full
@@ -93,7 +93,7 @@ function SubModeMenu(props: SideBarItemsProps) {
   return (
     <div data-testid={`sidebar-sub-item-${idx}`}>
       <div
-        className="rounded-md px-3 py-1 flex items-center gap-2 cursor-pointer hover:bg-primary/[.03]"
+        className="rounded-sm px-3 py-1 flex items-center gap-2 cursor-pointer hover:bg-primary/[.03]"
         onClick={() => setOpen(!open)}
       >
         <div data-testid="item-icon">

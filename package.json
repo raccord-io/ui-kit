@@ -9,6 +9,7 @@
     "build": "tsc",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
+    "build-storybook": "storybook build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check .",
@@ -16,7 +17,8 @@
     "fmt": "npm run prettier:fix && npm run lint:fix",
     "fmt:check": "npm run prettier && npm run lint",
     "test": "jest",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "chromatic": "npx chromatic --project-token=chpt_9045b25ac677019"
   },
   "dependencies": {
     "@headlessui/react": "^2.0.3",
