@@ -3,14 +3,14 @@ import '../src/global.css';
 
 import type { Preview } from '@storybook/react';
 import { StoryFn } from '@storybook/react';
-import { colorBlack, colorWhite } from '../presets/colors';
+import { colorBlack, colorWhite200 } from '../presets/colors';
 
 const preview: Preview = {
   parameters: {
     backgrounds: {
       default: 'light',
       values: [
-        { name: 'light', value: colorWhite },
+        { name: 'light', value: colorWhite200 },
         { name: 'dark', value: colorBlack },
       ],
     },
@@ -27,7 +27,7 @@ const preview: Preview = {
       <>
         <div
           className="theme-light"
-          style={{ background: colorWhite, padding: '20px' }}
+          style={{ background: colorWhite200, padding: '20px' }}
         >
           <h3 style={{ padding: '20px', color: colorBlack }}>Theme Light 👇</h3>
           <hr />
@@ -41,7 +41,9 @@ const preview: Preview = {
           className="theme-dark"
           style={{ background: colorBlack, padding: '20px' }}
         >
-          <h3 style={{ padding: '20px', color: colorWhite }}>Theme Dark 👇</h3>
+          <h3 style={{ padding: '20px', color: colorWhite200 }}>
+            Theme Dark 👇
+          </h3>
           <hr />
           <br />
           <Story />
