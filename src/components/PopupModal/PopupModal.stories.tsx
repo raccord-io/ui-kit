@@ -12,6 +12,13 @@ const meta: Meta<typeof PopupModal> = {
   parameters: {
     controls: { expanded: true },
   },
+  decorators: [
+    (Story) => (
+      <div className="h-[450px]">
+        <Story />
+      </div>
+    ),
+  ],
   argTypes: {
     status: {
       control: {
@@ -39,6 +46,17 @@ const meta: Meta<typeof PopupModal> = {
   },
 };
 
+const args = {
+  onOpen: () => {
+    console.log('event on open');
+  },
+  onClose: () => {
+    console.log('event on close');
+  },
+  customClass: '',
+  customClassNested: '',
+};
+
 export default meta;
 
 type Story = StoryObj<typeof PopupModal>;
@@ -60,8 +78,7 @@ export const _Regular: Story = {
   args: {
     status: 'displayed',
     fullMode: false,
-    customClass: '',
-    customClassNested: '',
+    ...args,
   },
 };
 
@@ -79,8 +96,7 @@ export const _NoHeader: Story = {
   args: {
     status: 'displayed',
     fullMode: false,
-    customClass: '',
-    customClassNested: '',
+    ...args,
   },
 };
 
@@ -98,8 +114,7 @@ export const _NoFooter: Story = {
   args: {
     status: 'displayed',
     fullMode: false,
-    customClass: '',
-    customClassNested: '',
+    ...args,
   },
 };
 
@@ -120,7 +135,6 @@ export const _FullMode: Story = {
   args: {
     status: 'displayed',
     fullMode: true,
-    customClass: '',
-    customClassNested: '',
+    ...args,
   },
 };

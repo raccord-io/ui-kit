@@ -40,7 +40,7 @@ export default meta;
 type Story = StoryObj<typeof TextArea>;
 
 export const Default: Story = {
-  render: (args) => <TextArea {...args} />,
+  render: (args) => <TextArea {...args} placeholder="default" />,
   args: {
     error: '',
     warning: '',
@@ -50,7 +50,7 @@ export const Default: Story = {
 };
 
 export const Error: Story = {
-  render: (args) => <TextArea {...args} />,
+  render: (args) => <TextArea {...args} placeholder="error" />,
   args: {
     error: 'Error message',
     warning: '',
@@ -60,7 +60,7 @@ export const Error: Story = {
 };
 
 export const Warning: Story = {
-  render: (args) => <TextArea {...args} />,
+  render: (args) => <TextArea {...args} placeholder="warning" />,
   args: {
     error: '',
     warning: 'Warning message',
@@ -70,7 +70,7 @@ export const Warning: Story = {
 };
 
 export const Success: Story = {
-  render: (args) => <TextArea {...args} />,
+  render: (args) => <TextArea {...args} placeholder="success" />,
   args: {
     error: '',
     warning: '',

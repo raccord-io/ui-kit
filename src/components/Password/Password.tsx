@@ -9,14 +9,16 @@ import { InputMessage } from '../Input';
 export interface PasswordProps extends ComponentPropsWithoutRef<'input'> {
   error?: string | undefined;
   warning?: string | undefined;
+  success?: string | undefined;
 }
 
 export function Password(props: PasswordProps) {
-  const { error, warning, ...rest } = props;
+  const { error, warning, success, ...rest } = props;
 
   const errorClass = error ? 'rac-h3 border-s-error' : '';
   const warningClass = warning ? 'rac-h3 border-s-warning' : '';
-  const messageClass = errorClass || warningClass;
+  const successClass = success ? 'rac-h3 border-s-success' : '';
+  const messageClass = errorClass || warningClass || successClass;
   const iconClass = `w-5 h-5 inline-block align-text-bottom text-neutral`;
 
   let open = {
@@ -64,7 +66,7 @@ export function Password(props: PasswordProps) {
             {icon}
           </button>
         </div>
-        <InputMessage error={error} warning={warning} />
+        <InputMessage error={error} warning={warning} success={success} />
       </div>
     </div>
   );
