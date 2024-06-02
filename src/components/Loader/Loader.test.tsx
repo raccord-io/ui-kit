@@ -15,7 +15,7 @@ describe('Components | loader', () => {
 // loader with type secondary
 describe('Components | loader', () => {
   test('it should render', () => {
-    render(<Loader type="secondary" />);
+    render(<Loader type="raccord" />);
 
     let loader = screen.getByTestId('loader');
 

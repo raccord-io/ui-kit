@@ -5,8 +5,8 @@ import { CgSpinner } from 'react-icons/cg';
 import Logo from '../../assets/images/loading.gif';
 
 const TypeLoader = {
-  primary: 'primary',
-  secondary: 'secondary',
+  default: 'default',
+  raccord: 'raccord',
 };
 
 interface LoaderProps extends ComponentPropsWithoutRef<'div'> {
@@ -16,11 +16,11 @@ interface LoaderProps extends ComponentPropsWithoutRef<'div'> {
 }
 
 export function Loader(props: LoaderProps) {
-  const { size = 24, customClass = '', type = 'primary', ...rest } = props;
+  const { size = 24, customClass = '', type = 'default', ...rest } = props;
 
   return (
     <div data-testid="loader" className={customClass} {...rest}>
-      {type === 'primary' ? (
+      {type === 'default' ? (
         <CgSpinner size={size} className="animate-spin text-primary-500" />
       ) : (
         <img src={Logo} alt="loading" width={size} height={size} />

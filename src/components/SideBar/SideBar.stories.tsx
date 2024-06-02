@@ -1,7 +1,22 @@
+import type { Meta, StoryObj } from '@storybook/react';
 import { SideBar, ItemProps } from './SideBar';
 import { Tag } from '../Tag';
 
-export default { title: 'Components/SideBar', component: SideBar };
+const meta: Meta<typeof SideBar> = {
+  title: 'Components/SideBar',
+  component: SideBar,
+  parameters: {
+    controls: { expanded: true },
+  },
+  argTypes: {
+    items: {
+      control: {
+        type: 'object',
+      },
+      description: 'Array of items to display in the sidebar',
+    },
+  },
+};
 
 const items: ItemProps[] = [
   {
@@ -47,10 +62,17 @@ const items: ItemProps[] = [
   },
 ];
 
-export const _SideBar = {
-  render: () => (
+export default meta;
+
+type Story = StoryObj<typeof SideBar>;
+
+export const _SideBar: Story = {
+  render: (args) => (
     <div className="w-52">
-      <SideBar items={items} />
+      <SideBar {...args} />
     </div>
   ),
+  args: {
+    items,
+  },
 };

@@ -1,20 +1,32 @@
-import { Toggle } from './Toggle';
+import { Meta, StoryObj } from '@storybook/react';
+import { Toggle, ToggleProps } from './Toggle';
 
-export default { title: 'Components/Toggle', component: Toggle };
+const meta: Meta<ToggleProps> = {
+  title: 'Components/Toggle',
+  component: Toggle,
+  parameters: {
+    controls: { expanded: true },
+  },
+  argTypes: {
+    tShirtSize: {
+      control: { type: 'select', options: ['sm', 'md', 'lg'] },
+      description: 'Size of the toggle',
+    },
+    checked: {
+      control: { type: 'boolean' },
+      description: 'Whether the toggle is checked or not',
+    },
+  },
+};
 
-export const _Toggle = {
-  render: () => (
-    <>
-      <h3 className="font-Gotham rac-h3 text-primary mb-2">Controlled</h3>
-      <Toggle tShirtSize="sm" onClick={() => console.log('clicked')} />
-      <br />
-      <Toggle />
-      <br />
-      <Toggle tShirtSize="lg" />
-      <br />
-      <br />
-      <h3 className="font-Gotham rac-h3 text-primary mb-2">Disabled</h3>
-      <Toggle disabled />
-    </>
-  ),
+export default meta;
+
+type Story = StoryObj<ToggleProps>;
+
+export const _Toggle: Story = {
+  render: (args) => <Toggle {...args} />,
+  args: {
+    tShirtSize: 'md',
+    checked: false,
+  },
 };

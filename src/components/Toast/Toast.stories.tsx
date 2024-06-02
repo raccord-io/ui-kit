@@ -1,9 +1,26 @@
+import type { Meta, StoryObj } from '@storybook/react';
 import { Toast, toast } from './Toast';
 import { Button } from './../Button/Button';
 
-export default { title: 'Components/Toast' };
+const meta: Meta<typeof Toast> = {
+  title: 'Components/Toast',
+  component: Toast,
+  parameters: {
+    controls: { expanded: true },
+  },
+  argTypes: {
+    durationMs: {
+      control: { type: 'number' },
+      description: 'Duration in milliseconds for each toast',
+    },
+  },
+};
 
-export const _Toast = {
+export default meta;
+
+type Story = StoryObj<typeof Toast>;
+
+export const _Toast: Story = {
   render: () => (
     <>
       <p className="text-f-primary font-Gotham rac-h3">
@@ -55,4 +72,7 @@ export const _Toast = {
       <Toast />
     </>
   ),
+  args: {
+    durationMs: 5000,
+  },
 };
