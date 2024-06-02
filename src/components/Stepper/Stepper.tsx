@@ -13,7 +13,7 @@ function StepIn() {
   return (
     <span
       data-testid="stepper-step-in"
-      className={`${baseStepClass} bg-s-success`}
+      className={`${baseStepClass} bg-s-warning`}
     >
       <FiSquare className="w-2 h-2 text-f-primary fill-i-primary" />
     </span>

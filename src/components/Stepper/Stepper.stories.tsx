@@ -1,23 +1,36 @@
+import type { Meta, StoryObj } from '@storybook/react';
 import { Stepper } from './Stepper';
 
-export default { title: 'Components/Stepper', component: Stepper };
+const meta: Meta<typeof Stepper> = {
+  title: 'Components/Stepper',
+  component: Stepper,
+  parameters: {
+    controls: { expanded: true },
+  },
+  argTypes: {
+    steps: {
+      control: {
+        type: 'array',
+      },
+      description: 'Array of step labels',
+    },
+    step: {
+      control: {
+        type: 'number',
+      },
+      description: 'Current step index',
+    },
+  },
+};
 
-export const _Stepper = {
-  render: () => (
-    <>
-      <p className="text-primary font-Gotham rac-h3">Étape 1/3</p>
-      <Stepper step={0} steps={['une', 'deux', 'trois']} />
-      <br />
-      <p className="text-primary font-Gotham rac-h3">Étape 2/3</p>
-      <Stepper step={1} steps={['une', 'deux', 'trois']} />
-      <br />
-      <p className="text-primary font-Gotham rac-h3">Étape 3/3</p>
-      <Stepper step={2} steps={['une', 'deux', 'trois']} />
-      <br />
-      <p className="text-primary font-Gotham rac-h3">
-        Étape 3/3 (avec validation complétée)
-      </p>
-      <Stepper step={3} steps={['une', 'deux', 'trois']} />
-    </>
-  ),
+export default meta;
+
+type Story = StoryObj<typeof Stepper>;
+
+export const _Stepper: Story = {
+  render: (args) => <Stepper {...args} />,
+  args: {
+    steps: ['Step 1', 'Step 2', 'Step 3'],
+    step: 0,
+  },
 };

@@ -1,56 +1,50 @@
+import type { Meta, StoryObj } from '@storybook/react';
 import { Password } from './Password';
 
-export default { title: 'Components/Password', component: Password };
+const meta: Meta<typeof Password> = {
+  title: 'Components/Password',
+  component: Password,
+  parameters: {
+    controls: { expanded: true },
+  },
+  argTypes: {
+    error: {
+      control: 'text',
+      description: 'Error message to display',
+      defaultValue: '',
+    },
+    warning: {
+      control: 'text',
+      description: 'Warning message to display',
+      defaultValue: '',
+    },
+  },
+};
 
-export const _Password = {
-  render: () => (
-    <>
-      <h3 className="font-Gotham rac-h2 text-primary">Controlled components</h3>
-      <Password placeholder={'with no content'} value="" />
-      <br />
-      <Password placeholder={'something'} value="with content" />
-      <br />
-      <Password
-        placeholder={'something'}
-        value=""
-        error="that's an error without content"
-      />
-      <br />
-      <Password
-        placeholder={'something'}
-        value="with content"
-        error="that's an error with content"
-      />
-      <br />
-      <Password
-        placeholder={'something'}
-        value=""
-        warning="that's a warning without content"
-      />
-      <br />
-      <Password
-        placeholder={'something'}
-        value="123"
-        warning="that's a warning with content"
-      />
-      <br />
+export default meta;
 
-      <h3 className="font-Gotham rac-h2 text-primary">
-        Uncontrolled components
-      </h3>
-      <Password placeholder={'something'} defaultValue="" />
-      <br />
-      <Password
-        placeholder={'something'}
-        defaultValue=""
-        error="that's an error with|without content"
-      />
-      <br />
-      <Password
-        placeholder={'something'}
-        defaultValue=""
-        warning="that's a warning with|without content"
-      />
-    </>
-  ),
+type Story = StoryObj<typeof Password>;
+
+export const Default: Story = {
+  render: (args) => <Password {...args} />,
+  args: {
+    error: '',
+    warning: '',
+  },
+};
+
+export const WithError: Story = {
+  render: (args) => <Password {...args} />,
+  args: {
+    error: 'This is an error message',
+    warning: '',
+  },
+};
+
+export const WithWarning: Story = {
+  render: (args) => <Password {...args} />,
+  args: {
+    error: '',
+    warning: 'This is a warning message',
+  },
 };

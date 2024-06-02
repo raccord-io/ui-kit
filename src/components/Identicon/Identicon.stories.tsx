@@ -1,14 +1,40 @@
+import type { Meta, StoryObj } from '@storybook/react';
 import { Identicon } from './Identicon';
 
-export default { title: 'Components/Identicon', component: Identicon };
+const meta: Meta<typeof Identicon> = {
+  title: 'Components/Identicon',
+  component: Identicon,
+  parameters: {
+    controls: { expanded: true },
+  },
+  argTypes: {
+    username: {
+      control: 'text',
+      description: 'Username to generate the Identicon',
+      defaultValue: 'testuser',
+    },
+    size: {
+      control: 'number',
+      description: 'Size of the Identicon',
+      defaultValue: 40,
+    },
+    customClass: {
+      control: 'text',
+      description: 'Additional custom CSS classes for styling',
+      defaultValue: '',
+    },
+  },
+};
 
-export const _Identicon = {
-  render: () => (
-    <>
-      <Identicon size={32} username="test" />
-      <Identicon size={48} username="test2" saturation={70} />
-      <Identicon size={64} username="test3" lightness={20} />
-      <Identicon size={128} username="test4" saturation={95} lightness={30} />
-    </>
-  ),
+export default meta;
+
+type Story = StoryObj<typeof Identicon>;
+
+export const _Identicon: Story = {
+  render: (args) => <Identicon {...args} />,
+  args: {
+    username: 'test',
+    size: 40,
+    customClass: '',
+  },
 };

@@ -1,9 +1,21 @@
 import { Tabs } from './Tabs';
 import { Button } from '../Button';
+import type { Meta, StoryObj } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof Tabs> = {
   title: 'Components/Tabs',
   component: Tabs,
+  parameters: {
+    controls: { expanded: true },
+  },
+  argTypes: {
+    tabsConfig: {
+      control: {
+        type: 'array',
+      },
+      description: 'Array of tab configurations',
+    },
+  },
 };
 
 const tabsConfig = [
@@ -18,11 +30,14 @@ const tabsConfig = [
   },
 ];
 
-const args = {
-  tabsConfig,
-  defaultIndex: 1,
-};
+export default meta;
 
-export const _Tabs = {
-  render: () => <Tabs {...args} />,
+type Story = StoryObj<typeof Tabs>;
+
+export const _Tabs: Story = {
+  render: (args) => <Tabs {...args} />,
+  args: {
+    tabsConfig,
+    defaultIndex: 1,
+  },
 };

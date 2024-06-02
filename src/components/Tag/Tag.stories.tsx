@@ -1,89 +1,43 @@
+import type { Meta, StoryObj } from '@storybook/react';
 import { Tag } from './Tag';
 
-export default {
+const meta: Meta<typeof Tag> = {
   title: 'Components/Tag',
+  component: Tag,
+  parameters: {
+    controls: { expanded: true },
+  },
+  argTypes: {
+    color: {
+      control: {
+        control: { type: 'radio' },
+        options: ['neutral', 'blue', 'green', 'red'],
+      },
+      description: 'Tag color',
+    },
+    content: {
+      control: {
+        type: 'text',
+      },
+      description: 'Tag content',
+    },
+    customClass: {
+      control: {
+        type: 'text',
+      },
+      description: 'Custom class',
+    },
+  },
 };
 
-export const _Tag = {
-  render: () => (
-    <>
-      <div className="flex gap-10 items-start">
-        <h2 className="rac-h2 text-f-primary underline">Default:</h2>
-        <div>
-          <Tag
-            color="neutral"
-            content="neutral color"
-            onClickCross={() => console.log('clicked cross')}
-          />
-          <br />
-          <Tag
-            color="blue"
-            content="blue color"
-            onClickCross={() => console.log('clicked cross')}
-          />
-          <br />
-          <Tag
-            color="green"
-            content="green color"
-            onClickCross={() => console.log('clicked cross')}
-          />
-          <br />
-          <Tag
-            color="red"
-            content="red color"
-            onClickCross={() => console.log('clicked cross')}
-          />
-          <br />
-          <Tag
-            color="#C800ff"
-            content="random color"
-            onClickCross={() => console.log('clicked cross')}
-          />
-        </div>
-      </div>
+export default meta;
 
-      <br />
-      <br />
+type Story = StoryObj<typeof Tag>;
 
-      <div className="flex gap-10 items-start">
-        <h2 className="rac-h2 text-f-primary underline">Clickable:</h2>
-        <div>
-          <Tag
-            color="neutral"
-            content="neutral color"
-            onClick={() => console.log('clicked')}
-            onClickCross={() => console.log('clicked cross')}
-          />
-          <br />
-          <Tag
-            color="blue"
-            content="blue color"
-            onClick={() => console.log('clicked')}
-            onClickCross={() => console.log('clicked cross')}
-          />
-          <br />
-          <Tag
-            color="green"
-            content="green color"
-            onClick={() => console.log('clicked')}
-            onClickCross={() => console.log('clicked cross')}
-          />
-          <br />
-          <Tag
-            color="red"
-            content="red color"
-            onClick={() => console.log('clicked')}
-            onClickCross={() => console.log('clicked cross')}
-          />
-          <br />
-          <Tag
-            color="#C800ff"
-            content="random color"
-            onClick={() => console.log('clicked')}
-            onClickCross={() => console.log('clicked cross')}
-          />
-        </div>
-      </div>
-    </>
-  ),
+export const _Tag: Story = {
+  render: (args) => <Tag {...args} />,
+  args: {
+    color: 'green',
+    content: 'Tag',
+  },
 };

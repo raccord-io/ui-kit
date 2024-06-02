@@ -1,37 +1,80 @@
+import type { Meta, StoryObj } from '@storybook/react';
 import { TextArea } from './TextArea';
 
-export default { title: 'Components/TextArea' };
+const meta: Meta<typeof TextArea> = {
+  title: 'Components/TextArea',
+  component: TextArea,
+  parameters: {
+    controls: { expanded: true },
+  },
+  argTypes: {
+    error: {
+      control: {
+        type: 'text',
+      },
+      description: 'Error message to display',
+    },
+    warning: {
+      control: {
+        type: 'text',
+      },
+      description: 'Warning message to display',
+    },
+    success: {
+      control: {
+        type: 'text',
+      },
+      description: 'Success message to display',
+    },
+    customClass: {
+      control: {
+        type: 'text',
+      },
+      description: 'Custom class to apply',
+    },
+  },
+};
 
-export const _TextArea = {
-  render: () => (
-    <div className="bg-secondary text-f-primary p-4">
-      <TextArea placeholder={'With no content'}></TextArea>
-      <br />
-      <TextArea placeholder={'With content'}>With content</TextArea>
-      <br />
-      <TextArea
-        placeholder={'With no content'}
-        error="That's an error without content"
-      />
-      <br />
-      <TextArea
-        placeholder={'With content'}
-        error="That's an error without content"
-      >
-        something
-      </TextArea>
-      <br />
-      <TextArea
-        placeholder={'something'}
-        warning="that's a warning without content"
-      ></TextArea>
-      <br />
-      <TextArea
-        placeholder={'something'}
-        warning="that's a warning with content"
-      >
-        Something
-      </TextArea>
-    </div>
-  ),
+export default meta;
+
+type Story = StoryObj<typeof TextArea>;
+
+export const Default: Story = {
+  render: (args) => <TextArea {...args} />,
+  args: {
+    error: '',
+    warning: '',
+    success: '',
+    customClass: '',
+  },
+};
+
+export const Error: Story = {
+  render: (args) => <TextArea {...args} />,
+  args: {
+    error: 'Error message',
+    warning: '',
+    success: '',
+    customClass: '',
+  },
+};
+
+export const Warning: Story = {
+  render: (args) => <TextArea {...args} />,
+  args: {
+    error: '',
+    warning: 'Warning message',
+    success: '',
+    customClass: '',
+  },
+};
+
+export const Success: Story = {
+  render: (args) => <TextArea {...args} />,
+  args: {
+    error: '',
+    warning: '',
+    success: 'Success message',
+    customClass: '',
+  },
 };
