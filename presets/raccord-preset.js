@@ -52,6 +52,9 @@ module.exports = {
         'f-primary': colorBlack,
         'f-secondary': colorWhite,
         'f-disabled': colorGrey200,
+        // icons:
+        'i-primary': colorBlack,
+        'i-secondary': colorWhite,
       },
       dark: {
         primary: colorWhite,
