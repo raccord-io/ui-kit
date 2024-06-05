@@ -17,7 +17,7 @@
     "fmt:check": "npm run prettier && npm run lint",
     "test": "jest",
     "prepare": "husky install",
-    "chromatic": "npx chromatic --project-token=chpt_9045b25ac677019"
+    "chromatic": "npx chromatic --project-token=chpt_9045b25ac677019 --auto-accept-changes"
   },
   "dependencies": {
     "@headlessui/react": "^2.0.3",

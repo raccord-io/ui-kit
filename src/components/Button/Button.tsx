@@ -31,10 +31,10 @@ function ButtonIcon(props: ButtonProps) {
 
   const models: Models = {
     default: '',
-    outline: `rounded-xl bg-green-sheen/[.15] border-[.2px] border-green-sheen text-green-sheen
-      hover:bg-green-sheen/20
-      disabled:bg-green-sheen/10 disabled:border-green-sheen/20 disabled:text-green-sheen/10
-      active:bg-green-sheen/30 active:border-green-sheen/30`,
+    outline: `rounded-xl bg-green-r-300/[.15] border-[.2px] border-green-r-300 text-green-r-300
+      hover:bg-green-r-300/20
+      disabled:bg-green-r-300/10 disabled:border-green-r-300/20 disabled:text-green-r-300/10
+      active:bg-green-r-300/30 active:border-green-r-300/30`,
   };
 
   return (

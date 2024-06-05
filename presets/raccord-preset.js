@@ -5,14 +5,14 @@
 const { createThemes } = require('tw-colors');
 
 import {
-  colorGreen300,
-  colorWhite,
   colorBlack,
-  colorBlue300,
+  colorGreen300,
   colorRed300,
-  colorWhite200,
+  colorBlue300,
   colorGrey200,
   colorGrey100,
+  colorWhite200,
+  colorWhite,
   colorWarning,
 } from './colors';
 
@@ -36,9 +36,9 @@ module.exports = {
         tertiary: colorWhite,
         neutral: colorBlack,
         system: colorWhite200,
-        'green-sheen': colorGreen300,
-        'blue-ateneo': colorBlue300,
-        'red-crimson': colorRed300,
+        'green-r-300': colorGreen300,
+        'blue-r-300': colorBlue300,
+        'red-r-300': colorRed300,
         // states:
         's-success': colorGreen300,
         's-error': colorRed300,
@@ -62,9 +62,9 @@ module.exports = {
         tertiary: colorBlue300,
         neutral: colorWhite,
         system: colorWhite200,
-        'green-sheen': colorGreen300,
-        'blue-ateneo': colorBlue300,
-        'red-crimson': colorRed300,
+        'green-r-300': colorGreen300,
+        'blue-r-300': colorBlue300,
+        'red-r-300': colorRed300,
         // states:
         's-success': colorGreen300,
         's-error': colorRed300,
