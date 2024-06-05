@@ -17,9 +17,9 @@ export function Alias() {
       <p className={classAlias}>tertiary</p>
       <p className={classAlias}>neutral</p>
       <p className={classAlias}>system</p>
-      <p className={classAlias}>green-sheen</p>
-      <p className={classAlias}>blue-ateneo</p>
-      <p className={classAlias}>red-crimson</p>
+      <p className={classAlias}>green-r-300</p>
+      <p className={classAlias}>blue-r-300</p>
+      <p className={classAlias}>red-r-300</p>
     </div>
   );
 
@@ -79,9 +79,9 @@ export function Theme() {
       <Color color="bg-tertiary" />
       <Color color="bg-neutral" />
       <Color color="bg-system" />
-      <Color color="bg-green-sheen" />
-      <Color color="bg-blue-ateneo" />
-      <Color color="bg-red-crimson" />
+      <Color color="bg-green-r-300" />
+      <Color color="bg-blue-r-300" />
+      <Color color="bg-red-r-300" />
     </div>
   );
 

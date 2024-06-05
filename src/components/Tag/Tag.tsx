@@ -51,9 +51,9 @@ function DeleteTag({
 }) {
   const separatorClasses: Classes = {
     neutral: 'before:bg-primary',
-    blue: 'before:bg-blue-ateneo',
-    green: 'before:bg-green-sheen',
-    red: 'before:bg-red-crimson',
+    blue: 'before:bg-blue-r-300',
+    green: 'before:bg-green-r-300',
+    red: 'before:bg-red-r-300',
   };
 
   return (
@@ -86,16 +86,16 @@ export function Tag(props: TagProps) {
 
   const classes: Classes = {
     neutral: 'bg-primary/[.15] text-f-primary',
-    blue: 'bg-blue-ateneo/[.15] text-blue-ateneo',
-    green: 'bg-green-sheen/[.15] text-green-sheen',
-    red: 'bg-red-crimson/[.15] text-red-crimson',
+    blue: 'bg-blue-r-300/[.15] text-blue-r-300',
+    green: 'bg-green-r-300/[.15] text-green-r-300',
+    red: 'bg-red-r-300/[.15] text-red-r-300',
   };
 
   const colorStates: Classes = {
     neutral: 'hover:bg-primary/20 active:bg-primary/30',
-    blue: 'hover:bg-blue-ateneo/20 active:bg-blue-ateneo/30',
-    green: 'hover:bg-green-sheen/20 active:bg-green-sheen/30',
-    red: 'hover:bg-red-crimson/20 active:bg-red-crimson/30',
+    blue: 'hover:bg-blue-r-300/20 active:bg-blue-r-300/30',
+    green: 'hover:bg-green-r-300/20 active:bg-green-r-300/30',
+    red: 'hover:bg-red-r-300/20 active:bg-red-r-300/30',
   };
 
   const addColorState = isClickable && colorStates[color];
