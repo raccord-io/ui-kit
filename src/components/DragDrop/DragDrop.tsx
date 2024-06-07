@@ -69,7 +69,7 @@ export function DragDrop(props: IDragDropProps) {
 
     const files = e.target.files;
     if (files) {
-      [...files].forEach((file) => {
+      Array.from(files).forEach((file) => {
         if (!isValidFile(file.name.toLowerCase())) {
           return;
         } else {
@@ -86,7 +86,7 @@ export function DragDrop(props: IDragDropProps) {
     e.preventDefault();
 
     if (e.dataTransfer.items) {
-      [...e.dataTransfer.items].forEach((item) => {
+      Array.from(e.dataTransfer.items).forEach((item) => {
         if (item.kind === 'file') {
           const file = item.getAsFile();
 
@@ -101,7 +101,7 @@ export function DragDrop(props: IDragDropProps) {
         }
       });
     } else {
-      [...e.dataTransfer.files].forEach((file) => {
+      Array.from(e.dataTransfer.files).forEach((file) => {
         if (!isValidFile(file.name.toLowerCase())) {
           return;
         } else {
