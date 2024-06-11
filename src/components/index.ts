@@ -1,5 +1,6 @@
 export * from './Button';
 export * from './DragDrop';
+export * from './Icons';
 export * from './Input';
 export * from './Pagination';
 export * from './PopupModal';
