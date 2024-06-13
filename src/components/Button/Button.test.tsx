@@ -47,7 +47,7 @@ describe('Components | Button', () => {
 
   test('it should have variant icon', () => {
     render(
-      <Button variant="icon" model="outline">
+      <Button variant="icon" model="single">
         <FiFile />
       </Button>,
     );
@@ -57,9 +57,9 @@ describe('Components | Button', () => {
     expect(button).toHaveClass('default-icon');
   });
 
-  test('it should have variant icon with outline model', () => {
+  test('it should have variant icon with border', () => {
     render(
-      <Button variant="icon" model="outline">
+      <Button variant="icon" model="border">
         <FiFile />
       </Button>,
     );
@@ -67,6 +67,5 @@ describe('Components | Button', () => {
     let button = screen.getByTestId('button');
 
     expect(button).toHaveClass('default-icon');
-    expect(button).toHaveClass('border-[.2px]');
   });
 });

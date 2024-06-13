@@ -133,7 +133,7 @@ export function DragDrop(props: IDragDropProps) {
         >
           <span className="flex items-center space-x-2">
             {loadedIcon}
-            <span className="pl-5 mas-body2">{fileName}</span>
+            <span className="pl-5">{fileName}</span>
           </span>
           <input
             onChange={handleOnChange}

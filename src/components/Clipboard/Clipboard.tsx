@@ -58,7 +58,7 @@ export function Clipboard(props: ClipboardProps) {
     <>
       <div
         data-testid="clipboard-field"
-        className={`flex flex-row items-center mas-body2 justify-between w-full
+        className={`flex flex-row items-center justify-between w-full
         h-12 px-3 rounded bg-tertiary border border-primary cursor-pointer ${customClass}`}
         onClick={handleCopyToClipboard}
         {...rest}

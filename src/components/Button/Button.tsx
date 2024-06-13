@@ -1,65 +1,81 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import React, { useState } from 'react';
+
 import { ReactNode, ComponentPropsWithoutRef } from 'react';
 import { IconContext } from 'react-icons/lib';
 
 export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
-  children?: ReactNode;
   preIcon?: ReactNode;
   posIcon?: ReactNode;
-  variant?: 'danger' | 'icon';
-  model?: 'outline';
+  model?: 'single' | 'border';
+  pressed?: boolean;
+  variant?: 'secondary' | 'primary' | 'danger' | 'icon' | undefined;
   customClass?: string;
+  hoverText?: ReactNode;
 }
 
-export function Button(props: ButtonProps) {
-  const { variant = 'primary' } = props;
+export function ButtonIcon(props: ButtonProps) {
+  const {
+    children,
+    model = 'single',
+    customClass = '',
+    hoverText,
+    ...rest
+  } = props;
 
-  const isVariantIcon = variant === 'icon';
+  const [isHovered, setIsHovered] = useState(false);
 
-  return isVariantIcon ? (
-    <ButtonIcon {...props} />
-  ) : (
-    <ButtonDefault {...props} />
-  );
-}
+  const showHoverText = hoverText && isHovered;
 
-function ButtonIcon(props: ButtonProps) {
-  const { children, model = 'default', customClass, ...rest } = props;
+  const models: Models = {
+    border:
+      'disabled:text-tertiary disabled:bg-secondary disabled:border-tertiary disabled:hover:border-tertiary',
+    single:
+      'border-0 bg-secondary hover:bg-tertiary disabled:bg-secondary disabled:text-tertiary',
+  };
 
   interface Models {
     [key: string]: string | object;
   }
-
-  const models: Models = {
-    default: '',
-    outline: `rounded-xl bg-green-r-300/[.15] border-[.2px] border-green-r-300 text-green-r-300
-      hover:bg-green-r-300/20
-      disabled:bg-green-r-300/10 disabled:border-green-r-300/20 disabled:text-green-r-300/10
-      active:bg-green-r-300/30 active:border-green-r-300/30`,
-  };
 
   return (
     <button
       data-testid="button"
       type="button"
       className={`default-button default-icon ${models[model]} ${customClass}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       {...rest}
     >
-      <div className="m-auto w-fit">
-        <IconContext.Provider value={{ className: 'w-6 h-6' }}>
-          {children}
-        </IconContext.Provider>
+      <div className="relative w-full flex justify-center items-center">
+        {showHoverText && (
+          <div
+            className="absolute text-secondary top-[-44px] w-fit z-10 bg-neutral
+          rac-caption rounded-md whitespace-nowrap"
+          >
+            <p className="w-fit py-1 px-2">{hoverText}</p>
+            <div className="absolute flex flex-col w-full items-center justify-center">
+              <div
+                className="w-0 h-0 border-4 border-solid border-neutral
+              border-l-transparent border-r-transparent border-b-transparent"
+              ></div>
+            </div>
+          </div>
+        )}
       </div>
+      <div className="w-fit m-auto flex gap-2 items-baseline">{children}</div>
     </button>
   );
 }
 
-function ButtonDefault(props: ButtonProps) {
+export function Button(props: ButtonProps) {
   const {
     children,
     preIcon,
     posIcon,
     variant = 'primary',
-    customClass,
+    customClass = '',
     ...rest
   } = props;
 
@@ -69,25 +85,31 @@ function ButtonDefault(props: ButtonProps) {
 
   const classes: Classes = {
     primary: 'default-primary',
+    secondary: 'default-secondary',
     danger: 'default-danger',
+    icon: 'default-icon',
   };
 
-  return (
+  const isIcon = variant === 'icon';
+
+  return isIcon ? (
+    <ButtonIcon {...props} />
+  ) : (
     <button
       data-testid="button"
       type="button"
-      className={`default-button p-3.5 rounded-none ${classes[variant]} ${customClass}`}
+      className={`default-button flex min-h-12 items-center px-4 ${classes[variant]} ${customClass}`}
       {...rest}
     >
-      <div className="w-fit m-auto flex gap-2.5 items-center">
+      <div className="w-fit m-auto flex items-center gap-2">
         <div className="m-auto">
-          <IconContext.Provider value={{ className: 'w-5 h-5' }}>
+          <IconContext.Provider value={{ className: 'w-6 h-6' }}>
             {preIcon}
           </IconContext.Provider>
         </div>
         {children}
         <div className="m-auto">
-          <IconContext.Provider value={{ className: 'w-5 h-5' }}>
+          <IconContext.Provider value={{ className: 'w-6 h-6' }}>
             {posIcon}
           </IconContext.Provider>
         </div>
