@@ -84,15 +84,15 @@ export const _PrimaryWithLabel: Story = {
   render: () => (
     <>
       <Button preIcon={<FiFile />} customClass="w-40">
-        <div className="flex items-center">Coins</div>
+        <div className="flex items-center">File</div>
       </Button>
       <br />
       <br />
       <Button customClass="w-40">
         <div className="flex items-center">
-          Coins
+          File
           <label className="text-tertiary text-xs flex ml-1 items-center">
-            (0,2 MAS)
+            (small)
           </label>
         </div>
       </Button>
@@ -127,15 +127,15 @@ export const _SecondaryWithLabel: Story = {
   render: () => (
     <>
       <Button variant="secondary" preIcon={<FiFile />} customClass="w-40">
-        <div className="flex items-center">Coins</div>
+        <div className="flex items-center">File</div>
       </Button>
       <br />
       <br />
       <Button variant="secondary" customClass="w-40">
         <div className="flex items-center">
-          Coins
+          File
           <label className="text-c-pressed text-xs flex ml-1 items-center">
-            (0,2 MAS)
+            (small)
           </label>
         </div>
       </Button>
