@@ -1,3 +1,5 @@
+![Raccord Banner](https://i.imgur.com/ipZFSMQ.png)
+
 # Raccord React TS ui-kit
 
 Tech:
@@ -69,6 +71,6 @@ You can now use our custom colors thanks to `className`:
 
 All typographies are defined in the tailwind preset.
 
-To use them, simple add the name of the typography in the `className` prefixed by `mas-`:
+To use them, simple add the name of the typography in the `className` prefixed by `rac-`:
 
 `<h1 className="rac-banner">My title</h1>`

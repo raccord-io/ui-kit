@@ -1,30 +1,52 @@
 import { Toast, toast } from '../Toast';
 import { Card } from './Card';
+import type { Meta, StoryObj } from '@storybook/react';
 
-export default { title: 'Components/Card' };
+const meta: Meta<typeof Card> = {
+  title: 'Components/Card',
+  component: Card,
+  parameters: {
+    controls: { expanded: true },
+  },
+  argTypes: {
+    bgColor: {
+      control: 'text',
+      description: 'Background color of the card',
+      defaultValue: 'bg-white',
+    },
+    enableBorder: {
+      control: 'boolean',
+      description: 'Enable or disable border',
+      defaultValue: true,
+    },
+    customClass: {
+      control: 'text',
+      description: 'Custom CSS classes',
+      defaultValue: '',
+    },
+    children: {
+      control: 'ReactNode',
+      description: 'Content of the card',
+      defaultValue: '',
+    },
+  },
+};
 
-export const _Card = {
-  render: () => (
+export default meta;
+
+type Story = StoryObj<typeof Card>;
+
+export const _Card: Story = {
+  render: (args) => (
     <>
-      <div className="flex flex-col gap-2">
-        <Card>
-          <div>I am a card component</div>
-        </Card>
-        <Card
-          bgColor={'bg-green-r-300'}
-          customClass="rounded-mb w-96 h-96 flex flex-col justify-center items-center"
-        >
-          <div>I am a custom card component</div>
-        </Card>
-
-        <Card
-          onClick={() => toast.success('You clicked me!')}
-          customClass="hover:cursor-pointer"
-        >
-          <div>Click me!</div>
-        </Card>
-        <Toast />
-      </div>
+      <Card {...args} onClick={() => toast.success('You clicked me!')} />
+      <Toast />
     </>
   ),
+  args: {
+    bgColor: 'bg-green-r-300',
+    enableBorder: true,
+    customClass: 'hover:cursor-pointer',
+    children: 'Click me!',
+  },
 };
