@@ -1,10 +1,10 @@
 ![Raccord Banner](https://i.imgur.com/ipZFSMQ.png)
 
-# Raccord React TS ui-kit
+# Raccord UI-KIT
 
 Tech:
 
-- React typescript
+- Next.js typescript
 - tailwind
 
 ## Presentation
