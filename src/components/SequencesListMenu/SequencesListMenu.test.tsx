@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { SideBar, ItemProps } from './SideBar';
+import { SequencesListMenu, ItemProps } from './SequencesListMenu';
 import { Tag } from '../Tag/Tag';
 
 const items: ItemProps[] = [
@@ -42,20 +42,24 @@ const items: ItemProps[] = [
   },
 ];
 
-describe('Components | SideBar', () => {
+describe('Components | SequencesListMenu', () => {
   test('it should render', () => {
-    render(<SideBar items={items} />);
+    render(<SequencesListMenu items={items} />);
 
-    let sidebar = screen.getByTestId('sidebar');
+    let sequencesListMenu = screen.getByTestId('sequences-list-menu');
 
-    expect(sidebar).toBeTruthy();
+    expect(sequencesListMenu).toBeTruthy();
   });
 
   test('it should render 2 main items', () => {
-    render(<SideBar items={items} />);
+    render(<SequencesListMenu items={items} />);
 
-    let sidebarItems = screen.getAllByTestId(/sidebar-item-/);
+    // Get all items
+    let sequencesListMenuItems = screen.getAllByTestId((content) => {
+      return content.startsWith('sequences-list-menu-item-');
+    });
 
-    expect(sidebarItems).toHaveLength(2);
+    // Check if there are 2 main items
+    expect(sequencesListMenuItems).toHaveLength(2);
   });
 });
