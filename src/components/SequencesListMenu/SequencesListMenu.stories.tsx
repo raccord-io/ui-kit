@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { SideBar, ItemProps } from './SideBar';
+import { SequencesListMenu, ItemProps } from './SequencesListMenu';
 import { Tag } from '../Tag';
 
-const meta: Meta<typeof SideBar> = {
-  title: 'Components/SideBar',
-  component: SideBar,
+const meta: Meta<typeof SequencesListMenu> = {
+  title: 'Components/SequencesListMenu',
+  component: SequencesListMenu,
   parameters: {
     controls: { expanded: true },
   },
@@ -64,12 +64,12 @@ const items: ItemProps[] = [
 
 export default meta;
 
-type Story = StoryObj<typeof SideBar>;
+type Story = StoryObj<typeof SequencesListMenu>;
 
-export const _SideBar: Story = {
+export const _SequencesListMenu: Story = {
   render: (args) => (
     <div className="w-52">
-      <SideBar {...args} />
+      <SequencesListMenu {...args} />
     </div>
   ),
   args: {

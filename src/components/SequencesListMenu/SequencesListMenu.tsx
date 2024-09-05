@@ -9,16 +9,16 @@ export interface ItemProps {
   onClickInfo?: () => void;
 }
 
-interface SideBarItemsProps {
+interface SequencesListMenuItemsProps {
   item: ItemProps;
   idx: number;
 }
 
-interface SideBarProps {
+interface SequencesListMenuProps {
   items: ItemProps[];
 }
 
-function MainModeMenu(props: SideBarItemsProps) {
+function MainModeMenu(props: SequencesListMenuItemsProps) {
   const { idx, item } = props;
   const { label, onClickInfo } = item;
 
@@ -33,7 +33,7 @@ function MainModeMenu(props: SideBarItemsProps) {
 
   return (
     <div
-      data-testid={`sidebar-item-${idx}`}
+      data-testid={`sequences-list-menu-item-${idx}`}
       className={`rounded-sm border-[.2px] ${borderColorClass}`}
     >
       <button
@@ -60,7 +60,7 @@ function MainModeMenu(props: SideBarItemsProps) {
           <div className="pl-6 py-3 flex flex-col gap-2">
             {Array.isArray(item.children)
               ? item.children.map((child, index) => (
-                  <SideBarItems
+                  <SequencesListMenuItems
                     key={index}
                     idx={index}
                     item={child as ItemProps}
@@ -80,7 +80,7 @@ function MainModeMenu(props: SideBarItemsProps) {
   );
 }
 
-function SubModeMenu(props: SideBarItemsProps) {
+function SubModeMenu(props: SequencesListMenuItemsProps) {
   const { idx, item } = props;
   const { label } = item;
 
@@ -91,7 +91,7 @@ function SubModeMenu(props: SideBarItemsProps) {
   }
 
   return (
-    <div data-testid={`sidebar-sub-item-${idx}`}>
+    <div data-testid={`sequences-list-menu-sub-item-${idx}`}>
       <div
         className="rounded-sm px-3 py-1 flex items-center gap-2 cursor-pointer hover:bg-primary/[.03]"
         onClick={() => setOpen(!open)}
@@ -126,7 +126,7 @@ function SubModeMenu(props: SideBarItemsProps) {
   );
 }
 
-function SideBarItems(props: SideBarItemsProps) {
+function SequencesListMenuItems(props: SequencesListMenuItemsProps) {
   const { idx, item } = props;
   const { mode = 'sub' } = item;
 
@@ -137,16 +137,16 @@ function SideBarItems(props: SideBarItemsProps) {
   );
 }
 
-export function SideBar(props: SideBarProps) {
+export function SequencesListMenu(props: SequencesListMenuProps) {
   const { items } = props;
 
   return (
     <div
-      data-testid="sidebar"
+      data-testid="sequences-list-menu"
       className="rac-caption w-full flex flex-col gap-3 text-f-primary"
     >
       {items.map((item, index) => (
-        <SideBarItems key={index} idx={index} item={item} />
+        <SequencesListMenuItems key={index} idx={index} item={item} />
       ))}
     </div>
   );
