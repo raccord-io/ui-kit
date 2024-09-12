@@ -4,7 +4,7 @@ import { IconContext } from 'react-icons/lib';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-import { cn } from '@/src/lib/utils';
+import { cn } from '../../lib/utils';
 
 const buttonVariants = cva('default-button', {
   variants: {
