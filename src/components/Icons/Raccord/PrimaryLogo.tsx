@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef } from 'react';
 
-import PrimaryLogoBlack from './Logo_primaire_noir.png';
-import PrimaryLogoWhite from './Logo_primaire_blanc.png';
+import PrimaryLogoBlack from '../../../assets/images/Logo_primaire_noir.png';
+import PrimaryLogoWhite from '../../../assets/images/Logo_primaire_blanc.png';
 
 interface PrimaryLogoProps extends ComponentPropsWithoutRef<'div'> {
   theme?: 'theme-dark' | 'theme-light';
