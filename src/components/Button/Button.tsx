@@ -1,49 +1,58 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import React, { useState } from 'react';
+import React, { useState, forwardRef, ReactNode } from 'react';
 
-import { ReactNode, ComponentPropsWithoutRef } from 'react';
 import { IconContext } from 'react-icons/lib';
+import { Slot } from '@radix-ui/react-slot';
+import { cva, type VariantProps } from 'class-variance-authority';
 
-export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
+import { cn } from '@/src/lib/utils';
+
+const buttonVariants = cva('default-button', {
+  variants: {
+    variant: {
+      default: 'default-primary',
+      secondary: 'default-secondary',
+      danger: 'default-danger',
+      outline:
+        'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
+      icon: 'default-icon',
+    },
+    model: {
+      single:
+        'border-0 bg-secondary hover:bg-tertiary disabled:bg-secondary disabled:text-tertiary',
+      border:
+        'disabled:text-tertiary disabled:bg-secondary disabled:border-tertiary disabled:hover:border-tertiary',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+    model: null,
+  },
+});
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
+  hoverText?: ReactNode;
   preIcon?: ReactNode;
   posIcon?: ReactNode;
-  model?: 'single' | 'border';
-  pressed?: boolean;
-  variant?: 'secondary' | 'primary' | 'danger' | 'icon' | undefined;
-  customClass?: string;
-  hoverText?: ReactNode;
 }
 
 export function ButtonIcon(props: ButtonProps) {
-  const {
-    children,
-    model = 'single',
-    customClass = '',
-    hoverText,
-    ...rest
-  } = props;
+  const { children, hoverText, variant, model, className, ...rest } = props;
 
   const [isHovered, setIsHovered] = useState(false);
 
   const showHoverText = hoverText && isHovered;
 
-  const models: Models = {
-    border:
-      'disabled:text-tertiary disabled:bg-secondary disabled:border-tertiary disabled:hover:border-tertiary',
-    single:
-      'border-0 bg-secondary hover:bg-tertiary disabled:bg-secondary disabled:text-tertiary',
-  };
-
-  interface Models {
-    [key: string]: string | object;
-  }
-
   return (
     <button
       data-testid="button"
       type="button"
-      className={`default-button default-icon ${models[model]} ${customClass}`}
+      className={cn(
+        buttonVariants({ variant, model, className }),
+        'default-button default-icon',
+      )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       {...rest}
@@ -69,36 +78,32 @@ export function ButtonIcon(props: ButtonProps) {
   );
 }
 
-export function Button(props: ButtonProps) {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
+    variant,
+    className,
+    asChild = false,
+    model,
     children,
     preIcon,
     posIcon,
-    variant = 'primary',
-    customClass = '',
     ...rest
   } = props;
 
-  interface Classes {
-    [key: string]: string | object;
-  }
-
-  const classes: Classes = {
-    primary: 'default-primary',
-    secondary: 'default-secondary',
-    danger: 'default-danger',
-    icon: 'default-icon',
-  };
-
+  const Comp = asChild ? Slot : 'button';
   const isIcon = variant === 'icon';
 
   return isIcon ? (
     <ButtonIcon {...props} />
   ) : (
-    <button
-      data-testid="button"
+    <Comp
+      ref={ref}
       type="button"
-      className={`default-button flex min-h-12 items-center px-4 ${classes[variant]} ${customClass}`}
+      data-testid="button"
+      className={cn(
+        buttonVariants({ variant, model, className }),
+        'flex min-h-12 items-center px-4',
+      )}
       {...rest}
     >
       <div className="w-fit m-auto flex items-center gap-2">
@@ -114,6 +119,10 @@ export function Button(props: ButtonProps) {
           </IconContext.Provider>
         </div>
       </div>
-    </button>
+    </Comp>
   );
-}
+});
+
+Button.displayName = 'Button';
+
+export { Button };

@@ -17,10 +17,9 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"],
-      "@lib/*": ["./src/lib/*"],
-      "@components/*": ["./app/components/*"]
+      "@/*": ["./*"]
     }
   },
   "include": ["src"],

@@ -26,18 +26,13 @@ const meta: Meta<typeof Button> = {
       defaultValue: 'single',
       options: ['single', 'border'],
     },
-    pressed: {
-      control: 'boolean',
-      description: 'Button pressed',
-      defaultValue: false,
-    },
     variant: {
       control: 'radio',
       description: 'Button variant',
       defaultValue: 'primary',
       options: ['primary', 'secondary', 'danger', 'icon'],
     },
-    customClass: {
+    className: {
       control: 'text',
       description: 'Custom CSS classes',
       defaultValue: '',
@@ -83,12 +78,12 @@ export const _Primary: Story = {
 export const _PrimaryWithLabel: Story = {
   render: () => (
     <>
-      <Button preIcon={<FiFile />} customClass="w-40">
+      <Button preIcon={<FiFile />} className="w-40">
         <div className="flex items-center">File</div>
       </Button>
       <br />
       <br />
-      <Button customClass="w-40">
+      <Button className="w-40">
         <div className="flex items-center">
           File
           <label className="text-tertiary text-xs flex ml-1 items-center">
@@ -126,12 +121,12 @@ export const _Secondary: Story = {
 export const _SecondaryWithLabel: Story = {
   render: () => (
     <>
-      <Button variant="secondary" preIcon={<FiFile />} customClass="w-40">
+      <Button variant="secondary" preIcon={<FiFile />} className="w-40">
         <div className="flex items-center">File</div>
       </Button>
       <br />
       <br />
-      <Button variant="secondary" customClass="w-40">
+      <Button variant="secondary" className="w-40">
         <div className="flex items-center">
           File
           <label className="text-c-pressed text-xs flex ml-1 items-center">
