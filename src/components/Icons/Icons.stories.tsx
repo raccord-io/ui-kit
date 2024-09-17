@@ -24,17 +24,8 @@ const meta: Meta<typeof PrimaryLogo> = {
 
 export default meta;
 
-// export default { title: 'Icons/Raccord' };
-
 export const _RaccordPrimaryLogo: StoryObj = {
-  render: (args) => (
-    <PrimaryLogo {...args} />
-    // <>
-    //   <PrimaryLogo theme="theme-dark" />
-    //   <br />
-    //   <PrimaryLogo theme="theme-light" />
-    // </>
-  ),
+  render: (args) => <PrimaryLogo {...args} />,
   args: {
     theme: 'theme-dark',
     size: 495,
