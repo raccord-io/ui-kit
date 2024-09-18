@@ -9,6 +9,7 @@ export * from './Pagination';
 export * from './Password';
 export * from './Popover';
 export * from './PopupModal';
+export * from './ScrollArea';
 export * from './SequencesListMenu';
 export * from './Stepper';
 export * from './Tabs';
