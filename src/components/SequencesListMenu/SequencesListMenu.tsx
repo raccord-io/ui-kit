@@ -25,11 +25,11 @@ function MainModeMenu(props: SequencesListMenuItemsProps) {
   const [open, setOpen] = useState<boolean>(false);
 
   const borderRadiusClass = open ? '' : 'rounded-sm';
-  const borderColorClass = open ? 'border-green-r-300' : 'border-transparent';
+  const borderColorClass = open ? 'border-brand-green' : 'border-transparent';
   const backgroundColorClass = open
-    ? 'bg-green-r-300/[.15]'
+    ? 'bg-brand-green/[.15]'
     : 'hover:bg-primary/[.03]';
-  const textColorClass = open ? 'text-green-r-300' : 'hover:text-f-primary';
+  const textColorClass = open ? 'text-brand-green' : 'hover:text-f-primary';
 
   return (
     <div
@@ -55,7 +55,7 @@ function MainModeMenu(props: SequencesListMenuItemsProps) {
       {open && item.children && (
         <div
           data-testid="item-children"
-          className="border-t-[.2px] border-green-r-300"
+          className="border-t-[.2px] border-brand-green"
         >
           <div className="pl-6 py-3 flex flex-col gap-2">
             {Array.isArray(item.children)

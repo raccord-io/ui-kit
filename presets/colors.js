@@ -21,5 +21,25 @@ export const colorRed100 = '#F5ABAF';
 export const colorBlue200 = '#326D87';
 export const colorBlue100 = '#99B6C3';
 
-// States
-export const colorWarning = '#FFA41D';
+// Other
+export const colorGray950 = '#1d1d1b';
+export const colorGray900 = '#32322f';
+export const colorGray800 = '#3f3f3b';
+export const colorGray700 = '#454440';
+export const colorGray600 = '#53534e';
+export const colorGray500 = '#696963';
+export const colorGray400 = '#84837d';
+export const colorGray200 = '#c9c9c6';
+export const colorGray100 = '#e4e4e3';
+
+export const colorDowny200 = '#afe0d7';
+export const colorDowny300 = '#6bc1b3';
+
+export const colorTealBlue900 = '#004969';
+export const colorTealBlue800 = '#006794';
+
+export const colorRedCrimson600 = '#e62d37';
+export const colorRedCrimson500 = '#f73c46';
+
+export const colorOrangePeel400 = '#ffa41d';
+export const colorOrangePeel300 = '#ffbf4a';
