@@ -44,7 +44,7 @@ export const _Card: Story = {
     </>
   ),
   args: {
-    bgColor: 'bg-green-r-300',
+    bgColor: 'bg-brand-green',
     enableBorder: true,
     customClass: 'hover:cursor-pointer',
     children: 'Click me!',

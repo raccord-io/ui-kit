@@ -129,14 +129,14 @@
 
 @layer rac-custom-styles {
   .default-button {
-    @apply rac-buttons w-full border-2 border-c-default h-12;
+    @apply font-Gotham w-full h-12 transition-colors duration-300;
   }
 
   .default-primary {
     @apply bg-c-default text-f-secondary
-          hover:bg-c-hover hover:border-c-hover
+          hover:bg-c-hover
           active:bg-c-pressed
-          disabled:text-f-disabled disabled:bg-c-disabled disabled:border-c-default;
+          disabled:text-f-disabled disabled:bg-c-disabled;
   }
 
   .default-secondary {
@@ -182,6 +182,6 @@
   }
 
   .default-tab-active {
-    @apply rac-menu-active antialiased border-blue-r-300 border-b-2 text-blue-r-300;
+    @apply rac-menu-active antialiased border-brand-blue border-b-2 text-brand-blue;
   }
 }

@@ -35,7 +35,7 @@ describe('Components | Tag', () => {
 
     let tag = screen.getByTestId('tag');
 
-    expect(tag).toHaveClass('bg-blue-r-300/[.15]');
+    expect(tag).toHaveClass('bg-brand-blue/[.15]');
   });
 
   test('it should have green class with 15% opacity', () => {
@@ -43,7 +43,7 @@ describe('Components | Tag', () => {
 
     let tag = screen.getByTestId('tag');
 
-    expect(tag).toHaveClass('bg-green-r-300/[.15]');
+    expect(tag).toHaveClass('bg-brand-green/[.15]');
   });
 
   test('it should have red class with 15% opacity', () => {
@@ -51,7 +51,7 @@ describe('Components | Tag', () => {
 
     let tag = screen.getByTestId('tag');
 
-    expect(tag).toHaveClass('bg-red-r-300/[.15]');
+    expect(tag).toHaveClass('bg-brand-red/[.15]');
   });
 
   /*

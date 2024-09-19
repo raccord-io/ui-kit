@@ -9,11 +9,11 @@ export const _Popover = {
       <Popover>
         <PopoverTrigger asChild>
           <button
-            className={`m-auto default-button default-icon rounded-xl bg-green-r-300/[.15]
-              border-[.2px] border-green-r-300 text-green-r-300
-              hover:bg-green-r-300/20
-              disabled:bg-green-r-300/10 disabled:border-green-r-300/20 disabled:text-green-r-300/10
-              active:bg-green-r-300/30 active:border-green-r-300/30`}
+            className={`m-auto default-button default-icon rounded-xl bg-brand-green/[.15]
+              border-[.2px] border-brand-green text-brand-green
+              hover:bg-brand-green/20
+              disabled:bg-brand-green/10 disabled:border-brand-green/20 disabled:text-brand-green/10
+              active:bg-brand-green/30 active:border-brand-green/30`}
           >
             Open popover
           </button>
