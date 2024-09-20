@@ -1,19 +1,18 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import React from 'react';
-
-import { useState, ComponentPropsWithoutRef } from 'react';
+import React, { useState, forwardRef } from 'react';
 import { FiEyeOff, FiEye } from 'react-icons/fi';
+
+import { cn } from '../../lib/utils';
 import { InputMessage } from '../Input';
 
-export interface PasswordProps extends ComponentPropsWithoutRef<'input'> {
+export interface PasswordProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: string | undefined;
   warning?: string | undefined;
   success?: string | undefined;
 }
 
-export function Password(props: PasswordProps) {
-  const { error, warning, success, ...rest } = props;
+const Password = forwardRef<HTMLInputElement, PasswordProps>((props, ref) => {
+  const { error, warning, success, className, ...rest } = props;
 
   const errorClass = error ? 'rac-h3 border-s-error' : '';
   const warningClass = warning ? 'rac-h3 border-s-warning' : '';
@@ -46,17 +45,19 @@ export function Password(props: PasswordProps) {
   }
 
   return (
-    <div className="flex-row">
-      <div className="grid-cols-2">
-        <div className="inline h-12">
-          <input
-            data-testid="password-input"
-            className={`w-full default-input rac-menu-default h-12 pl-3 pr-10 mb-1 ${messageClass}`}
-            type={type}
-            {...rest}
-          />
-        </div>
-        <div className="inline -ml-9">
+    <div ref={ref}>
+      <div className="flex">
+        <input
+          data-testid="password-input"
+          className={cn(
+            'w-full default-input rac-menu-default h-12 pl-3 pr-10 mb-1',
+            messageClass,
+            className,
+          )}
+          type={type}
+          {...rest}
+        />
+        <div className="-ml-9">
           <button
             type="button"
             className="w-8 h-8 bg-transparent"
@@ -66,8 +67,12 @@ export function Password(props: PasswordProps) {
             {icon}
           </button>
         </div>
-        <InputMessage error={error} warning={warning} success={success} />
       </div>
+      <InputMessage error={error} warning={warning} success={success} />
     </div>
   );
-}
+});
+
+Password.displayName = 'Password';
+
+export { Password };
