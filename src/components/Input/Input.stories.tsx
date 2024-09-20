@@ -23,7 +23,7 @@ const meta: Meta<typeof Input> = {
       description: 'Success message to display',
       defaultValue: '',
     },
-    customClass: {
+    className: {
       control: 'text',
       description: 'Additional custom CSS classes for styling',
       defaultValue: '',
@@ -54,7 +54,7 @@ export const Default: Story = {
   args: {
     placeholder: 'Enter text...',
     value: '',
-    customClass: '',
+    className: '',
   },
 };
 
@@ -64,7 +64,7 @@ export const Error: Story = {
     error: 'This is an error message',
     placeholder: 'Enter text...',
     value: '',
-    customClass: '',
+    className: '',
   },
 };
 
@@ -74,7 +74,7 @@ export const Warning: Story = {
     warning: 'This is a warning message',
     placeholder: 'Enter text...',
     value: '',
-    customClass: '',
+    className: '',
   },
 };
 
@@ -84,6 +84,6 @@ export const Success: Story = {
     success: 'This is a success message',
     placeholder: 'Enter text...',
     value: '',
-    customClass: '',
+    className: '',
   },
 };

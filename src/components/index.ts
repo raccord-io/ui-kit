@@ -3,6 +3,7 @@ export * from './Button';
 export * from './DragDrop';
 export * from './DropdownMenu';
 export * from './Icons';
+export * from './Identicon';
 export * from './Input';
 export * from './Menubar';
 export * from './Pagination';
