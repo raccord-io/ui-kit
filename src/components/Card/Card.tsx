@@ -21,7 +21,7 @@ export function Card({
   return (
     <div
       data-testid="card"
-      className={`${bgColor} ${borderClass} w-full h-fit text-f-primary rounded-sm p-4 ${customClass}`}
+      className={`${bgColor} ${borderClass} w-full h-fit text-f-primary rounded-sm ${customClass}`}
       {...rest}
     >
       {children}
