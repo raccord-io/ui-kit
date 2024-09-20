@@ -1,4 +1,4 @@
-import React, { useState, forwardRef, ReactNode } from 'react';
+import React, { forwardRef, ReactNode } from 'react';
 
 import { IconContext } from 'react-icons/lib';
 import { Slot } from '@radix-ui/react-slot';
@@ -33,17 +33,12 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
-  hoverText?: ReactNode;
   preIcon?: ReactNode;
   posIcon?: ReactNode;
 }
 
 export function ButtonIcon(props: ButtonProps) {
-  const { children, hoverText, variant, model, className, ...rest } = props;
-
-  const [isHovered, setIsHovered] = useState(false);
-
-  const showHoverText = hoverText && isHovered;
+  const { children, variant, model, className, ...rest } = props;
 
   return (
     <button
@@ -53,11 +48,9 @@ export function ButtonIcon(props: ButtonProps) {
         buttonVariants({ variant, model, className }),
         'default-button default-icon',
       )}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       {...rest}
     >
-      <div className="relative w-full flex justify-center items-center">
+      {/* <div className="relative w-full flex justify-center items-center">
         {showHoverText && (
           <div
             className="absolute text-secondary top-[-44px] w-fit z-10 bg-neutral
@@ -72,7 +65,7 @@ export function ButtonIcon(props: ButtonProps) {
             </div>
           </div>
         )}
-      </div>
+      </div> */}
       <div className="w-fit m-auto flex gap-2 items-baseline">{children}</div>
     </button>
   );

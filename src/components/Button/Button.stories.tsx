@@ -37,11 +37,11 @@ const meta: Meta<typeof Button> = {
       description: 'Custom CSS classes',
       defaultValue: '',
     },
-    hoverText: {
-      control: 'text',
-      description: 'Text to be displayed on hover',
-      defaultValue: '',
-    },
+    // hoverText: {
+    //   control: 'text',
+    //   description: 'Text to be displayed on hover',
+    //   defaultValue: '',
+    // },
   },
 };
 
@@ -183,9 +183,6 @@ export const _Icon: Story = {
         <FiFile color={colorWarning} />
       </Button>
       &nbsp;
-      <Button hoverText="this is a hovered icon" variant="icon" model="border">
-        <FiFile color={colorWarning} />
-      </Button>
       <br />
       <br />
       <Button variant="icon" model="border" disabled>
