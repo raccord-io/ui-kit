@@ -46,11 +46,11 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props, ref) => {
 
   return (
     <div ref={ref}>
-      <div className="flex">
+      <div className="flex items-center">
         <input
           data-testid="password-input"
           className={cn(
-            'w-full default-input rac-menu-default h-12 pl-3 pr-10 mb-1',
+            'w-full default-input rac-menu-default h-12 pl-2 pr-10 mb-1',
             messageClass,
             className,
           )}

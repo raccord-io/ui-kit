@@ -23,7 +23,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       <input
         data-testid="input-field"
         className={cn(
-          'w-full rac-menu-default default-input h-12 pr-10 mb-1',
+          'w-full rac-menu-default default-input h-12 pl-2 pr-10 mb-1',
           messageClass,
           className,
         )}
