@@ -18,11 +18,6 @@ const meta: Meta<typeof Identicon> = {
       description: 'Size of the Identicon',
       defaultValue: 40,
     },
-    customClass: {
-      control: 'text',
-      description: 'Additional custom CSS classes for styling',
-      defaultValue: '',
-    },
   },
 };
 
@@ -35,6 +30,5 @@ export const _Identicon: Story = {
   args: {
     username: 'test',
     size: 40,
-    customClass: '',
   },
 };

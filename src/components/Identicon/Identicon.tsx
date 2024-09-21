@@ -1,41 +1,46 @@
-import { ComponentPropsWithoutRef, useMemo } from 'react';
+import { forwardRef, useMemo } from 'react';
 
 import { minidenticon } from 'minidenticons';
 
-export interface IdenticonProps extends ComponentPropsWithoutRef<'img'> {
+import { cn } from '../../lib/utils';
+
+export interface IdenticonProps
+  extends React.ImgHTMLAttributes<HTMLImageElement> {
   username: string;
   size?: number;
   saturation?: number;
   lightness?: number;
-  customClass?: string;
 }
 
-export function Identicon(props: IdenticonProps) {
-  const {
-    username,
-    size = 64,
-    saturation,
-    lightness,
-    customClass = '',
-    ...rest
-  } = props;
+export const Identicon = forwardRef<HTMLImageElement, IdenticonProps>(
+  (props, ref) => {
+    const {
+      username,
+      size = 64,
+      saturation,
+      lightness,
+      className,
+      ...rest
+    } = props;
 
-  const svgURI = useMemo(
-    () =>
-      'data:image/svg+xml;utf8,' +
-      encodeURIComponent(minidenticon(username, saturation, lightness)),
-    [username, saturation, lightness],
-  );
+    const svgURI = useMemo(
+      () =>
+        'data:image/svg+xml;utf8,' +
+        encodeURIComponent(minidenticon(username, saturation, lightness)),
+      [username, saturation, lightness],
+    );
 
-  return (
-    <img
-      data-testid="identicon"
-      className={`bg-white rounded-sm ${customClass}`}
-      src={svgURI}
-      alt={username}
-      width={size.toString()}
-      height={size.toString()}
-      {...rest}
-    />
-  );
-}
+    return (
+      <img
+        ref={ref}
+        data-testid="identicon"
+        className={cn('bg-white rounded-md', className)}
+        src={svgURI}
+        alt={username}
+        width={size.toString()}
+        height={size.toString()}
+        {...rest}
+      />
+    );
+  },
+);
