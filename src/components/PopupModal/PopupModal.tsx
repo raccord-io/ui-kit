@@ -1,6 +1,5 @@
 import {
-  ReactNode,
-  ComponentPropsWithoutRef,
+  forwardRef,
   useState,
   useEffect,
   cloneElement,
@@ -9,11 +8,11 @@ import {
 } from 'react';
 import { FiX } from 'react-icons/fi';
 
-interface IPopupModalProps extends ComponentPropsWithoutRef<'div'> {
+import { cn } from '../../lib/utils';
+
+interface IPopupModalProps extends React.HTMLAttributes<HTMLDivElement> {
   status?: 'hidden' | 'displayed' | undefined;
   fullMode?: boolean;
-  children?: ReactNode;
-  customClass?: string;
   customClassNested?: string;
   // both exposed function should be declared as:
   // onOpen?(): any;
@@ -22,8 +21,7 @@ interface IPopupModalProps extends ComponentPropsWithoutRef<'div'> {
   onClose?: () => void;
 }
 
-interface IPopupModalNodeProps extends ComponentPropsWithoutRef<'div'> {
-  children?: ReactNode;
+interface IPopupModalNodeProps extends React.HTMLAttributes<HTMLDivElement> {
   customClassHeader?: string;
   customClassContent?: string;
   customClassFooter?: string;
@@ -91,55 +89,62 @@ export function PopupModalFooter(props: IPopupModalNodeProps) {
   return null;
 }
 
-export function PopupModal(props: IPopupModalProps) {
-  const {
-    status,
-    fullMode = false,
-    children,
-    onOpen,
-    onClose,
-    customClass,
-    customClassNested,
-    ...rest
-  } = props;
-  const [hidden, setHidden] = useState(status);
-  const fullModeClass = fullMode ? 'fixed top-0 left-0 right-0 z-30' : '';
+// export function PopupModal(props: IPopupModalProps) {
+const PopupModal = forwardRef<HTMLDivElement, IPopupModalProps>(
+  (props, ref) => {
+    const {
+      status,
+      fullMode = false,
+      children,
+      onOpen,
+      onClose,
+      customClassNested,
+      className,
+      ...rest
+    } = props;
+    const [hidden, setHidden] = useState(status);
+    const fullModeClass = fullMode ? 'fixed top-0 left-0 right-0 z-30' : '';
 
-  useEffect(() => {
-    handleOpen();
-  }, []);
+    useEffect(() => {
+      handleOpen();
+    }, []);
 
-  function handleOpen() {
-    onOpen?.();
-  }
+    function handleOpen() {
+      onOpen?.();
+    }
 
-  function handleClose() {
-    setHidden('hidden');
+    function handleClose() {
+      setHidden('hidden');
 
-    onClose?.();
-  }
+      onClose?.();
+    }
 
-  var appendedChildren = Children.map(children, (child) => {
-    return cloneElement(isValidElement(child) ? child : <></>, {
-      _onClose: handleClose,
+    var appendedChildren = Children.map(children, (child) => {
+      return cloneElement(isValidElement(child) ? child : <></>, {
+        _onClose: handleClose,
+      });
     });
-  });
 
-  return (
-    <div
-      data-testid="popup-modal"
-      className={`${hidden} ${fullModeClass}
+    return (
+      <div
+        ref={ref}
+        data-testid="popup-modal"
+        className={`${hidden} ${fullModeClass}
                   bg-secondary bg-opacity-75 w-full h-screen flex justify-center items-center max-h-full
                   overflow-x-hidden overflow-y-auto`}
-      {...rest}
-    >
-      <div className={`relative max-h-full w-2/3 ${customClass}`}>
-        <div
-          className={`relative bg-secondary shadow rounded-sm border-2 border-primary ${customClassNested}`}
-        >
-          {appendedChildren}
+      >
+        <div className={cn('relative max-h-full w-2/3', className)} {...rest}>
+          <div
+            className={`relative bg-secondary shadow rounded-sm border-2 border-primary ${customClassNested}`}
+          >
+            {appendedChildren}
+          </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  },
+);
+
+PopupModal.displayName = 'PopupModal';
+
+export { PopupModal };

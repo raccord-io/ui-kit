@@ -33,11 +33,6 @@ const meta: Meta<typeof PopupModal> = {
       description: 'Whether the modal is in full screen mode',
       defaultValue: false,
     },
-    customClass: {
-      control: 'text',
-      description: 'Additional custom CSS class for the modal container',
-      defaultValue: '',
-    },
     customClassNested: {
       control: 'text',
       description: 'Additional custom CSS class for the nested modal content',
@@ -53,7 +48,6 @@ const args = {
   onClose: () => {
     console.log('event on close');
   },
-  customClass: '',
   customClassNested: '',
 };
 

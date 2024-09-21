@@ -9,20 +9,10 @@ const meta: Meta<typeof Card> = {
     controls: { expanded: true },
   },
   argTypes: {
-    bgColor: {
-      control: 'text',
-      description: 'Background color of the card',
-      defaultValue: 'bg-white',
-    },
     enableBorder: {
       control: 'boolean',
       description: 'Enable or disable border',
       defaultValue: true,
-    },
-    customClass: {
-      control: 'text',
-      description: 'Custom CSS classes',
-      defaultValue: '',
     },
     children: {
       control: 'ReactNode',
@@ -44,9 +34,7 @@ export const _Card: Story = {
     </>
   ),
   args: {
-    bgColor: 'bg-brand-green',
     enableBorder: true,
-    customClass: 'hover:cursor-pointer',
     children: 'Click me!',
   },
 };

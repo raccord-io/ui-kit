@@ -1,30 +1,32 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+import React, { forwardRef } from 'react';
 
-import { ComponentPropsWithoutRef } from 'react';
+import { cn } from '../../lib/utils';
 
-interface CardProps extends ComponentPropsWithoutRef<'div'> {
-  children: React.ReactNode;
+interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   enableBorder?: boolean;
-  bgColor?: string;
-  customClass?: string;
 }
 
-export function Card({
-  bgColor = 'bg-secondary',
-  enableBorder = true,
-  customClass = '',
-  children,
-  ...rest
-}: CardProps) {
+const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
+  const { enableBorder = true, children, className, ...rest } = props;
+
   const borderClass = enableBorder ? 'border-2 border-primary' : 'border-none';
+
   return (
     <div
+      ref={ref}
       data-testid="card"
-      className={`${bgColor} ${borderClass} w-full h-fit text-f-primary rounded-sm ${customClass}`}
+      className={cn(
+        'w-full h-fit bg-secondary text-f-primary rounded-sm p-4',
+        borderClass,
+        className,
+      )}
       {...rest}
     >
       {children}
     </div>
   );
-}
+});
+
+Card.displayName = 'Card';
+
+export { Card };
