@@ -16,7 +16,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
       ref={ref}
       data-testid="card"
       className={cn(
-        'w-full h-fit bg-secondary text-f-primary rounded-sm p-4',
+        'w-full h-fit bg-secondary text-f-primary rounded-sm',
         borderClass,
         className,
       )}

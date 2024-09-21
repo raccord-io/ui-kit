@@ -34,7 +34,7 @@ export const Identicon = forwardRef<HTMLImageElement, IdenticonProps>(
       <img
         ref={ref}
         data-testid="identicon"
-        className={cn('bg-white rounded-md', className)}
+        className={cn('bg-white rounded-sm', className)}
         src={svgURI}
         alt={username}
         width={size.toString()}
