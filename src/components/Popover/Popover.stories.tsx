@@ -11,7 +11,7 @@ export const _Popover = {
         <PopoverTrigger asChild>
           <Button className="w-fit">Open popover</Button>
         </PopoverTrigger>
-        <PopoverContent className="w-80">
+        <PopoverContent className="w-80 p-4">
           <div className="grid gap-4">
             <div className="space-y-2">
               <h4 className="font-medium leading-none">Dimensions</h4>
