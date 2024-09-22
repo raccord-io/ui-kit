@@ -1,9 +1,11 @@
+// Components
 export * from './Breadcrumb';
 export * from './Button';
 export * from './Card';
+export * from './Clipboard';
+export * from './Divider';
 export * from './DragDrop';
 export * from './DropdownMenu';
-export * from './Icons';
 export * from './Identicon';
 export * from './Input';
 export * from './Loader';
@@ -22,3 +24,6 @@ export * from './ThemeMode';
 export * from './Toast';
 export * from './Toggle';
 export * from './Tooltip';
+
+// Icons
+export * from './Icons';
