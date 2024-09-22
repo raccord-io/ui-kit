@@ -9,6 +9,7 @@ export function Divider({ color, size, orientation }: DividerProps) {
 
   return (
     <hr
+      data-testid="divider"
       className={`${size} ? ${position} : border-${size} ${color} ? border-black : border-${color}`}
     />
   );
