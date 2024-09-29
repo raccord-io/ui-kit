@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react';
-import { IconContext } from 'react-icons';
-import { FiChevronRight } from 'react-icons/fi';
+
+import { ChevronRight, ChevronDown } from 'lucide-react';
 
 export interface ItemProps {
   mode?: 'main' | 'sub'; // default: sub
@@ -42,11 +42,7 @@ function MainModeMenu(props: SequencesListMenuItemsProps) {
         onClick={() => setOpen(!open)}
       >
         <div data-testid="item-icon">
-          <IconContext.Provider
-            value={{ className: `w-6 h-6 ${open && 'rotate-90'}` }}
-          >
-            <FiChevronRight />
-          </IconContext.Provider>
+          {open ? <ChevronDown /> : <ChevronRight />}
         </div>
         <p data-testid="item-label" className="w-32 truncate uppercase">
           {label}
@@ -97,11 +93,7 @@ function SubModeMenu(props: SequencesListMenuItemsProps) {
         onClick={() => setOpen(!open)}
       >
         <div data-testid="item-icon">
-          <IconContext.Provider
-            value={{ className: `w-6 h-6 ${open && 'rotate-90'}` }}
-          >
-            <FiChevronRight />
-          </IconContext.Provider>
+          {open ? <ChevronDown /> : <ChevronRight />}
         </div>
         <p
           data-testid="item-label truncate"

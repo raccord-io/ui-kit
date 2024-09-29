@@ -1,6 +1,7 @@
 import * as React from 'react';
+
 import { Slot } from '@radix-ui/react-slot';
-import { FiMoreHorizontal, FiChevronRight } from 'react-icons/fi';
+import { ChevronRight, Ellipsis } from 'lucide-react';
 
 import { cn } from '../../lib/utils';
 
@@ -83,7 +84,7 @@ const BreadcrumbSeparator = ({
     className={cn('[&>svg]:size-3.5', className)}
     {...props}
   >
-    {children ?? <FiChevronRight />}
+    {children ?? <ChevronRight />}
   </li>
 );
 BreadcrumbSeparator.displayName = 'BreadcrumbSeparator';
@@ -98,7 +99,7 @@ const BreadcrumbEllipsis = ({
     className={cn('flex h-9 w-9 items-center justify-center', className)}
     {...props}
   >
-    <FiMoreHorizontal className="h-4 w-4" />
+    <Ellipsis className="h-4 w-4" />
     <span className="sr-only">More</span>
   </span>
 );

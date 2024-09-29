@@ -6,7 +6,8 @@ import {
   isValidElement,
   Children,
 } from 'react';
-import { FiX } from 'react-icons/fi';
+
+import { X } from 'lucide-react';
 
 import { cn } from '../../lib/utils';
 
@@ -49,7 +50,7 @@ export function PopupModalHeader(props: IPopupModalNodeProps) {
           type="button"
           onClick={handleClose}
         >
-          <FiX className="w-5 h-5" />
+          <X className="w-5 h-5" />
         </button>
       </div>
     );

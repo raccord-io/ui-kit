@@ -1,5 +1,6 @@
 import { ComponentPropsWithoutRef } from 'react';
-import { FiSquare } from 'react-icons/fi';
+
+import { Square } from 'lucide-react';
 
 export interface StepperProps extends ComponentPropsWithoutRef<'ol'> {
   steps: string[];
@@ -15,7 +16,7 @@ function StepIn() {
       data-testid="stepper-step-in"
       className={`${baseStepClass} bg-s-warning`}
     >
-      <FiSquare className="w-2 h-2 text-f-primary fill-i-primary" />
+      <Square className="w-2 h-2 text-f-primary fill-i-primary" />
     </span>
   );
 }
@@ -26,7 +27,7 @@ function StepNext() {
       data-testid="stepper-step-next"
       className={`${baseStepClass} border border-c-default bg-transparent`}
     >
-      <FiSquare className="w-2 h-2 text-f-primary fill-i-primary" />
+      <Square className="w-2 h-2 text-f-primary fill-i-primary" />
     </span>
   );
 }

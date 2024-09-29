@@ -1,8 +1,8 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Button } from './Button';
+import { File } from 'lucide-react';
 
-import { FiFile } from 'react-icons/fi';
+import { Button } from './Button';
 
 describe('Components | Button', () => {
   test('it should render', () => {
@@ -48,7 +48,7 @@ describe('Components | Button', () => {
   test('it should have variant icon', () => {
     render(
       <Button variant="icon" model="single">
-        <FiFile />
+        <File />
       </Button>,
     );
 
@@ -60,7 +60,7 @@ describe('Components | Button', () => {
   test('it should have variant icon with border', () => {
     render(
       <Button variant="icon" model="border">
-        <FiFile />
+        <File />
       </Button>,
     );
 

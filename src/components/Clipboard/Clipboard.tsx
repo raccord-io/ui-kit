@@ -1,14 +1,15 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import React, { CSSProperties } from 'react';
-
 import { useState, ComponentPropsWithoutRef } from 'react';
-import { FiCopy, FiCheckCircle } from 'react-icons/fi';
+
+import copy from 'copy-to-clipboard';
+import { Copy, CheckCircle } from 'lucide-react';
+
 import { InputMessage } from './../Input/Input';
 
 // eslint-disable-next-line max-len
 // https://stackoverflow.com/questions/71873824/copy-text-to-clipboard-cannot-read-properties-of-undefined-reading-writetext
-import copy from 'copy-to-clipboard';
 
 interface ClipboardProps extends ComponentPropsWithoutRef<'div'> {
   rawContent: string;
@@ -70,9 +71,9 @@ export function Clipboard(props: ClipboardProps) {
           {displayedContent}
         </p>
         {success ? (
-          <FiCheckCircle className="w-6 h-6 text-s-success" />
+          <CheckCircle className="w-6 h-6 text-s-success" />
         ) : (
-          <FiCopy
+          <Copy
             data-testid="clipboard-copy-icon"
             className="w-6 h-6 text-f-primary"
           />

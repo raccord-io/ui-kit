@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { SequencesListMenu, ItemProps } from './SequencesListMenu';
 import { Tag } from '../Tag';
 

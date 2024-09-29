@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { PrimaryLogo, SecondaryLogo } from './Raccord';
 
 const meta: Meta<typeof PrimaryLogo> = {

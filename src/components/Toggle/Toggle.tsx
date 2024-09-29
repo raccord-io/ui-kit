@@ -1,7 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import React from 'react';
-
 import { ComponentPropsWithoutRef } from 'react';
 
 export interface ToggleProps extends ComponentPropsWithoutRef<'input'> {

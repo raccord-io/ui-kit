@@ -1,6 +1,5 @@
 import React, { forwardRef, ReactNode } from 'react';
 
-import { IconContext } from 'react-icons/lib';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 
@@ -100,17 +99,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       {...rest}
     >
       <div className="w-fit m-auto flex items-center gap-2">
-        <div className="m-auto">
-          <IconContext.Provider value={{ className: 'w-6 h-6' }}>
-            {preIcon}
-          </IconContext.Provider>
-        </div>
+        <div className="m-auto">{preIcon}</div>
         {children}
-        <div className="m-auto">
-          <IconContext.Provider value={{ className: 'w-6 h-6' }}>
-            {posIcon}
-          </IconContext.Provider>
-        </div>
+        <div className="m-auto">{posIcon}</div>
       </div>
     </Comp>
   );

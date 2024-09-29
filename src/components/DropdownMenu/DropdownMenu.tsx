@@ -1,7 +1,7 @@
 import * as React from 'react';
+
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { FiCheck, FiChevronRight } from 'react-icons/fi';
-import { LuDot } from 'react-icons/lu';
+import { Dot, Check, ChevronRight } from 'lucide-react';
 
 import { cn } from '../../lib/utils';
 
@@ -34,7 +34,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <FiChevronRight className="ml-auto h-4 w-4" />
+    <ChevronRight className="ml-auto h-4 w-4" />
   </DropdownMenuPrimitive.SubTrigger>
 ));
 DropdownMenuSubTrigger.displayName =
@@ -92,7 +92,7 @@ const DropdownMenuItem = React.forwardRef<
   <DropdownMenuPrimitive.Item
     ref={ref}
     className={cn(
-      `relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5
+      `relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5
       text-sm font-WorkSans outline-none transition-colors focus:bg-gray-100
       focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50`,
       inset && 'pl-8',
@@ -120,7 +120,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
   >
     <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-        <FiCheck className="h-4 w-4" />
+        <Check className="h-4 w-4" />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}
@@ -145,7 +145,7 @@ const DropdownMenuRadioItem = React.forwardRef<
   >
     <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-        <LuDot className="h-4 w-4 fill-current" />
+        <Dot className="h-4 w-4 fill-current" />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}

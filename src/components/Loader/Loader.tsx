@@ -1,7 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import React, { ComponentPropsWithoutRef } from 'react';
-import { CgSpinner } from 'react-icons/cg';
+
+import { LoaderCircle } from 'lucide-react';
+
 import Logo from '../../assets/images/loading.gif';
 
 const TypeLoader = {
@@ -21,7 +23,7 @@ export function Loader(props: LoaderProps) {
   return (
     <div data-testid="loader" className={customClass} {...rest}>
       {type === 'default' ? (
-        <CgSpinner size={size} className="animate-spin text-primary-500" />
+        <LoaderCircle size={size} className="animate-spin text-primary" />
       ) : (
         <img src={Logo} alt="loading" width={size} height={size} />
       )}

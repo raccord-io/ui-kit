@@ -1,6 +1,6 @@
 import { Popover, PopoverContent, PopoverTrigger } from './Popover';
-import { Input } from '../Input';
 import { Button } from '../Button';
+import { Input } from '../Input';
 
 export default { title: 'Components/Popover', component: Popover };
 

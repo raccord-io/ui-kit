@@ -1,5 +1,6 @@
 import { ComponentPropsWithoutRef, cloneElement, useState } from 'react';
-import { FiHelpCircle } from 'react-icons/fi';
+
+import { HelpCircle } from 'lucide-react';
 
 const placementClasses = {
   'top-start': 'bottom-full left-0 mb-2',
@@ -33,7 +34,7 @@ export function Tooltip(props: TooltipProps) {
   } = props;
 
   const [showTooltip, setShowTooltip] = useState(false);
-  const icon = <FiHelpCircle />;
+  const icon = <HelpCircle />;
   const clonedIcon = cloneElement(icon, {
     className: 'stroke-current text-neutral',
   });
