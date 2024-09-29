@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { FiX } from 'react-icons/fi';
+import { X } from 'lucide-react';
 
 interface TagProps {
   color: 'neutral' | 'blue' | 'green' | 'red' | string;
@@ -65,7 +65,7 @@ function DeleteTag({
     before:left-0 before:top-1/2 before:-translate-y-1/2
     ${isCustomColor ? customSeparatorClasses[color] : separatorClasses[color]}`}
     >
-      <FiX data-testid="tag-close" />
+      <X data-testid="tag-close" />
     </button>
   );
 }

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { Password } from './Password';
 
 const meta: Meta<typeof Password> = {

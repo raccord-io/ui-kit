@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { ThemeMode } from './ThemeMode';
 
 const meta: Meta<typeof ThemeMode> = {

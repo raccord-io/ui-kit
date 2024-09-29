@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 
 function renderPagination(
   pages: number,
@@ -130,7 +130,7 @@ export function Pagination(props: PaginationProps) {
           currentPage !== 1 ? pageClass : 'px-3 py-1 rounded-sm h-8'
         } flex items-center h-8`}
       >
-        <FiChevronLeft />
+        <ChevronLeft />
       </a>
       {pagination}
       <a
@@ -141,7 +141,7 @@ export function Pagination(props: PaginationProps) {
           currentPage !== pages ? pageClass : 'px-3 py-1 rounded-sm h-8'
         } flex items-center h-8`}
       >
-        <FiChevronRight />
+        <ChevronRight />
       </a>
     </div>
   );

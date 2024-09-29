@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { FiMoon, FiSun } from 'react-icons/fi';
+
+import { Moon, Sun } from 'lucide-react';
+
 import { useLocalStorage } from '../../util/useLocalStorage';
 
 interface ThemeProps {
@@ -25,8 +27,8 @@ export function ThemeMode(props: ThemeProps) {
   }
 
   const themeIcons = {
-    'theme-dark': <FiSun className="h-8 w-8" />,
-    'theme-light': <FiMoon className="h-8 w-8" />,
+    'theme-dark': <Sun className="h-8 w-8" />,
+    'theme-light': <Moon className="h-8 w-8" />,
   };
 
   return (

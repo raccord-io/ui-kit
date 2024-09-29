@@ -1,7 +1,8 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { Check, File } from 'lucide-react';
+
 import { Loader } from '../Loader';
 import { Button } from './Button';
-import { FiCheck, FiFile } from 'react-icons/fi';
-import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
@@ -53,8 +54,8 @@ const args = {
   onClick: () => {
     console.log('clicked');
   },
-  preIcon: <FiCheck />,
-  posIcon: <FiCheck />,
+  preIcon: <Check />,
+  posIcon: <Check />,
 };
 
 export const _Primary: Story = {
@@ -78,7 +79,7 @@ export const _Primary: Story = {
 export const _PrimaryWithLabel: Story = {
   render: () => (
     <>
-      <Button preIcon={<FiFile />} className="w-40">
+      <Button preIcon={<File />} className="w-40">
         <div className="flex items-center">File</div>
       </Button>
       <br />
@@ -121,7 +122,7 @@ export const _Secondary: Story = {
 export const _SecondaryWithLabel: Story = {
   render: () => (
     <>
-      <Button variant="secondary" preIcon={<FiFile />} className="w-40">
+      <Button variant="secondary" preIcon={<File />} className="w-40">
         <div className="flex items-center">File</div>
       </Button>
       <br />
@@ -167,26 +168,26 @@ export const _Icon: Story = {
   render: () => (
     <>
       <Button variant="icon">
-        <FiFile />
+        <File />
       </Button>
       &nbsp;
       <Button variant="icon" disabled>
-        <FiFile />
+        <File />
       </Button>
       <br />
       <br />
       <Button variant="icon" model="border">
-        <FiFile />
+        <File />
       </Button>
       &nbsp;
       <Button variant="icon" model="border">
-        <FiFile color={colorWarning} />
+        <File color={colorWarning} />
       </Button>
       &nbsp;
       <br />
       <br />
       <Button variant="icon" model="border" disabled>
-        <FiFile />
+        <File />
       </Button>
     </>
   ),

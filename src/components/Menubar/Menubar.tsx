@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { FiCheck, FiChevronRight } from 'react-icons/fi';
-import { LuDot } from 'react-icons/lu';
+
 import * as MenubarPrimitive from '@radix-ui/react-menubar';
+import { Dot, Check, ChevronRight } from 'lucide-react';
 
 import { cn } from '../../lib/utils';
 
@@ -65,7 +65,7 @@ const MenubarSubTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <FiChevronRight className="ml-auto h-4 w-4" />
+    <ChevronRight className="ml-auto h-4 w-4" />
   </MenubarPrimitive.SubTrigger>
 ));
 MenubarSubTrigger.displayName = MenubarPrimitive.SubTrigger.displayName;
@@ -155,7 +155,7 @@ const MenubarCheckboxItem = React.forwardRef<
   >
     <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <MenubarPrimitive.ItemIndicator>
-        <FiCheck className="h-4 w-4" />
+        <Check className="h-4 w-4" />
       </MenubarPrimitive.ItemIndicator>
     </span>
     {children}
@@ -179,7 +179,7 @@ const MenubarRadioItem = React.forwardRef<
   >
     <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <MenubarPrimitive.ItemIndicator>
-        <LuDot className="h-4 w-4 fill-current" />
+        <Dot className="h-4 w-4 fill-current" />
       </MenubarPrimitive.ItemIndicator>
     </span>
     {children}

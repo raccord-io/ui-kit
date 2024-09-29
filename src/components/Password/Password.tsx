@@ -1,5 +1,6 @@
 import React, { useState, forwardRef } from 'react';
-import { FiEyeOff, FiEye } from 'react-icons/fi';
+
+import { EyeOff, EyeIcon } from 'lucide-react';
 
 import { cn } from '../../lib/utils';
 import { InputMessage } from '../Input';
@@ -24,7 +25,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props, ref) => {
     type: 'text',
     icon: (
       <div data-testid="icon-open">
-        <FiEyeOff className={iconClass} />
+        <EyeOff className={iconClass} />
       </div>
     ),
   };
@@ -33,7 +34,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props, ref) => {
     type: 'password',
     icon: (
       <div data-testid="icon-close">
-        <FiEye className={iconClass} />
+        <EyeIcon className={iconClass} />
       </div>
     ),
   };

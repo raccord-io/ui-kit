@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+
 import { Toggle, ToggleProps } from './Toggle';
 
 const meta: Meta<ToggleProps> = {

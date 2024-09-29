@@ -5,7 +5,8 @@ import {
   ChangeEvent,
   DragEvent,
 } from 'react';
-import { FiArchive, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
+
+import { Archive, CheckCircle, AlertCircle } from 'lucide-react';
 
 interface IDragDropProps extends ComponentPropsWithoutRef<'input'> {
   placeholder?: string;
@@ -24,15 +25,15 @@ const Status = { NORMAL, FAILED, LOADED };
 const LoadedStatus = {
   normal: {
     style: 'text-primary',
-    icon: <FiArchive className="w-12 h-12" />,
+    icon: <Archive className="w-12 h-12" />,
   },
   failed: {
     style: 'text-s-error',
-    icon: <FiAlertCircle className="w-12 h-12" />,
+    icon: <AlertCircle className="w-12 h-12" />,
   },
   loaded: {
     style: 'text-s-success',
-    icon: <FiCheckCircle className="w-12 h-12" />,
+    icon: <CheckCircle className="w-12 h-12" />,
   },
 };
 
