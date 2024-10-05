@@ -3,7 +3,7 @@ import { forwardRef, useState } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
-import { cn } from '@/src/lib/utils';
+import { cn } from '../../lib/utils';
 
 const navItemVariants = cva('w-full', {
   variants: {
