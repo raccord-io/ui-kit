@@ -10,6 +10,7 @@ export * from './Identicon';
 export * from './Input';
 export * from './Loader';
 export * from './Menubar';
+export * from './NavItem';
 export * from './Pagination';
 export * from './Password';
 export * from './Popover';
