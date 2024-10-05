@@ -65,7 +65,7 @@ export function ButtonIcon(props: ButtonProps) {
           </div>
         )}
       </div> */}
-      <div className="m-auto flex gap-2 w-4 items-baseline">{children}</div>
+      <div className="m-auto flex gap-2 w-fit items-baseline">{children}</div>
     </button>
   );
 }
