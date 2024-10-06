@@ -104,7 +104,7 @@ const PopupModal = forwardRef<HTMLDivElement, IPopupModalProps>(
       ...rest
     } = props;
     const [hidden, setHidden] = useState(status);
-    const fullModeClass = fullMode ? 'fixed top-0 left-0 right-0 z-30' : '';
+    const fullModeClass = fullMode ? 'fixed top-0 left-0 right-0 z-50' : 'z-50';
 
     useEffect(() => {
       handleOpen();
