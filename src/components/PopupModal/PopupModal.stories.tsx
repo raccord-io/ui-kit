@@ -22,10 +22,8 @@ const meta: Meta<typeof PopupModal> = {
   ],
   argTypes: {
     status: {
-      control: {
-        type: 'select',
-        options: ['hidden', 'displayed'],
-      },
+      control: { type: 'radio' },
+      options: ['hidden', 'displayed'],
       description: 'Current status of the modal',
       defaultValue: 'hidden',
     },
@@ -115,17 +113,19 @@ export const _NoFooter: Story = {
 
 export const _FullMode: Story = {
   render: (args) => (
-    <PopupModal {...args}>
-      <PopupModalHeader>
-        <label className="text-f-primary">The title</label>
-      </PopupModalHeader>
-      <PopupModalContent>
-        <label className="text-f-primary">any content</label>
-      </PopupModalContent>
-      <PopupModalFooter>
-        <label className="text-f-primary">that's footer</label>
-      </PopupModalFooter>
-    </PopupModal>
+    <div className="flex justify-center items-center">
+      <PopupModal {...args}>
+        <PopupModalHeader>
+          <label className="text-f-primary">The title</label>
+        </PopupModalHeader>
+        <PopupModalContent>
+          <label className="text-f-primary">any content</label>
+        </PopupModalContent>
+        <PopupModalFooter>
+          <label className="text-f-primary">that's footer</label>
+        </PopupModalFooter>
+      </PopupModal>
+    </div>
   ),
   args: {
     status: 'displayed',

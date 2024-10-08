@@ -90,7 +90,6 @@ export function PopupModalFooter(props: IPopupModalNodeProps) {
   return null;
 }
 
-// export function PopupModal(props: IPopupModalProps) {
 const PopupModal = forwardRef<HTMLDivElement, IPopupModalProps>(
   (props, ref) => {
     const {
@@ -104,17 +103,23 @@ const PopupModal = forwardRef<HTMLDivElement, IPopupModalProps>(
       ...rest
     } = props;
     const [hidden, setHidden] = useState(status);
-    const fullModeClass = fullMode ? 'fixed top-0 left-0 right-0 z-50' : 'z-50';
+    const fullModeClass = fullMode ? 'fixed inset-0 z-[100]' : '';
 
     useEffect(() => {
       handleOpen();
-    }, []);
+
+      if (fullMode && status === 'displayed') {
+        document.body.style.overflow = 'hidden';
+      }
+    }, [status]);
 
     function handleOpen() {
       onOpen?.();
     }
 
     function handleClose() {
+      document.body.style.overflow = 'auto';
+
       setHidden('hidden');
 
       onClose?.();
@@ -127,21 +132,32 @@ const PopupModal = forwardRef<HTMLDivElement, IPopupModalProps>(
     });
 
     return (
-      <div
-        ref={ref}
-        data-testid="popup-modal"
-        className={`${hidden} ${fullModeClass}
-                  bg-secondary bg-opacity-75 w-full h-screen flex justify-center items-center max-h-full
-                  overflow-x-hidden overflow-y-auto`}
-      >
-        <div className={cn('relative max-h-full w-2/3', className)} {...rest}>
+      <>
+        {fullMode && (
           <div
-            className={`relative bg-secondary shadow rounded-sm border-2 border-primary ${customClassNested}`}
+            className={`${hidden} ${fullModeClass}
+              bg-secondary/75 w-full h-screen overflow-hidden`}
+          />
+        )}
+        <div
+          ref={ref}
+          data-testid="popup-modal"
+          className={cn(
+            `${hidden} m-auto w-2/3 ${
+              fullMode &&
+              `fixed top-[50%] left-[50%] z-[100] translate-x-[-50%] translate-y-[-50%]`
+            }`,
+            className,
+          )}
+          {...rest}
+        >
+          <div
+            className={`relative w-full bg-secondary shadow rounded-sm border-2 border-primary ${customClassNested}`}
           >
             {appendedChildren}
           </div>
         </div>
-      </div>
+      </>
     );
   },
 );
