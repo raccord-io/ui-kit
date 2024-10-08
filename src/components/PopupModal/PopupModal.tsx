@@ -107,10 +107,6 @@ const PopupModal = forwardRef<HTMLDivElement, IPopupModalProps>(
 
     useEffect(() => {
       handleOpen();
-
-      if (fullMode && status === 'displayed') {
-        document.body.style.overflow = 'hidden';
-      }
     }, [status]);
 
     function handleOpen() {
@@ -118,8 +114,6 @@ const PopupModal = forwardRef<HTMLDivElement, IPopupModalProps>(
     }
 
     function handleClose() {
-      document.body.style.overflow = 'auto';
-
       setHidden('hidden');
 
       onClose?.();
