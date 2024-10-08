@@ -44,7 +44,7 @@ const NavItem = forwardRef<HTMLDivElement, NavItemProps>((props, ref) => {
       <button
         className={cn(
           navItemVariants({ variant, className }),
-          `px-3 py-2 bg-white flex items-center gap-2 text-gray-600 rounded-mdw-full
+          `px-3 py-2 bg-white flex items-center gap-2 text-gray-600 rounded-md w-full
           transition-all duration-200 ease-out hover:bg-gray-50`,
         )}
         onClick={handleClick}
