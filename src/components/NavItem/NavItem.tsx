@@ -16,20 +16,29 @@ const navItemVariants = cva('w-full', {
   },
 });
 
-interface NavItemProps
+export interface NavItemProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof navItemVariants> {
   label: string;
   preIcon?: React.ReactNode;
+  open?: boolean;
 }
 
 const NavItem = forwardRef<HTMLDivElement, NavItemProps>((props, ref) => {
-  const { label, preIcon, variant, onClick, className, children, ...rest } =
-    props;
+  const {
+    label,
+    preIcon,
+    open = false,
+    variant,
+    onClick,
+    className,
+    children,
+    ...rest
+  } = props;
 
   const isPreIconNotExist = preIcon === undefined;
 
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(open);
 
   function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
     setIsOpen(!isOpen);
