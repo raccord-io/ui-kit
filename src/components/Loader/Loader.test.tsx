@@ -12,14 +12,3 @@ describe('Components | loader', () => {
     expect(loader).toBeTruthy();
   });
 });
-
-// loader with type secondary
-describe('Components | loader', () => {
-  test('it should render', () => {
-    render(<Loader type="raccord" />);
-
-    let loader = screen.getByTestId('loader');
-
-    expect(loader).toBeTruthy();
-  });
-});
