@@ -1,33 +1,43 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ChartNoAxesColumn } from 'lucide-react';
 
-import { NavItem } from './NavItem';
+import { NavItem, NavItemProps } from './NavItem';
 
-const meta: Meta<typeof NavItem> = {
+const meta: Meta<NavItemProps> = {
   title: 'Components/NavItem',
   component: NavItem,
   parameters: {
     controls: { expanded: true },
   },
-  argTypes: {},
+  argTypes: {
+    open: {
+      control: { type: 'boolean' },
+      description: 'Open state of the NavItem',
+      defaultValue: false,
+    },
+  },
 };
 
 export default meta;
 
-type Story = StoryObj<typeof NavItem>;
+type Story = StoryObj<NavItemProps>;
 
 export const _NavItem: Story = {
-  render: () => (
+  render: (args) => (
     <div className="w-72">
       <NavItem
-        label="Organisations"
         preIcon={<ChartNoAxesColumn className="w-6 h-6" strokeWidth={2} />}
-        onClick={() => console.log('clicked')}
+        {...args}
       >
         <NavItem label="Raccord" />
-        <NavItem label="Epitech" />
         <NavItem label="Studio 17" />
+        <NavItem label="Epitech" />
       </NavItem>
     </div>
   ),
+  args: {
+    label: 'Organisations',
+    onClick: () => console.log('clicked'),
+    open: false,
+  },
 };
