@@ -9,23 +9,10 @@ const meta: Meta<typeof Loader> = {
     controls: { expanded: true },
   },
   argTypes: {
-    type: {
-      control: {
-        control: { type: 'radio' },
-        options: ['default', 'raccord'],
-      },
-      description: 'Type of the loader',
-      defaultValue: 'default',
-    },
     size: {
       control: 'number',
       description: 'Size of the loader',
       defaultValue: 24,
-    },
-    customClass: {
-      control: 'text',
-      description: 'Additional custom CSS classes for styling',
-      defaultValue: '',
     },
   },
 };
@@ -37,8 +24,6 @@ type Story = StoryObj<typeof Loader>;
 export const _Loader: Story = {
   render: (args) => <Loader {...args} />,
   args: {
-    type: 'default',
     size: 24,
-    customClass: '',
   },
 };

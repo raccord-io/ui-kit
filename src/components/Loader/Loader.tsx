@@ -1,32 +1,28 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import React, { ComponentPropsWithoutRef } from 'react';
+import React, { forwardRef } from 'react';
 
 import { LoaderCircle } from 'lucide-react';
 
-import Logo from '../../assets/images/loading.gif';
+import { cn } from '../../lib/utils';
 
-const TypeLoader = {
-  default: 'default',
-  raccord: 'raccord',
-};
-
-interface LoaderProps extends ComponentPropsWithoutRef<'div'> {
-  customClass?: string;
+interface LoaderProps extends React.HTMLAttributes<SVGSVGElement> {
   size?: number;
-  type?: keyof typeof TypeLoader;
 }
 
-export function Loader(props: LoaderProps) {
-  const { size = 24, customClass = '', type = 'default', ...rest } = props;
+const Loader = forwardRef<SVGSVGElement, LoaderProps>((props, ref) => {
+  const { size = 24, className, ...rest } = props;
 
   return (
-    <div data-testid="loader" className={customClass} {...rest}>
-      {type === 'default' ? (
-        <LoaderCircle size={size} className="animate-spin text-primary" />
-      ) : (
-        <img src={Logo} alt="loading" width={size} height={size} />
-      )}
-    </div>
+    <LoaderCircle
+      ref={ref}
+      data-testid="loader"
+      strokeWidth={2}
+      size={size}
+      className={cn('animate-spin text-primary', className)}
+      {...rest}
+    />
   );
-}
+});
+
+Loader.displayName = 'Loader';
+
+export { Loader };
