@@ -36,7 +36,17 @@ export default meta;
 type Story = StoryObj<typeof Tag>;
 
 export const _Tag: Story = {
-  render: (args) => <Tag {...args} />,
+  render: (args) => (
+    <>
+      <Tag {...args} />
+      <br />
+      <Tag
+        content="tag custom"
+        color="#008B07"
+        onClickCross={() => console.log('clicked')}
+      />
+    </>
+  ),
   args: {
     color: 'green',
     content: 'Tag',
