@@ -6,23 +6,25 @@ export interface ItemProps {
   mode?: 'main' | 'sub'; // default: sub
   label?: string;
   children?: ItemProps[] | ReactNode[];
-  onClickInfo?: () => void;
+  onClickSequence?: () => void;
 }
 
 interface SequencesListMenuItemsProps {
   item: ItemProps;
   idx: number;
+  isActive: boolean;
 }
 
 interface SequencesListMenuProps {
   items: ItemProps[];
+  activeSequenceId: string;
 }
 
 function MainModeMenu(props: SequencesListMenuItemsProps) {
-  const { idx, item } = props;
-  const { label, onClickInfo } = item;
+  const { idx, item, isActive } = props;
+  const { label, onClickSequence } = item;
 
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(isActive);
 
   const borderRadiusClass = open ? '' : 'rounded-sm';
   const borderColorClass = open ? 'border-brand-green' : 'border-transparent';
@@ -31,45 +33,53 @@ function MainModeMenu(props: SequencesListMenuItemsProps) {
     : 'hover:bg-primary/[.03]';
   const textColorClass = open ? 'text-brand-green' : 'hover:text-f-primary';
 
+  const validChildren: ItemProps[] = Array.isArray(item.children)
+    ? (item.children as ItemProps[]).filter(
+        (child): child is ItemProps =>
+          Array.isArray(child.children) && child.children.length > 0,
+      )
+    : [];
+
   return (
     <div
       data-testid={`sequences-list-menu-item-${idx}`}
       className={`rounded-sm border-[.2px] ${borderColorClass}`}
     >
       <button
-        className={`px-3 py-1 flex items-center gap-2 w-full
+        className={`px-3 py-2 flex items-center gap-2 w-full
           ${backgroundColorClass} ${borderRadiusClass} ${textColorClass}`}
-        onClick={() => setOpen(!open)}
+        onClick={() => {
+          if (!isActive) {
+            if (onClickSequence) {
+              onClickSequence();
+            } else {
+              setOpen(!open);
+            }
+          }
+        }}
       >
         <div data-testid="item-icon">
           {open ? <ChevronDown /> : <ChevronRight />}
         </div>
-        <p data-testid="item-label" className="w-32 truncate uppercase">
+        <p data-testid="item-label" className="truncate uppercase">
           {label}
         </p>
       </button>
-      {open && item.children && (
+      {open && validChildren.length > 0 && (
         <div
           data-testid="item-children"
           className="border-t-[.2px] border-brand-green"
         >
-          <div className="pl-6 py-3 flex flex-col gap-2">
-            {Array.isArray(item.children)
-              ? item.children.map((child, index) => (
-                  <SequencesListMenuItems
-                    key={index}
-                    idx={index}
-                    item={child as ItemProps}
-                  />
-                ))
-              : null}
+          <div className="pl-6 flex flex-col gap-2">
+            {validChildren.map((child, index) => (
+              <SequencesListMenuItems
+                key={index}
+                idx={index}
+                item={child as ItemProps}
+                isActive={false}
+              />
+            ))}
           </div>
-          <p
-            className="mb-4 text-center cursor-pointer underline"
-            onClick={onClickInfo}
-          >
-            Voir les informations
-          </p>
         </div>
       )}
     </div>
@@ -119,26 +129,31 @@ function SubModeMenu(props: SequencesListMenuItemsProps) {
 }
 
 function SequencesListMenuItems(props: SequencesListMenuItemsProps) {
-  const { idx, item } = props;
+  const { idx, item, isActive } = props;
   const { mode = 'sub' } = item;
 
   return mode === 'main' ? (
-    <MainModeMenu idx={idx} item={item} />
+    <MainModeMenu idx={idx} item={item} isActive={isActive} />
   ) : (
-    <SubModeMenu idx={idx} item={item} />
+    <SubModeMenu idx={idx} item={item} isActive={isActive} />
   );
 }
 
 export function SequencesListMenu(props: SequencesListMenuProps) {
-  const { items } = props;
+  const { items, activeSequenceId } = props;
 
   return (
     <div
       data-testid="sequences-list-menu"
-      className="rac-caption w-full flex flex-col gap-3 text-f-primary"
+      className="rac-caption w-full flex flex-col text-f-primary"
     >
       {items.map((item, index) => (
-        <SequencesListMenuItems key={index} idx={index} item={item} />
+        <SequencesListMenuItems
+          key={index}
+          idx={index}
+          item={item}
+          isActive={(index + 1).toString() === activeSequenceId}
+        />
       ))}
     </div>
   );

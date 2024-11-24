@@ -8,6 +8,7 @@ const items: ItemProps[] = [
   {
     mode: 'main',
     label: '1. Ext. Hôpital. Jour',
+    onClickSequence: jest.fn(),
     children: [
       {
         label: 'Lieux',
@@ -29,6 +30,7 @@ const items: ItemProps[] = [
   {
     mode: 'main',
     label: '2. Ext. Hôpital. Nuit',
+    onClickSequence: jest.fn(),
     children: [
       {
         label: 'Lieux',
@@ -45,7 +47,7 @@ const items: ItemProps[] = [
 
 describe('Components | SequencesListMenu', () => {
   test('it should render', () => {
-    render(<SequencesListMenu items={items} />);
+    render(<SequencesListMenu items={items} activeSequenceId="1" />);
 
     let sequencesListMenu = screen.getByTestId('sequences-list-menu');
 
@@ -53,7 +55,7 @@ describe('Components | SequencesListMenu', () => {
   });
 
   test('it should render 2 main items', () => {
-    render(<SequencesListMenu items={items} />);
+    render(<SequencesListMenu items={items} activeSequenceId="1" />);
 
     // Get all items
     let sequencesListMenuItems = screen.getAllByTestId((content) => {
