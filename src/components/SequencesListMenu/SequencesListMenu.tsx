@@ -5,6 +5,7 @@ import { ChevronRight, ChevronDown } from 'lucide-react';
 export interface ItemProps {
   mode?: 'main' | 'sub'; // default: sub
   label?: string;
+  key?: string;
   children?: ItemProps[] | ReactNode[];
   onClickSequence?: () => void;
 }
@@ -152,7 +153,7 @@ export function SequencesListMenu(props: SequencesListMenuProps) {
           key={index}
           idx={index}
           item={item}
-          isActive={(index + 1).toString() === activeSequenceId}
+          isActive={item.key === activeSequenceId}
         />
       ))}
     </div>

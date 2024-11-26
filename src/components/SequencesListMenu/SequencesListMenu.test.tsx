@@ -8,6 +8,7 @@ const items: ItemProps[] = [
   {
     mode: 'main',
     label: '1. Ext. Hôpital. Jour',
+    key: '1',
     onClickSequence: jest.fn(),
     children: [
       {
@@ -29,6 +30,7 @@ const items: ItemProps[] = [
   },
   {
     mode: 'main',
+    key: '2',
     label: '2. Ext. Hôpital. Nuit',
     onClickSequence: jest.fn(),
     children: [
