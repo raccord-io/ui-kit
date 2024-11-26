@@ -23,6 +23,7 @@ const items: ItemProps[] = [
   {
     mode: 'main',
     label: '1. Ext. Hôpital. Jour',
+    key: '1',
     onClickSequence: () => console.log('clicked 1'),
     children: [
       {
@@ -45,6 +46,7 @@ const items: ItemProps[] = [
   {
     mode: 'main',
     label: '2. Ext. Hôpital. Jour',
+    key: '2',
     onClickSequence: () => console.log('clicked 2'),
     children: [
       {
@@ -60,6 +62,7 @@ const items: ItemProps[] = [
   },
   {
     label: '3. Ext. Hôpital. Jour',
+    key: '3',
   },
 ];
 
