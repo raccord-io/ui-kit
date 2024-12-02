@@ -19,7 +19,8 @@
     "build-storybook": "storybook build",
     "test": "jest",
     "prepare": "husky install",
-    "chromatic": "npx chromatic --project-token=chpt_9045b25ac677019 --auto-accept-changes"
+    "chromatic": "npx chromatic --project-token=chpt_9045b25ac677019 --auto-accept-changes",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
