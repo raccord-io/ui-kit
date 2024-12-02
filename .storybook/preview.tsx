@@ -1,20 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../src/global.css';
 
 import type { Preview } from '@storybook/react';
 import { StoryFn } from '@storybook/react';
-import { colorBlack, colorWhite200 } from '../presets/colors';
+import { colorWhite, colorGray950 } from '../presets/colors';
 
 const preview: Preview = {
   parameters: {
     backgrounds: {
       default: 'light',
       values: [
-        { name: 'light', value: colorWhite200 },
-        { name: 'dark', value: colorBlack },
+        { name: 'light', value: colorWhite },
+        { name: 'dark', value: colorGray950 },
       ],
     },
-    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -23,33 +22,25 @@ const preview: Preview = {
     },
   },
   decorators: [
-    (Story: StoryFn) => (
-      <>
-        <div
-          className="theme-light"
-          style={{ background: colorWhite200, padding: '20px' }}
-        >
-          <h3 style={{ padding: '20px', color: colorBlack }}>Theme Light 👇</h3>
-          <hr />
-          <br />
-          <Story />
-        </div>
+    (Story: StoryFn, context) => {
+      useEffect(() => {
+        const isDark = context.globals.backgrounds?.value === colorGray950;
+        document.body.classList.toggle('dark', isDark);
 
-        <br />
+        // Cleanup to remove class on unmount or switch
+        return () => {
+          document.body.classList.remove('dark');
+        };
+      }, [context.globals.backgrounds?.value]);
 
-        <div
-          className="theme-dark"
-          style={{ background: colorBlack, padding: '20px' }}
-        >
-          <h3 style={{ padding: '20px', color: colorWhite200 }}>
-            Theme Dark 👇
-          </h3>
-          <hr />
-          <br />
-          <Story />
+      return (
+        <div className="bg-bg-primary" style={{ padding: '20px' }}>
+          <div className="w-full flex items-center justify-center">
+            <Story />
+          </div>
         </div>
-      </>
-    ),
+      );
+    },
   ],
 };
 

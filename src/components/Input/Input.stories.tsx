@@ -1,90 +1,62 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Label } from '..';
+
 import { Input } from './Input';
 
-const meta: Meta<typeof Input> = {
+// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
+const meta = {
   title: 'Components/Input',
   component: Input,
   parameters: {
-    controls: { expanded: true },
+    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
+    layout: 'centered',
   },
+  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
+  tags: ['autodocs'],
+  // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
-    error: {
-      control: 'text',
-      description: 'Error message to display',
-      defaultValue: '',
-    },
-    warning: {
-      control: 'text',
-      description: 'Warning message to display',
-      defaultValue: '',
-    },
-    success: {
-      control: 'text',
-      description: 'Success message to display',
-      defaultValue: '',
-    },
-    className: {
-      control: 'text',
-      description: 'Additional custom CSS classes for styling',
-      defaultValue: '',
-    },
-    onClickIcon: {
-      action: 'clicked',
-      description: 'Callback function for when the icon is clicked',
-    },
-    placeholder: {
-      control: 'text',
-      description: 'Placeholder text for the input field',
-      defaultValue: 'Enter text...',
-    },
-    value: {
-      control: 'text',
-      description: 'Value of the input field',
-      defaultValue: '',
+    inputSize: {
+      control: 'radio',
+      options: ['xs', 'sm', 'default', 'lg', '2xl'],
     },
   },
-};
+  args: {
+    inputSize: 'default',
+  },
+} satisfies Meta<typeof Input>;
 
 export default meta;
+type Story = StoryObj<typeof meta>;
 
-type Story = StoryObj<typeof Input>;
-
+// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
-  render: (args) => <Input {...args} />,
   args: {
-    placeholder: 'Enter text...',
-    value: '',
-    className: '',
+    placeholder: 'Email',
   },
 };
 
-export const Error: Story = {
-  render: (args) => <Input {...args} />,
+export const Disabled: Story = {
   args: {
-    error: 'This is an error message',
-    placeholder: 'Enter text...',
-    value: '',
-    className: '',
+    placeholder: 'Email',
+    disabled: true,
   },
 };
 
-export const Warning: Story = {
-  render: (args) => <Input {...args} />,
-  args: {
-    warning: 'This is a warning message',
-    placeholder: 'Enter text...',
-    value: '',
-    className: '',
-  },
+export const WithLabel: Story = {
+  render: () => (
+    <div className="grid w-full max-w-sm items-center gap-2">
+      <Label htmlFor="email">Email</Label>
+      <Input type="email" id="email" placeholder="Email" />
+    </div>
+  ),
 };
 
-export const Success: Story = {
-  render: (args) => <Input {...args} />,
-  args: {
-    success: 'This is a success message',
-    placeholder: 'Enter text...',
-    value: '',
-    className: '',
-  },
+export const File: Story = {
+  render: () => (
+    <div className="grid w-full max-w-sm items-center gap-2">
+      <Label htmlFor="picture">Picture</Label>
+      <Input id="picture" type="file" />
+    </div>
+  ),
 };

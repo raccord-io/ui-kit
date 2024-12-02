@@ -10,3 +10,11 @@ public
 *.mdx
 package-lock.json
 *.yml
+src/stories/
+src/pages/api/
+src/pages/fonts/
+src/assets
+.gitignore
+.prettierignore
+.env
+.husky

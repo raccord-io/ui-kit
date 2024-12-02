@@ -1,109 +1,67 @@
-import React, { forwardRef, ReactNode } from 'react';
+import React, { forwardRef } from 'react';
 
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '../../lib/utils';
 
-const buttonVariants = cva('default-button', {
-  variants: {
-    variant: {
-      default: 'default-primary',
-      secondary: 'default-secondary',
-      danger: 'default-danger',
-      outline:
-        'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
-      icon: 'default-icon',
+export const buttonVariants = cva(
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap font-WorkSans font-medium rounded-md ring-offset-bg-primary transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0',
+  {
+    variants: {
+      variant: {
+        primary:
+          'bg-button-primary text-button-primary-fg border-border-neutral hover:bg-button-primary_hover disabled:text-text-disabled disabled:bg-bg-disabled disabled:border-border-disabled',
+        secondary:
+          'bg-button-secondary text-button-secondary-fg border-border-secondary hover:bg-button-secondary_hover disabled:text-text-disabled disabled:bg-bg-secondary disabled:border-border-disabled',
+        'secondary-color':
+          'text-button-secondary-color-fg border-button-secondary-color-border hover:bg-button-secondary-color_hover disabled:text-text-disabled disabled:bg-bg-disabled disabled:border-border-disabled',
+        link: 'text-button-secondary-fg underline-offset-4 hover:underline',
+        'danger-primary':
+          'bg-button-primary-error-bg border-gray-700/30 text-white hover:bg-button-primary-error-bg_hover disabled:text-text-disabled disabled:bg-bg-disabled disabled:border-border-disabled',
+        'danger-secondary':
+          'bg-button-secondary-error-bg border-button-secondary-error-border text-button-secondary-error-fg hover:bg-button-secondary-error-bg_hover disabled:text-text-disabled disabled',
+      },
+      model: {
+        flat: 'border-transparent',
+        outline: 'border',
+      },
+      size: {
+        default: 'h-10 px-3.5 py-2.5 text-sm',
+        sm: 'h-9 px-3 py-2 text-sm',
+        lg: 'h-11 px-4 py-2.5 text-base',
+        xl: 'h-12 px-[18px] py-3 text-base',
+        '2xl': 'h-[60px] px-[22px] py-4 text-lg rounded-lg',
+        icon: 'min-w-10 min-h-10',
+      },
     },
-    model: {
-      single:
-        'border-0 bg-secondary hover:bg-tertiary disabled:bg-secondary disabled:text-tertiary',
-      border:
-        'disabled:text-tertiary disabled:bg-secondary disabled:border-tertiary disabled:hover:border-tertiary',
+    defaultVariants: {
+      variant: 'primary',
+      model: 'flat',
+      size: 'default',
     },
   },
-  defaultVariants: {
-    variant: 'default',
-    model: null,
-  },
-});
+);
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
-  preIcon?: ReactNode;
-  posIcon?: ReactNode;
-}
-
-export function ButtonIcon(props: ButtonProps) {
-  const { children, variant, model, className, ...rest } = props;
-
-  return (
-    <button
-      data-testid="button"
-      type="button"
-      className={cn(
-        buttonVariants({ variant, model, className }),
-        'default-button default-icon',
-      )}
-      {...rest}
-    >
-      {/* <div className="relative w-full flex justify-center items-center">
-        {showHoverText && (
-          <div
-            className="absolute text-secondary top-[-44px] w-fit z-10 bg-neutral
-          rac-caption rounded-md whitespace-nowrap"
-          >
-            <p className="w-fit py-1 px-2">{hoverText}</p>
-            <div className="absolute flex flex-col w-full items-center justify-center">
-              <div
-                className="w-0 h-0 border-4 border-solid border-neutral
-              border-l-transparent border-r-transparent border-b-transparent"
-              ></div>
-            </div>
-          </div>
-        )}
-      </div> */}
-      <div className="m-auto flex gap-2 w-fit items-baseline">{children}</div>
-    </button>
-  );
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
-  const {
-    variant,
-    className,
-    asChild = false,
-    model,
-    children,
-    preIcon,
-    posIcon,
-    ...rest
-  } = props;
+  const { variant, className, asChild = false, model, size, ...rest } = props;
 
   const Comp = asChild ? Slot : 'button';
-  const isIcon = variant === 'icon';
 
-  return isIcon ? (
-    <ButtonIcon {...props} />
-  ) : (
+  return (
     <Comp
       ref={ref}
       type="button"
       data-testid="button"
-      className={cn(
-        buttonVariants({ variant, model, className }),
-        'flex min-h-12 items-center px-4',
-      )}
+      className={cn(buttonVariants({ variant, model, size, className }))}
       {...rest}
-    >
-      <div className="w-fit m-auto flex items-center gap-2">
-        <div className="m-auto">{preIcon}</div>
-        {children}
-        <div className="m-auto">{posIcon}</div>
-      </div>
-    </Comp>
+    />
   );
 });
 

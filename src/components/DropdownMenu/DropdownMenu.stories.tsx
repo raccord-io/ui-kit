@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Button } from '../';
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,29 +15,34 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
 } from './DropdownMenu';
 
-const meta: Meta<typeof DropdownMenu> = {
+// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
+const meta = {
   title: 'Components/DropdownMenu',
   component: DropdownMenu,
   parameters: {
-    controls: { expanded: true },
+    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
+    layout: 'padded',
   },
-  argTypes: {},
-};
+  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
+  tags: ['autodocs'],
+} satisfies Meta<typeof DropdownMenu>;
 
 export default meta;
 
 type Story = StoryObj<typeof DropdownMenu>;
 
-export const _DropdownMenu: Story = {
-  render: (args) => (
-    <div className="w-full flex justify-center gap-4">
-      <DropdownMenu {...args}>
+export const Default: Story = {
+  args: {
+    children: (
+      <>
         <DropdownMenuTrigger asChild>
-          <button className="bg-slate-300 rounded-sm border-2 border-black p-2">
+          <Button variant="secondary" model="outline">
             Open
-          </button>
+          </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56">
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -82,13 +89,35 @@ export const _DropdownMenu: Story = {
           <DropdownMenuItem>Support</DropdownMenuItem>
           <DropdownMenuItem disabled>API</DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
+          <DropdownMenuItem className="text-red-500 focus:text-red-500">
             Log out
             <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuContent>
-      </DropdownMenu>
-    </div>
-  ),
-  args: {},
+      </>
+    ),
+  },
+};
+
+export const WithRadioItems: Story = {
+  args: {
+    children: (
+      <>
+        <DropdownMenuTrigger asChild>
+          <Button variant="secondary" model="outline">
+            Open
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="w-56">
+          <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuRadioGroup value="bottom" onValueChange={() => {}}>
+            <DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="bottom">Bottom</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="right">Right</DropdownMenuRadioItem>
+          </DropdownMenuRadioGroup>
+        </DropdownMenuContent>
+      </>
+    ),
+  },
 };

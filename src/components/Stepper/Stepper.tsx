@@ -1,22 +1,27 @@
-import { ComponentPropsWithoutRef } from 'react';
+'use client';
 
-import { Square } from 'lucide-react';
+import { forwardRef } from 'react';
 
-export interface StepperProps extends ComponentPropsWithoutRef<'ol'> {
+import { Circle, Check } from 'lucide-react';
+
+import { Label } from '../';
+import { cn } from '../../lib/utils';
+
+export interface StepperProps extends React.HTMLAttributes<HTMLOListElement> {
   steps: string[];
   step: number;
 }
 
-let baseStepClass =
-  'flex items-center justify-center w-4 h-4 shrink-0 rounded-sm';
+const baseStepClass =
+  'flex items-center justify-center w-6 h-6 rounded-md shrink-0';
 
 function StepIn() {
   return (
     <span
       data-testid="stepper-step-in"
-      className={`${baseStepClass} bg-s-warning`}
+      className={`${baseStepClass} bg-bg-brand-solid`}
     >
-      <Square className="w-2 h-2 text-f-primary fill-i-primary" />
+      <Circle className="w-1.5 h-1.5 text-white fill-white" />
     </span>
   );
 }
@@ -25,9 +30,9 @@ function StepNext() {
   return (
     <span
       data-testid="stepper-step-next"
-      className={`${baseStepClass} border border-c-default bg-transparent`}
+      className={`${baseStepClass} border border-border-secondary bg-bg-primary`}
     >
-      <Square className="w-2 h-2 text-f-primary fill-i-primary" />
+      <Circle className="w-1.5 h-1.5 text-text-disabled fill-text-disabled" />
     </span>
   );
 }
@@ -36,33 +41,41 @@ function StepPast() {
   return (
     <span
       data-testid="stepper-step-past"
-      className={`${baseStepClass} bg-s-success`}
-    ></span>
+      className={`${baseStepClass} bg-bg-brand-solid`}
+    >
+      <Check strokeWidth={2} className="w-4 h-4 text-white" />
+    </span>
   );
 }
 
-export function Stepper(props: StepperProps) {
-  const { step, steps } = props;
+const Stepper = forwardRef<HTMLOListElement, StepperProps>((props, ref) => {
+  const { step, steps, className } = props;
 
-  const edgeClass = ' w-full after:w-full after:border-b after:inline-block';
-  const edgePastClass = edgeClass + ' after:border-c-default';
-  const edgeNextClass = edgeClass + ' after:border-s-success';
+  const edgeClass =
+    ' w-full after:content-[""] after:w-full after:h-0.5 after:inline-block after:absolute after:top-3 after:left-4';
+  const edgePastClass = edgeClass + ' after:bg-bg-tertiary';
+  const edgeNextClass = edgeClass + ' after:bg-bg-brand-solid';
 
   return (
-    <ol className="flex items-center w-full" data-testid="stepper">
+    <ol
+      ref={ref}
+      className={cn('flex items-center w-full', className)}
+      data-testid="stepper"
+    >
       {steps.map((s, idx) => {
-        let isLastStep = idx === steps.length - 1;
-        let stepClass = isLastStep ? '' : edgeClass;
+        const isLastStep = idx === steps.length - 1;
+        const stepClass = isLastStep ? '' : edgeClass;
         let flowClass = isLastStep ? '' : edgePastClass;
-        let textClass = 'text-f-primary';
+        let textClass = 'text-text-disabled';
 
         let currentStep = <StepNext />;
 
         if (idx === step) {
           currentStep = <StepIn />;
+          textClass = 'text-text-brand-primary';
         } else if (idx < step) {
           currentStep = <StepPast />;
-          textClass = 'text-f-disabled';
+          textClass = 'text-text-secondary';
           flowClass = isLastStep ? 'w-fit' : edgeNextClass;
         }
 
@@ -70,18 +83,19 @@ export function Stepper(props: StepperProps) {
           <li
             data-testid={`stepper-item-${idx}`}
             key={idx}
-            className={`flex items-center ${stepClass} ${flowClass}`}
+            className={`relative flex ${stepClass} ${flowClass}`}
           >
-            {currentStep}
-            <div
-              className={`ml-1 min-w-fit mr-1 text-xs ${textClass}`}
-              data-testid="stepper-label"
-            >
-              {s}
+            <div className="block whitespace-nowrap z-10">
+              {currentStep}
+              <Label className={textClass}>{s}</Label>
             </div>
           </li>
         );
       })}
     </ol>
   );
-}
+});
+
+Stepper.displayName = 'Stepper';
+
+export { Stepper };

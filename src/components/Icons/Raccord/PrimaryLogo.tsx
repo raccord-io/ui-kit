@@ -3,7 +3,7 @@ import React, { forwardRef } from 'react';
 
 interface PrimaryLogoProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: number;
-  theme?: 'theme-dark' | 'theme-light';
+  theme?: 'dark' | 'light';
 }
 
 function PrimaryLogoWhite({ size }: { size?: number }) {
@@ -216,9 +216,9 @@ function PrimaryLogoBlack({ size }: { size?: number }) {
 
 const PrimaryLogo = forwardRef<HTMLDivElement, PrimaryLogoProps>(
   (props, ref) => {
-    let { theme = 'theme-dark', size, ...rest } = props;
+    const { theme = 'dark', size, ...rest } = props;
 
-    const isDark = theme === 'theme-dark';
+    const isDark = theme === 'dark';
 
     return (
       <div

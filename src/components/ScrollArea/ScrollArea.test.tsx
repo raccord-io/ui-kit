@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 
-import '@testing-library/jest-dom';
 import { ScrollArea } from './ScrollArea';
 
 describe('Components | ScrollArea', () => {
@@ -24,7 +23,7 @@ describe('Components | ScrollArea', () => {
       </ScrollArea>,
     );
 
-    let scrollArea = screen.getByTestId('scroll-area');
+    const scrollArea = screen.getByTestId('scroll-area');
 
     expect(scrollArea).toBeTruthy();
   });

@@ -7,7 +7,7 @@ describe('Components | Fields | Identicon', () => {
   test('it should render', () => {
     render(<Identicon username="test" />);
 
-    let identicon = screen.getByTestId('identicon');
+    const identicon = screen.getByTestId('identicon');
 
     expect(identicon).toBeInTheDocument();
   });

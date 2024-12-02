@@ -2,12 +2,13 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Identicon } from './Identicon';
 
-const meta: Meta<typeof Identicon> = {
+const meta = {
   title: 'Components/Identicon',
   component: Identicon,
   parameters: {
-    controls: { expanded: true },
+    layout: 'padded',
   },
+  tags: ['autodocs'],
   argTypes: {
     username: {
       control: 'text',
@@ -20,14 +21,13 @@ const meta: Meta<typeof Identicon> = {
       defaultValue: 40,
     },
   },
-};
+} satisfies Meta<typeof Identicon>;
 
 export default meta;
 
 type Story = StoryObj<typeof Identicon>;
 
-export const _Identicon: Story = {
-  render: (args) => <Identicon {...args} />,
+export const Default: Story = {
   args: {
     username: 'test',
     size: 40,
