@@ -6,7 +6,7 @@ const meta = {
   title: 'Components/Password',
   component: Password,
   parameters: {
-    layout: 'centered',
+    layout: 'padded',
   },
   tags: ['autodocs'],
   argTypes: {
