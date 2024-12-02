@@ -1,8 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import React from 'react';
+'use client';
 
-import { toast as _toast, Toaster } from 'react-hot-toast';
+import { forwardRef } from 'react';
+
+import { toast as _toast, ToastBar, Toaster } from 'react-hot-toast';
 
 export interface ToastProps {
   durationMs?: number;
@@ -10,7 +10,7 @@ export interface ToastProps {
 
 // import the colors from ../../../presets/colors instead of recreating them
 // @maxime-carabina
-const colorBlack = '#1D1D1B';
+// const colorBlack = '#1D1D1B';
 const colorGreen300 = '#6BC1B3';
 const colorRed300 = '#E62D37';
 const colorWhite = '#FFFFFF';
@@ -21,20 +21,21 @@ const defaultDurationMs = 3000;
 
 export const toast = _toast;
 
-export function Toast(props: ToastProps) {
-  const { durationMs } = props;
+const Toast = forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
+  const { durationMs, ...rest } = props;
 
   return (
-    <div data-testid="toast">
+    <div ref={ref} data-testid="toast">
       <Toaster
         position="bottom-right"
         toastOptions={{
           duration: durationMs ?? defaultDurationMs,
           style: {
-            // I dont want the borders to be rounded
-            border: '2px solid ' + colorBlack,
-            color: colorBlack,
-            fontFamily: 'Work Sans, sans-serif',
+            background: 'var(--bg-secondary)',
+            border: '2px solid',
+            borderColor: 'var(--border-secondary)',
+            padding: '1rem',
+            borderRadius: '0.375rem',
           },
           success: {
             iconTheme: {
@@ -55,7 +56,23 @@ export function Toast(props: ToastProps) {
             },
           },
         }}
-      ></Toaster>
+        {...rest}
+      >
+        {(t) => (
+          <ToastBar toast={t}>
+            {({ icon, message }) => (
+              <div className="w-full flex justify-between gap-1 font-WorkSans text-sm text-text-primary">
+                {icon}
+                {message}
+              </div>
+            )}
+          </ToastBar>
+        )}
+      </Toaster>
     </div>
   );
-}
+});
+
+Toast.displayName = 'Toast';
+
+export { Toast };

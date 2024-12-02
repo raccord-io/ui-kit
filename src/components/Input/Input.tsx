@@ -1,64 +1,47 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
+
+import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '../../lib/utils';
 
+const inputVariants = cva(
+  'flex h-10 w-full shadow-sm rounded-md border border-border-secondary bg-bg-primary px-3 py-2 text-base font-WorkSans ring-offset-bg-primary file:border-0 file:bg-transparent file:text-sm file:font-semibold file:text-text-primary placeholder:text-text-placeholder focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:bg-bg-disabled disabled:border-border-disabled disabled:opacity-50 md:text-sm [&::-webkit-file-upload-button]:text-text-primary [&::file-selector-button]:text-text-primary',
+  {
+    variants: {
+      inputSize: {
+        default: 'px-3 py-2 text-sm',
+        xs: 'px-2 py-1 text-xs',
+        sm: 'px-2 py-1 text-sm',
+        lg: 'px-2.5 py-1.5 text-sm',
+        '2xl': 'px-3.5 py-2.5',
+      },
+    },
+    defaultVariants: {
+      inputSize: 'default',
+    },
+  },
+);
+
 export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
-  error?: string | undefined;
-  warning?: string | undefined;
-  success?: string | undefined;
-  onClickIcon?: () => void;
+  extends React.ComponentProps<'input'>,
+    VariantProps<typeof inputVariants> {
+  inputSize?: 'xs' | 'sm' | 'default' | 'lg' | '2xl';
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const { error, warning, success, className, ...rest } = props;
-
-  const errorClass = error ? 'border-s-error' : '';
-  const warningClass = warning ? 'border-s-warning' : '';
-  const successClass = success ? 'border-s-success' : '';
-  const messageClass = errorClass || warningClass || successClass;
+  const { inputSize, className, type, ...rest } = props;
 
   return (
-    <div ref={ref}>
-      <input
-        data-testid="input-field"
-        className={cn(
-          'w-full rac-menu-default default-input h-12 pl-2 pr-10 mb-1',
-          messageClass,
-          className,
-        )}
-        type="text"
-        {...rest}
-      />
-      <InputMessage error={error} warning={warning} />
-    </div>
+    <input
+      type={type}
+      data-testid="input"
+      className={cn(inputVariants({ inputSize, className }))}
+      ref={ref}
+      {...rest}
+    />
   );
 });
 
-export function InputMessage(props: InputProps) {
-  const { error, warning, success } = props;
-
-  const errorClass = error ? 'rac-h3 text-s-error' : '';
-  const warningClass = warning ? 'rac-h3 text-s-warning' : '';
-  const successClass = success ? 'rac-h3 text-s-success' : '';
-
-  const messageClass = errorClass || warningClass || successClass;
-  const hasMessage = error || warning || success;
-
-  if (hasMessage) {
-    return (
-      <div
-        data-testid="input-field-message"
-        className={`font-WorkSans font-normal ${messageClass}`}
-      >
-        {error || warning || success}
-      </div>
-    );
-  } else {
-    return null;
-  }
-}
-
 Input.displayName = 'Input';
 
-export { Input };
+export { Input, inputVariants };

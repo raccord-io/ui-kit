@@ -10,7 +10,9 @@ const Breadcrumb = React.forwardRef<
   React.ComponentPropsWithoutRef<'nav'> & {
     separator?: React.ReactNode;
   }
->(({ ...props }, ref) => <nav ref={ref} aria-label="breadcrumb" {...props} />);
+>(({ ...props }, ref) => (
+  <nav ref={ref} aria-label="breadcrumb" data-testid="breadcrumb" {...props} />
+));
 Breadcrumb.displayName = 'Breadcrumb';
 
 const BreadcrumbList = React.forwardRef<
@@ -19,8 +21,9 @@ const BreadcrumbList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <ol
     ref={ref}
+    data-testid="breadcrumb-list"
     className={cn(
-      'flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5',
+      'flex flex-wrap items-center gap-1.5 break-words text-sm text-text-primary sm:gap-2.5',
       className,
     )}
     {...props}
@@ -34,6 +37,7 @@ const BreadcrumbItem = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <li
     ref={ref}
+    data-testid="breadcrumb-item"
     className={cn('inline-flex items-center gap-1.5', className)}
     {...props}
   />
@@ -51,7 +55,11 @@ const BreadcrumbLink = React.forwardRef<
   return (
     <Comp
       ref={ref}
-      className={cn('transition-colors hover:text-foreground', className)}
+      data-testid="breadcrumb-link"
+      className={cn(
+        'transition-colors text-text-primary/60 hover:text-text-primary focus-visible:ring-ring-primary',
+        className,
+      )}
       {...props}
     />
   );
@@ -67,7 +75,11 @@ const BreadcrumbPage = React.forwardRef<
     role="link"
     aria-disabled="true"
     aria-current="page"
-    className={cn('font-normal text-foreground', className)}
+    data-testid="breadcrumb-page"
+    className={cn(
+      'font-normal text-text-primary focus-visible:ring-ring-primary',
+      className,
+    )}
     {...props}
   />
 ));
@@ -81,7 +93,8 @@ const BreadcrumbSeparator = ({
   <li
     role="presentation"
     aria-hidden="true"
-    className={cn('[&>svg]:size-3.5', className)}
+    data-testid="breadcrumb-separator"
+    className={cn('[&>svg]:size-3.5 text-text-primary/70', className)}
     {...props}
   >
     {children ?? <ChevronRight />}
@@ -96,6 +109,7 @@ const BreadcrumbEllipsis = ({
   <span
     role="presentation"
     aria-hidden="true"
+    data-testid="breadcrumb-ellipsis"
     className={cn('flex h-9 w-9 items-center justify-center', className)}
     {...props}
   >
@@ -107,10 +121,10 @@ BreadcrumbEllipsis.displayName = 'BreadcrumbElipssis';
 
 export {
   Breadcrumb,
-  BreadcrumbList,
+  BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
+  BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-  BreadcrumbEllipsis,
 };

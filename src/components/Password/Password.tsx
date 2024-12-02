@@ -1,41 +1,31 @@
-import React, { useState, forwardRef } from 'react';
+import { forwardRef, useState } from 'react';
 
-import { EyeOff, EyeIcon } from 'lucide-react';
+import { type VariantProps } from 'class-variance-authority';
+import { Eye, EyeOff } from 'lucide-react';
 
+import { inputVariants } from '../';
 import { cn } from '../../lib/utils';
-import { InputMessage } from '../Input';
 
 export interface PasswordProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
-  error?: string | undefined;
-  warning?: string | undefined;
-  success?: string | undefined;
+  extends React.ComponentProps<'input'>,
+    VariantProps<typeof inputVariants> {
+  inputSize?: 'xs' | 'sm' | 'default' | 'lg' | '2xl';
 }
 
 const Password = forwardRef<HTMLInputElement, PasswordProps>((props, ref) => {
-  const { error, warning, success, className, ...rest } = props;
+  const { inputSize, className, ...rest } = props;
 
-  const errorClass = error ? 'rac-h3 border-s-error' : '';
-  const warningClass = warning ? 'rac-h3 border-s-warning' : '';
-  const successClass = success ? 'rac-h3 border-s-success' : '';
-  const messageClass = errorClass || warningClass || successClass;
-  const iconClass = `w-5 h-5 inline-block align-text-bottom text-neutral`;
-
-  let open = {
+  const open = {
     type: 'text',
     icon: (
-      <div data-testid="icon-open">
-        <EyeOff className={iconClass} />
-      </div>
+      <EyeOff className="w-5 h-5 text-text-secondary" data-testid="icon-open" />
     ),
   };
 
-  let close = {
+  const close = {
     type: 'password',
     icon: (
-      <div data-testid="icon-close">
-        <EyeIcon className={iconClass} />
-      </div>
+      <Eye className="w-5 h-5 text-text-secondary" data-testid="icon-close" />
     ),
   };
 
@@ -46,30 +36,21 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props, ref) => {
   }
 
   return (
-    <div ref={ref}>
-      <div className="flex items-center">
-        <input
-          data-testid="password-input"
-          className={cn(
-            'w-full default-input rac-menu-default h-12 pl-2 pr-10 mb-1',
-            messageClass,
-            className,
-          )}
-          type={type}
-          {...rest}
-        />
-        <div className="-ml-9">
-          <button
-            type="button"
-            className="w-8 h-8 bg-transparent"
-            data-testid="password-icon"
-            onClick={toggleIcon}
-          >
-            {icon}
-          </button>
-        </div>
-      </div>
-      <InputMessage error={error} warning={warning} success={success} />
+    <div
+      className={cn(
+        'flex items-center gap-2',
+        inputVariants({ inputSize, className }),
+      )}
+    >
+      <input type={type} data-testid="password" ref={ref} {...rest} />
+      <button
+        type="button"
+        className="bg-transparent flex items-center justify-center"
+        data-testid="password-icon"
+        onClick={toggleIcon}
+      >
+        {icon}
+      </button>
     </div>
   );
 });

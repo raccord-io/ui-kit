@@ -1,47 +1,57 @@
-import { ComponentPropsWithoutRef, useState } from 'react';
+'use client';
 
-export interface TabConfig {
-  label: string;
-  content: string;
-}
+import * as React from 'react';
 
-export interface TabsProps extends ComponentPropsWithoutRef<'div'> {
-  tabsConfig: TabConfig[];
-}
+import * as TabsPrimitive from '@radix-ui/react-tabs';
 
-export function Tabs({ ...props }) {
-  const { tabsConfig, defaultIndex, ...rest } = props;
-  const [selectedIndex, setSelectedIndex] = useState(defaultIndex ?? 0);
+import { cn } from '../../lib/utils';
 
-  function handleClick(index: number) {
-    const { onClickTab } = tabsConfig[index];
+const Tabs = TabsPrimitive.Root;
 
-    setSelectedIndex(index);
-    onClickTab?.();
-  }
+const TabsList = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.List>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
+>(({ className, ...props }, ref) => (
+  <TabsPrimitive.List
+    ref={ref}
+    className={cn(
+      'inline-flex h-10 items-center justify-center rounded-md bg-bg-tertiary/50 p-1 text-text-secondary',
+      className,
+    )}
+    {...props}
+  />
+));
+TabsList.displayName = TabsPrimitive.List.displayName;
 
-  return (
-    <div data-testid="tabs-selector" {...rest}>
-      <div className="w-full flex flex-row mb-2">
-        {tabsConfig.map((tab: TabConfig, index: number) => (
-          <div
-            className={`default-tab default-tab-hover font-Gotham ${
-              index === selectedIndex ? 'default-tab-active' : ''
-            }`}
-            key={`tab-${index}`}
-            onClick={() => handleClick(index)}
-          >
-            {tab.label}
-          </div>
-        ))}
-      </div>
-      <div>
-        {tabsConfig.map((tab: TabConfig, index: number) => (
-          <section key={`tabpanel-${index}`} hidden={selectedIndex !== index}>
-            {tab.content}
-          </section>
-        ))}
-      </div>
-    </div>
-  );
-}
+const TabsTrigger = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
+>(({ className, ...props }, ref) => (
+  <TabsPrimitive.Trigger
+    ref={ref}
+    className={cn(
+      'inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-WorkSans font-semibold ring-offset-bg-primary transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-bg-primary data-[state=active]:text-text-primary data-[state=active]:shadow-sm',
+      className,
+    )}
+    {...props}
+  />
+));
+TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
+
+const TabsContent = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
+>(({ className, ...props }, ref) => (
+  <TabsPrimitive.Content
+    ref={ref}
+    data-testid="tabs-content"
+    className={cn(
+      'mt-2 ring-offset-bg-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring-primary focus-visible:ring-offset-2',
+      className,
+    )}
+    {...props}
+  />
+));
+TabsContent.displayName = TabsPrimitive.Content.displayName;
+
+export { Tabs, TabsList, TabsTrigger, TabsContent };

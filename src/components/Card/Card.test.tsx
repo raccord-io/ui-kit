@@ -1,18 +1,37 @@
-import '@testing-library/jest-dom';
+import { describe, test, expect } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
 
-import { Card } from './Card';
+import { Button } from '../';
+
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from './Card';
 
 describe('Components | Card', () => {
   test('it should render', () => {
     render(
       <Card>
-        <div>I am a card component</div>
+        {' '}
+        <CardHeader>
+          <CardTitle>Create project</CardTitle>
+          <CardDescription>
+            Deploy your new project in one-click.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>test</CardContent>
+        <CardFooter className="flex justify-between">
+          <Button>Deploy</Button>
+        </CardFooter>
       </Card>,
     );
 
-    let description = screen.getByTestId('card');
+    const card = screen.getByTestId('card');
 
-    expect(description).toBeInTheDocument();
+    expect(card).toBeTruthy();
   });
 });

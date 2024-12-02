@@ -1,6 +1,5 @@
+import { describe, test, expect } from '@jest/globals';
 import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import { File } from 'lucide-react';
 
 import { Button } from './Button';
 
@@ -8,7 +7,7 @@ describe('Components | Button', () => {
   test('it should render', () => {
     render(<Button>something</Button>);
 
-    let button = screen.getByTestId('button');
+    const button = screen.getByTestId('button');
 
     expect(button).toBeTruthy();
     expect(button.textContent).toBe('something');
@@ -24,8 +23,8 @@ describe('Components | Button', () => {
       </Button>,
     );
 
-    let button = screen.getByTestId('button');
-    let nested = screen.getByTestId('nested');
+    const button = screen.getByTestId('button');
+    const nested = screen.getByTestId('nested');
 
     expect(button).toBeTruthy();
     expect(button.textContent).toBe('something in nested');
@@ -39,33 +38,28 @@ describe('Components | Button', () => {
 
     render(<Button onClick={somethingClicked} />);
 
-    let button = screen.getByTestId('button');
+    const button = screen.getByTestId('button');
 
     fireEvent.click(button);
     expect(somethingClicked).toHaveBeenCalled();
   });
 
-  test('it should have variant icon', () => {
+  test('it should render as child', () => {
+    const SomeComponent = () => {
+      return (
+        <a href="" data-testid="nested">
+          something in nested
+        </a>
+      );
+    };
     render(
-      <Button variant="icon" model="single">
-        <File />
+      <Button asChild>
+        <SomeComponent />
       </Button>,
     );
 
-    let button = screen.getByTestId('button');
+    const nested = screen.getByTestId('nested');
 
-    expect(button).toHaveClass('default-icon');
-  });
-
-  test('it should have variant icon with border', () => {
-    render(
-      <Button variant="icon" model="border">
-        <File />
-      </Button>,
-    );
-
-    let button = screen.getByTestId('button');
-
-    expect(button).toHaveClass('default-icon');
+    expect(nested).toBeTruthy();
   });
 });

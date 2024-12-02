@@ -1,41 +1,56 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Toast, toast } from '../Toast';
-import { Card } from './Card';
+import { Button, Input, Label } from '../';
+
+import {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from './Card';
 
 const meta: Meta<typeof Card> = {
   title: 'Components/Card',
   component: Card,
   parameters: {
-    controls: { expanded: true },
+    layout: 'centered',
   },
-  argTypes: {
-    enableBorder: {
-      control: 'boolean',
-      description: 'Enable or disable border',
-      defaultValue: true,
-    },
-    children: {
-      control: 'ReactNode',
-      description: 'Content of the card',
-      defaultValue: '',
-    },
-  },
+  tags: ['autodocs'],
 };
 
 export default meta;
 
 type Story = StoryObj<typeof Card>;
 
-export const _Card: Story = {
-  render: (args) => (
-    <>
-      <Card {...args} onClick={() => toast.success('You clicked me!')} />
-      <Toast />
-    </>
-  ),
+export const Default: Story = {
   args: {
-    enableBorder: true,
-    children: 'Click me!',
+    children: (
+      <>
+        <CardHeader>
+          <CardTitle>Create project</CardTitle>
+          <CardDescription>
+            Deploy your new project in one-click.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form>
+            <div className="grid w-full items-center gap-4">
+              <div className="flex flex-col space-y-3">
+                <Label htmlFor="name">Name</Label>
+                <Input id="name" placeholder="Name of your project" />
+              </div>
+            </div>
+          </form>
+        </CardContent>
+        <CardFooter className="flex justify-between">
+          <Button variant="secondary" model="outline">
+            Cancel
+          </Button>
+          <Button>Deploy</Button>
+        </CardFooter>
+      </>
+    ),
   },
 };

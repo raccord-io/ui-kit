@@ -1,46 +1,52 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Pagination } from './Pagination';
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from './Pagination';
 
-const meta: Meta<typeof Pagination> = {
+const meta = {
   title: 'Components/Pagination',
   component: Pagination,
   parameters: {
-    controls: { expanded: true },
+    layout: 'centered',
   },
-  argTypes: {
-    pages: {
-      control: 'number',
-      description: 'Total number of pages',
-      defaultValue: 10,
-    },
-    currentPage: {
-      control: 'number',
-      description: 'Current active page',
-      defaultValue: 1,
-    },
-    customClass: {
-      control: 'text',
-      description: 'Additional custom CSS classes for styling',
-      defaultValue: '',
-    },
-    onPageChange: {
-      action: 'pageChanged',
-      description: 'Callback function for when the page is changed',
-    },
-  },
-};
+  tags: ['autodocs'],
+} satisfies Meta<typeof Pagination>;
 
 export default meta;
+type Story = StoryObj<typeof meta>;
 
-type Story = StoryObj<typeof Pagination>;
-
-export const _Pagination: Story = {
-  render: (args) => <Pagination {...args} />,
+export const Default: Story = {
   args: {
-    pages: 10,
-    currentPage: 1,
-    customClass: '',
-    onPageChange: () => {},
+    children: (
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious href="#" />
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink href="#">1</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink href="#" isActive>
+            2
+          </PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink href="#">3</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationEllipsis />
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationNext href="#" />
+        </PaginationItem>
+      </PaginationContent>
+    ),
   },
 };

@@ -1,9 +1,13 @@
-@layer tailwind-base, rac-custom-styles;
+/* @layer tailwind-base, rac-custom-styles;
 @layer tailwind-base {
   @tailwind base;
   @tailwind components;
 }
 
+@tailwind utilities; */
+
+@tailwind base;
+@tailwind components;
 @tailwind utilities;
 
 /* global css */
@@ -127,8 +131,278 @@
   font-style: italic;
 }
 
-@layer rac-custom-styles {
-  .default-button {
+/* @layer base { */
+:root {
+  /* Text color */
+  --text-primary: 50, 50, 47;
+  --text-primary_on-brand: 29, 29, 27;
+  --text-secondary: 83, 83, 78;
+  --text-secondary_hover: 57, 57, 54;
+  --text-secondary_on-brand: 175, 224, 215;
+  --text-tertiary: 105, 105, 99;
+  --text-tertiary_hover: 83, 83, 78;
+  --text-tertiary_on-brand: 175, 224, 215;
+  --text-quaternary: 132, 131, 125;
+  --text-quaternary_on-brand: 84, 173, 161;
+  --text-white: 255, 255, 255;
+  --text-disabled: 167, 166, 161;
+  --text-placeholder: 167, 166, 161;
+  --text-brand-primary: 45, 116, 110;
+  --text-brand-secondary: 58, 146, 136;
+  --text-brand-tertiary: 84, 173, 161;
+  --text-error: 230, 45, 55;
+  --text-warning: 255, 145, 0;
+  --text-success: 0, 184, 9;
+
+  /* Border color */
+  --border-primary: 201, 201, 198;
+  --border-secondary: 228, 228, 227;
+  --border-neutral: 57, 57, 54;
+  --border-disabled: 201, 201, 198;
+  --border-disabled_subtle: 228, 228, 227;
+  --border-brand: 107, 193, 179;
+  --border-brand_alt: 84, 173, 161;
+  --border-error: 230, 45, 55;
+  --border-error_subtle: 255, 161, 166;
+
+  /* Foreground color */
+  --fg-primary: 50, 50, 47;
+  --fg-secondary: 69, 68, 64;
+  --fg-secondary_hover: 57, 57, 54;
+  --fg-tertiary: 83, 83, 78;
+  --fg-tertiary_hover: 69, 68, 64;
+  --fg-quaternary: 105, 105, 99;
+  --fg-quaternary_hover: 83, 83, 78;
+  --fg-quinary: 132, 131, 125;
+  --fg-quinary_hover: 105, 105, 99;
+  --fg-senary: 167, 166, 161;
+  --fg-white: 255, 255, 255;
+  --fg-disabled: 132, 131, 125;
+  --fg-disabled_subtle: 167, 166, 161;
+  --fg-brand-primary: 84, 173, 161;
+  --fg-brand-primary_alt: 84, 173, 161;
+  --fg-brand-secondary: 107, 193, 179;
+  --fg-error-primary: 230, 45, 55;
+  --fg-error-secondary: 247, 60, 70;
+  --fg-warning-primary: 255, 145, 0;
+  --fg-warning-secondary: 255, 191, 50;
+  --fg-success-primary: 0, 139, 7;
+  --fg-success-secondary: 0, 184, 9;
+
+  /* Background color */
+  --bg-primary: 255, 255, 255;
+  --bg-primary_alt: 255, 255, 255;
+  --bg-primary_hover: 247, 247, 246;
+  --bg-primary-solid: 29, 29, 27;
+  --bg-secondary: 247, 247, 246;
+  --bg-secondary_alt: 247, 247, 246;
+  --bg-secondary_hover: 228, 228, 227;
+  --bg-secondary_subtle: 247, 247, 246;
+  --bg-secondary-solid: 83, 83, 78;
+  --bg-tertiary: 228, 228, 227;
+  --bg-quaternary: 201, 201, 198;
+  --bg-active: 247, 247, 246;
+  --bg-disabled: 228, 228, 227;
+  --bg-disabled_subtle: 247, 247, 246;
+  --bg-overlay: 29, 29, 27;
+  --bg-brand-primary: 243, 250, 248;
+  --bg-brand-primary_alt: 243, 250, 248;
+  --bg-brand-secondary: 215, 240, 235;
+  --bg-brand-solid: 84, 173, 161;
+  --bg-brand-solid_hover: 107, 193, 179;
+  --bg-brand-section: 39, 94, 90;
+  --bg-brand-section_subtle: 45, 116, 110;
+  --bg-error-primary: 255, 241, 242;
+  --bg-error-secondary: 255, 225, 227;
+  --bg-error-solid: 230, 45, 55;
+  --bg-warning-primary: 255, 251, 236;
+  --bg-warning-secondary: 255, 247, 211;
+  --bg-warning-solid: 255, 145, 0;
+  --bg-success-primary: 231, 255, 228;
+  --bg-success-secondary: 201, 255, 196;
+  --bg-success-solid: 0, 139, 7;
+
+  /* Button color */
+  --button-primary: 69, 68, 64;
+  --button-primary_hover: 105, 105, 99;
+  --button-secondary: 255, 255, 255;
+  --button-secondary_hover: 247, 247, 246;
+  --button-secondary-color: 255, 255, 255;
+  --button-secondary-color_hover: 243, 250, 248;
+  --button-primary-fg: 255, 255, 255;
+  --button-secondary-fg: 50, 50, 47;
+  --button-secondary-color-fg: 84, 173, 161;
+  --button-secondary-color-border: 175, 224, 215;
+
+  /* Ring color */
+  --ring-primary: 107, 193, 179;
+
+  /* Badge color */
+  --badge-gray: 239, 239, 239;
+  --badge-gray-border: 228, 228, 227;
+  --badge-gray-fg: 50, 50, 47;
+  --badge-purple: 254, 242, 255;
+  --badge-purple-border: 245, 198, 255;
+  --badge-purple-fg: 138, 0, 169;
+  --badge-green: 231, 255, 228;
+  --badge-green-border: 0, 230, 6;
+  --badge-green-fg: 0, 139, 7;
+  --badge-orange: 255, 247, 211;
+  --badge-orange-border: 204, 107, 2;
+  --badge-orange-fg: 204, 107, 2;
+  --badge-blue: 232, 241, 255;
+  --badge-blue-border: 179, 204, 255;
+  --badge-blue-fg: 47, 69, 255;
+  --badge-yellow: 251, 255, 231;
+  --badge-yellow-border: 209, 191, 0;
+  --badge-yellow-fg: 166, 139, 2;
+  --badge-red: 255, 241, 242;
+  --badge-red-border: 255, 200, 203;
+  --badge-red-fg: 230, 45, 55;
+  --badge-dark-blue: 0, 103, 148;
+  --badge-dark-blue-border: 0, 154, 223;
+  --badge-dark-blue-fg: 0, 103, 148;
+}
+
+.dark {
+  /* Text color */
+  --text-primary: 247, 247, 246;
+  --text-primary_on-brand: 255, 255, 255;
+  --text-secondary: 201, 201, 198;
+  --text-secondary_hover: 228, 228, 227;
+  --text-secondary_on-brand: 201, 201, 198;
+  --text-tertiary: 167, 166, 161;
+  --text-tertiary_hover: 201, 201, 198;
+  --text-tertiary_on-brand: 167, 166, 161;
+  --text-quaternary: 167, 166, 161;
+  --text-quaternary_on-brand: 167, 166, 161;
+  --text-white: 255, 255, 255;
+  --text-disabled: 167, 166, 161;
+  --text-placeholder: 201, 201, 198;
+  --text-brand-primary: 247, 247, 246;
+  --text-brand-secondary: 201, 201, 198;
+  --text-brand-tertiary: 167, 166, 161;
+  --text-error: 254, 107, 115;
+  --text-warning: 255, 191, 50;
+  --text-success: 0, 184, 9;
+
+  /* Border color */
+  --border-primary: 83, 83, 78;
+  --border-secondary: 69, 68, 64;
+  --border-neutral: 57, 57, 54;
+  --border-disabled: 83, 83, 78;
+  --border-disabled_subtle: 69, 68, 64;
+  --border-brand: 107, 193, 179;
+  --border-brand_alt: 83, 83, 78;
+  --border-error: 254, 107, 115;
+  --border-error_subtle: 254, 107, 115;
+
+  /* Foreground color */
+  --fg-primary: 255, 255, 255;
+  --fg-secondary: 167, 166, 161;
+  --fg-secondary_hover: 201, 201, 198;
+  --fg-tertiary: 132, 131, 125;
+  --fg-tertiary_hover: 167, 166, 161;
+  --fg-quaternary: 132, 131, 125;
+  --fg-quaternary_hover: 167, 166, 161;
+  --fg-quinary: 105, 105, 99;
+  --fg-quinary_hover: 132, 131, 125;
+  --fg-senary: 83, 83, 78;
+  --fg-white: 255, 255, 255;
+  --fg-disabled: 105, 105, 99;
+  --fg-disabled_subtle: 83, 83, 78;
+  --fg-brand-primary: 107, 193, 179;
+  --fg-brand-primary_alt: 167, 166, 161;
+  --fg-brand-secondary: 107, 193, 179;
+  --fg-error-primary: 247, 60, 70;
+  --fg-error-secondary: 254, 107, 115;
+  --fg-warning-primary: 255, 191, 50;
+  --fg-warning-secondary: 255, 191, 50;
+  --fg-success-primary: 0, 184, 9;
+  --fg-success-secondary: 0, 230, 6;
+
+  /* Background color */
+  --bg-primary: 29, 29, 27;
+  --bg-primary_alt: 50, 50, 47;
+  --bg-primary_hover: 57, 57, 54;
+  --bg-primary-solid: 50, 50, 47;
+  --bg-secondary: 50, 50, 47;
+  --bg-secondary_alt: 29, 29, 27;
+  --bg-secondary_hover: 29, 29, 27;
+  --bg-secondary_subtle: 50, 50, 47;
+  --bg-secondary-solid: 83, 83, 78;
+  --bg-tertiary: 57, 57, 54;
+  --bg-quaternary: 69, 68, 64;
+  --bg-active: 57, 57, 54;
+  --bg-disabled: 57, 57, 54;
+  --bg-disabled_subtle: 50, 50, 47;
+  --bg-overlay: 57, 57, 54;
+  --bg-brand-primary: 58, 146, 136;
+  --bg-brand-primary_alt: 57, 57, 54;
+  --bg-brand-secondary: 45, 116, 110;
+  --bg-brand-solid: 84, 173, 161;
+  --bg-brand-solid_hover: 107, 193, 179;
+  --bg-brand-section: 57, 57, 54;
+  --bg-brand-section_subtle: 29, 29, 27;
+  --bg-error-primary: 247, 60, 70;
+  --bg-error-secondary: 230, 45, 55;
+  --bg-error-solid: 230, 45, 55;
+  --bg-warning-primary: 255, 168, 10;
+  --bg-warning-secondary: 255, 145, 0;
+  --bg-warning-solid: 255, 145, 0;
+  --bg-success-primary: 0, 184, 9;
+  --bg-success-secondary: 0, 139, 7;
+  --bg-success-solid: 0, 139, 7;
+
+  /* Button color */
+  --button-primary: 58, 146, 136;
+  --button-primary_hover: 45, 116, 110;
+  --button-secondary: 29, 29, 27;
+  --button-secondary_hover: 57, 57, 54;
+  --button-secondary-color: 29, 29, 27;
+  --button-secondary-color_hover: 83, 83, 78;
+  --button-primary-fg: 255, 255, 255;
+  --button-secondary-fg: 255, 255, 255;
+  --button-secondary-color-fg: 84, 173, 161;
+  --button-secondary-color-border: 45, 116, 110;
+
+  /* Ring color */
+  --ring-primary: 58, 146, 136;
+
+  /* Badge color */
+  --badge-gray: 239, 239, 239;
+  --badge-gray-border: 228, 228, 227;
+  --badge-gray-fg: 50, 50, 47;
+  --badge-purple: 254, 242, 255;
+  --badge-purple-border: 245, 198, 255;
+  --badge-purple-fg: 138, 0, 169;
+  --badge-green: 231, 255, 228;
+  --badge-green-border: 0, 230, 6;
+  --badge-green-fg: 0, 139, 7;
+  --badge-orange: 255, 247, 211;
+  --badge-orange-border: 204, 107, 2;
+  --badge-orange-fg: 204, 107, 2;
+  --badge-blue: 232, 241, 255;
+  --badge-blue-border: 179, 204, 255;
+  --badge-blue-fg: 47, 69, 255;
+  --badge-yellow: 251, 255, 231;
+  --badge-yellow-border: 209, 191, 0;
+  --badge-yellow-fg: 166, 139, 2;
+  --badge-red: 255, 241, 242;
+  --badge-red-border: 255, 200, 203;
+  --badge-red-fg: 230, 45, 55;
+  --badge-dark-blue: 0, 103, 148, 10;
+  --badge-dark-blue-border: 0, 154, 223;
+  --badge-dark-blue-fg: 0, 103, 148;
+}
+/* } */
+
+input[type='file'] {
+  @apply text-text-primary;
+}
+
+/* @layer rac-custom-styles { */
+/* .default-button {
     @apply font-Gotham w-full h-12 transition-colors duration-300;
   }
 
@@ -164,11 +438,11 @@
           focus:border-c-pressed focus:text-neutral
           bg-secondary
           placeholder-c-disabled text-f-disabled;
-  }
+  } */
 
-  /* We rely on placeholder to change the border */
-  /* once uncontrolled components not necessary have value property */
-  .default-input:not(:placeholder-shown),
+/* We rely on placeholder to change the border */
+/* once uncontrolled components not necessary have value property */
+/* .default-input:not(:placeholder-shown),
   .default-input:not([value='']) {
     @apply border-primary text-neutral;
   }
@@ -183,5 +457,5 @@
 
   .default-tab-active {
     @apply rac-menu-active antialiased border-brand-blue border-b-2 text-brand-blue;
-  }
-}
+  } */
+/* } */

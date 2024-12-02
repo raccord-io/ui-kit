@@ -16,23 +16,23 @@ import {
   MenubarTrigger,
 } from './Menubar';
 
-const meta: Meta<typeof Menubar> = {
+const meta = {
   title: 'Components/Menubar',
   component: Menubar,
   parameters: {
-    controls: { expanded: true },
+    layout: 'centered',
   },
-  argTypes: {},
-};
+  tags: ['autodocs'],
+} satisfies Meta<typeof Menubar>;
 
 export default meta;
 
 type Story = StoryObj<typeof Menubar>;
 
-export const _Menubar: Story = {
-  render: (args) => (
-    <div className="w-full flex justify-center gap-4">
-      <Menubar {...args}>
+export const Default: Story = {
+  args: {
+    children: (
+      <>
         <MenubarMenu>
           <MenubarTrigger>File</MenubarTrigger>
           <MenubarContent>
@@ -118,8 +118,7 @@ export const _Menubar: Story = {
             <MenubarItem inset>Add Profile...</MenubarItem>
           </MenubarContent>
         </MenubarMenu>
-      </Menubar>
-    </div>
-  ),
-  args: {},
+      </>
+    ),
+  },
 };
