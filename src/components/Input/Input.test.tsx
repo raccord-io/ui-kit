@@ -1,44 +1,14 @@
-import '@testing-library/jest-dom';
+import { describe, test, expect } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
 
-import { Input } from '.';
+import { Input } from './Input';
 
-describe('Components | Fields | Input', () => {
+describe('Components | Input', () => {
   test('it should render', () => {
-    render(<Input />);
+    render(<Input placeholder="Email" />);
 
-    let input = screen.getByTestId('input-field');
+    const input = screen.getByTestId('input');
 
-    expect(input).toBeInTheDocument();
-  });
-
-  test('it should set a new placeholder content', () => {
-    render(<Input placeholder={'something'} />);
-
-    let input = screen.getByPlaceholderText('something');
-
-    expect(input).toBeInTheDocument();
-  });
-
-  test('it should show an error message', () => {
-    render(<Input error={'euh'} />);
-
-    let message = screen.getByTestId('input-field-message');
-    let input = screen.getByTestId('input-field');
-
-    expect(message).toBeInTheDocument();
-    expect(message.getAttribute('class')).toContain('text-s-error');
-    expect(input.getAttribute('class')).toContain('border-s-error');
-  });
-
-  test('it should show an warning message', () => {
-    render(<Input warning={'warn'} />);
-
-    let message = screen.getByTestId('input-field-message');
-    let input = screen.getByTestId('input-field');
-
-    expect(message).toBeInTheDocument();
-    expect(message.getAttribute('class')).toContain('text-s-warning');
-    expect(input.getAttribute('class')).toContain('border-s-warning');
+    expect(input).toBeTruthy();
   });
 });

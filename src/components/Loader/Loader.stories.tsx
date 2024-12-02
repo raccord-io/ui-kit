@@ -2,28 +2,32 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Loader } from './Loader';
 
-const meta: Meta<typeof Loader> = {
+const meta = {
   title: 'Components/Loader',
   component: Loader,
   parameters: {
-    controls: { expanded: true },
+    layout: 'centered',
   },
+  tags: ['autodocs'],
   argTypes: {
     size: {
       control: 'number',
-      description: 'Size of the loader',
-      defaultValue: 24,
+    },
+    type: {
+      control: 'select',
+      options: ['circle', 'raccord'],
     },
   },
-};
+  args: {
+    size: 50,
+    type: 'circle',
+  },
+} satisfies Meta<typeof Loader>;
 
 export default meta;
 
 type Story = StoryObj<typeof Loader>;
 
-export const _Loader: Story = {
-  render: (args) => <Loader {...args} />,
-  args: {
-    size: 24,
-  },
+export const Default: Story = {
+  args: {},
 };

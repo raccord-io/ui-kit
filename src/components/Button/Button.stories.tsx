@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Check, File } from 'lucide-react';
+import { ChevronLeft, Mail, Loader2 } from 'lucide-react';
 
-import { Loader } from '../Loader';
 import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
@@ -9,40 +8,42 @@ const meta: Meta<typeof Button> = {
   component: Button,
   parameters: {
     controls: { expanded: true },
+    layout: 'padded',
   },
+  tags: ['autodocs'],
   argTypes: {
-    preIcon: {
-      control: 'object',
-      description: 'Icon to be displayed before the text',
-      defaultValue: null,
-    },
-    posIcon: {
-      control: 'object',
-      description: 'Icon to be displayed after the text',
-      defaultValue: null,
+    variant: {
+      control: 'select',
+      description: 'Button variant',
+      options: [
+        'primary',
+        'secondary',
+        'secondary-color',
+        'link',
+        'danger-primary',
+        'danger-secondary',
+      ],
     },
     model: {
       control: 'radio',
       description: 'Button model',
-      defaultValue: 'single',
-      options: ['single', 'border'],
+      options: ['flat', 'outline'],
     },
-    variant: {
-      control: 'radio',
-      description: 'Button variant',
-      defaultValue: 'primary',
-      options: ['primary', 'secondary', 'danger', 'icon'],
+    size: {
+      control: 'select',
+      description: 'Button size',
+      options: ['default', 'sm', 'lg', 'xl', '2xl'],
     },
-    className: {
-      control: 'text',
-      description: 'Custom CSS classes',
-      defaultValue: '',
+    disabled: {
+      control: 'boolean',
+      description: 'Button disabled state',
     },
-    // hoverText: {
-    //   control: 'text',
-    //   description: 'Text to be displayed on hover',
-    //   defaultValue: '',
-    // },
+  },
+  args: {
+    variant: 'primary',
+    size: 'default',
+    model: 'flat',
+    disabled: false,
   },
 };
 
@@ -50,153 +51,95 @@ export default meta;
 
 type Story = StoryObj<typeof Button>;
 
-const args = {
-  onClick: () => {
-    console.log('clicked');
-  },
-  preIcon: <Check />,
-  posIcon: <Check />,
-};
-
-export const _Primary: Story = {
-  render: () => (
-    <>
-      <Button {...args}>Primary</Button>
-
-      <br />
-      <br />
-
-      <Button {...args} disabled>
-        Primary disabled
-      </Button>
-    </>
-  ),
+export const Primary: Story = {
   args: {
-    ...args,
+    children: 'Default',
   },
 };
 
-export const _PrimaryWithLabel: Story = {
-  render: () => (
-    <>
-      <Button preIcon={<File />} className="w-40">
-        <div className="flex items-center">File</div>
-      </Button>
-      <br />
-      <br />
-      <Button className="w-40">
-        <div className="flex items-center">
-          File
-          <label className="text-tertiary text-xs flex ml-1 items-center">
-            (small)
-          </label>
-        </div>
-      </Button>
-    </>
-  ),
-};
-
-export const _Secondary: Story = {
-  render: () => (
-    <>
-      <Button variant="secondary" {...args}>
-        Secondary
-      </Button>
-
-      <br />
-      <br />
-
-      <Button variant="secondary" {...args} disabled>
-        Secondary disabled
-      </Button>
-
-      <br />
-      <br />
-    </>
-  ),
+export const PrimaryWithOutline: Story = {
   args: {
-    ...args,
+    children: 'Primary',
   },
 };
 
-export const _SecondaryWithLabel: Story = {
-  render: () => (
-    <>
-      <Button variant="secondary" preIcon={<File />} className="w-40">
-        <div className="flex items-center">File</div>
-      </Button>
-      <br />
-      <br />
-      <Button variant="secondary" className="w-40">
-        <div className="flex items-center">
-          File
-          <label className="text-c-pressed text-xs flex ml-1 items-center">
-            (small)
-          </label>
-        </div>
-      </Button>
-    </>
-  ),
-};
-
-export const _Danger: Story = {
-  render: () => (
-    <>
-      <Button variant="danger" {...args}>
-        Secondary
-      </Button>
-
-      <br />
-      <br />
-
-      <Button variant="danger" {...args} disabled>
-        Secondary disabled
-      </Button>
-
-      <br />
-      <br />
-    </>
-  ),
+export const Secondary: Story = {
   args: {
-    ...args,
+    children: 'Secondary',
+    variant: 'secondary',
   },
 };
 
-const colorWarning = '#FFA41D';
-
-export const _Icon: Story = {
-  render: () => (
-    <>
-      <Button variant="icon">
-        <File />
-      </Button>
-      &nbsp;
-      <Button variant="icon" disabled>
-        <File />
-      </Button>
-      <br />
-      <br />
-      <Button variant="icon" model="border">
-        <File />
-      </Button>
-      &nbsp;
-      <Button variant="icon" model="border">
-        <File color={colorWarning} />
-      </Button>
-      &nbsp;
-      <br />
-      <br />
-      <Button variant="icon" model="border" disabled>
-        <File />
-      </Button>
-    </>
-  ),
+export const SecondaryWithOutline: Story = {
+  args: {
+    children: 'Secondary with Outline',
+    variant: 'secondary',
+    model: 'outline',
+  },
 };
 
-export const _ButtonWithSpinner: Story = {
-  render: () => (
-    <Button disabled>
-      <Loader /> Install
-    </Button>
-  ),
+export const SecondaryColor: Story = {
+  args: {
+    children: 'Secondary Color',
+    variant: 'secondary-color',
+  },
+};
+
+export const Link: Story = {
+  args: {
+    children: 'Link',
+    variant: 'link',
+  },
+};
+
+export const Icon: Story = {
+  args: {
+    children: <ChevronLeft strokeWidth={2} className="w-4 h-4" />,
+    variant: 'secondary',
+    model: 'outline',
+    size: 'icon',
+  },
+};
+
+export const WithIcon: Story = {
+  args: {
+    children: (
+      <>
+        <Mail strokeWidth={2} /> Login with Email
+      </>
+    ),
+  },
+};
+
+export const Loading: Story = {
+  args: {
+    children: (
+      <>
+        <Loader2 strokeWidth={2} className="mr-2 h-4 w-4 animate-spin" />
+        Please wait
+      </>
+    ),
+    disabled: true,
+  },
+};
+
+export const PrimaryDanger: Story = {
+  args: {
+    children: 'Delete',
+    variant: 'danger-primary',
+  },
+};
+
+export const SecondaryDanger: Story = {
+  args: {
+    children: 'Delete',
+    variant: 'danger-secondary',
+  },
+};
+
+export const AsChild: Story = {
+  args: {
+    children: <a href="">Login</a>,
+    asChild: true,
+  },
 };

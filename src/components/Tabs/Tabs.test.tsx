@@ -1,56 +1,23 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, test, expect } from '@jest/globals';
+import { render, screen } from '@testing-library/react';
 
-import { Tabs } from './Tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from './Tabs';
 
 describe('Components | Tabs', () => {
   test('it should render', () => {
-    const tabsConfig = [
-      {
-        label: 'Tab1',
-        content: 'Content Panel 1',
-        icon: '😍',
-      },
-      {
-        label: 'Tab2',
-        content: 'Content Panel 2',
-        icon: '🤓',
-      },
-    ];
+    render(
+      <Tabs defaultValue="account" className="w-[400px]">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="password">Password</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account">Account</TabsContent>
+        <TabsContent value="password">Password</TabsContent>
+      </Tabs>,
+    );
 
-    const args = {
-      tabsConfig,
-    };
-    render(<Tabs {...args} />);
+    const tabsContent = screen.getAllByTestId('tabs-content');
 
-    let accountSelector = screen.getByTestId('tabs-selector');
-
-    expect(accountSelector).toBeTruthy();
-  });
-
-  test('it fire the onClick fn', () => {
-    const onClickMock = jest.fn();
-    const tabsConfig = [
-      {
-        label: 'Tab1',
-        content: 'Content Panel 1',
-        icon: '😍',
-      },
-      {
-        label: 'Tab2',
-        content: 'Content Panel 2',
-        icon: '🤓',
-      },
-    ];
-
-    const args = {
-      tabsConfig,
-    };
-    render(<Tabs onClick={onClickMock} {...args} />);
-
-    let tabSelector = screen.getByTestId('tabs-selector');
-
-    fireEvent.click(tabSelector);
-    expect(onClickMock).toHaveBeenCalled();
-    expect(tabSelector).toBeTruthy();
+    expect(tabsContent).toHaveLength(2);
   });
 });

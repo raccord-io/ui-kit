@@ -2,14 +2,14 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { ScrollArea } from './ScrollArea';
 
-const meta: Meta<typeof ScrollArea> = {
+const meta = {
   title: 'Components/ScrollArea',
   component: ScrollArea,
   parameters: {
-    controls: { expanded: true },
+    layout: 'centered',
   },
-  argTypes: {},
-};
+  tags: ['autodocs'],
+} satisfies Meta<typeof ScrollArea>;
 
 export default meta;
 
@@ -19,16 +19,19 @@ const tags = Array.from({ length: 50 }).map(
   (_, i, a) => `v0.1.0-beta-raccord.${a.length - i}`,
 );
 
-export const _ScrollArea: Story = {
+export const Default: Story = {
   render: (args) => (
-    <ScrollArea className="h-72 w-48 rounded-md border" {...args}>
+    <ScrollArea
+      className="h-72 w-48 rounded-md border border-border-secondary"
+      {...args}
+    >
       <div className="p-4">
-        <h4 className="mb-4 text-sm text-f-primary font-medium leading-none">
+        <h4 className="mb-4 text-sm text-text-primary font-medium leading-none">
           Tags
         </h4>
         {tags.map((tag) => (
           <>
-            <div key={tag} className="text-sm text-f-primary">
+            <div key={tag} className="text-sm text-text-primary">
               {tag}
             </div>
           </>

@@ -1,58 +1,44 @@
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { Tooltip, TooltipProps } from './Tooltip';
+import { Button } from '../';
 
-const meta: Meta<TooltipProps> = {
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from './Tooltip';
+
+// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
+const meta = {
   title: 'Components/Tooltip',
   component: Tooltip,
   parameters: {
-    controls: { expanded: true },
+    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
+    layout: 'centered',
   },
-  argTypes: {
-    content: {
-      control: 'text',
-      description: 'Tooltip content',
-    },
-    placement: {
-      control: {
-        type: 'select',
-        options: [
-          'top-start',
-          'top',
-          'top-end',
-          'right-start',
-          'right',
-          'right-end',
-          'bottom-start',
-          'bottom',
-          'bottom-end',
-          'left-start',
-          'left',
-          'left-end',
-        ],
-      },
-      description: 'Tooltip placement',
-    },
-    customClass: {
-      control: 'text',
-      description: 'Custom class for styling',
-    },
-  },
-};
+  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
+  tags: ['autodocs'],
+} satisfies Meta<typeof Tooltip>;
 
 export default meta;
+type Story = StoryObj<typeof meta>;
 
-type Story = StoryObj<TooltipProps>;
-
-export const _Tooltip: Story = {
-  render: (args) => (
-    <Tooltip {...args}>
-      <button type="button">Hover me</button>
-    </Tooltip>
+// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
+export const Default: Story = {
+  render: () => (
+    <TooltipProvider delayDuration={400}>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button variant="secondary" model="outline">
+            Hover
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Add to library</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   ),
-  args: {
-    content: 'Tooltip content',
-    placement: 'top',
-    customClass: '',
-  },
+  args: {},
 };

@@ -1,61 +1,36 @@
-import { ComponentPropsWithoutRef, cloneElement, useState } from 'react';
+'use client';
 
-import { HelpCircle } from 'lucide-react';
+import { forwardRef } from 'react';
 
-const placementClasses = {
-  'top-start': 'bottom-full left-0 mb-2',
-  top: 'bottom-full left-1/2 transform -translate-x-1/2 mb-2',
-  'top-end': 'bottom-full right-0 mb-2',
-  'right-start': 'left-full top-0 ml-2',
-  right: 'left-full top-1/2 transform -translate-y-1/2 ml-2',
-  'right-end': 'left-full bottom-0 ml-2',
-  'bottom-start': 'top-full left-0 mt-2',
-  bottom: 'top-full left-1/2 transform -translate-x-1/2 mt-2',
-  'bottom-end': 'top-full right-0 mt-2',
-  'left-start': 'right-full top-0 mr-2',
-  left: 'right-full top-1/2 transform -translate-y-1/2 mr-2',
-  'left-end': 'right-full bottom-0 mr-2',
-};
+import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 
-export interface TooltipProps extends ComponentPropsWithoutRef<'div'> {
-  content: string;
-  placement?: keyof typeof placementClasses;
-  customClass?: string;
-  children?: React.ReactNode;
-}
+import { cn } from '../../lib/utils';
 
-export function Tooltip(props: TooltipProps) {
-  const {
-    content,
-    placement = 'bottom',
-    customClass,
-    children,
-    ...rest
-  } = props;
+const TooltipProvider = TooltipPrimitive.Provider;
 
-  const [showTooltip, setShowTooltip] = useState(false);
-  const icon = <HelpCircle />;
-  const clonedIcon = cloneElement(icon, {
-    className: 'stroke-current text-neutral',
-  });
+const Tooltip = TooltipPrimitive.Root;
 
-  return (
-    <div
-      data-testid="Tooltip"
-      className="inline-flex items-center p-2 hover:cursor-pointer relative"
-      {...rest}
-      onMouseEnter={() => setShowTooltip(true)}
-      onMouseLeave={() => setShowTooltip(false)}
-    >
-      {clonedIcon}
-      <span className="ml-2 text-neutral">{children}</span>
-      <div
-        className={`w-fit z-50 absolute bg-tertiary p-3 rounded-md text-neutral opacity-0transition-opacity
-        duration-300 ${showTooltip ? 'opacity-90' : 'opacity-0'}
-          ${customClass} ${placementClasses[placement]}`}
-      >
-        {content}
-      </div>
-    </div>
-  );
-}
+const TooltipTrigger = TooltipPrimitive.Trigger;
+
+const TooltipContent = forwardRef<
+  React.ElementRef<typeof TooltipPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
+>(({ className, sideOffset = 4, ...props }, ref) => (
+  <TooltipPrimitive.Content
+    ref={ref}
+    data-testid="tooltip-content"
+    sideOffset={sideOffset}
+    className={cn(
+      `z-50 overflow-hidden rounded-md border border-border-secondary bg-bg-primary px-3 py-1.5 font-WorkSans text-sm text-text-primary
+      shadow-md animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out
+      data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2
+      data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2`,
+      className,
+    )}
+    {...props}
+  />
+));
+
+TooltipContent.displayName = TooltipPrimitive.Content.displayName;
+
+export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };

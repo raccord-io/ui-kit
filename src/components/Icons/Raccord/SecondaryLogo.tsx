@@ -3,7 +3,7 @@ import React, { forwardRef } from 'react';
 
 interface SecondaryLogoProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: number;
-  theme?: 'theme-dark' | 'theme-light';
+  theme?: 'dark' | 'light';
 }
 
 function SecondaryLogoBlack({ size }: { size?: number }) {
@@ -52,9 +52,9 @@ function SecondaryLogoBlack({ size }: { size?: number }) {
 
 const SecondaryLogo = forwardRef<HTMLDivElement, SecondaryLogoProps>(
   (props, ref) => {
-    let { theme = 'theme-dark', size, ...rest } = props;
+    const { theme = 'dark', size, ...rest } = props;
 
-    const isDark = theme === 'theme-dark';
+    const isDark = theme === 'dark';
 
     return (
       <div

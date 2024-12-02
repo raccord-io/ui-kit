@@ -2,80 +2,21 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { TextArea } from './TextArea';
 
-const meta: Meta<typeof TextArea> = {
+const meta = {
   title: 'Components/TextArea',
   component: TextArea,
   parameters: {
-    controls: { expanded: true },
+    layout: 'centered',
   },
-  argTypes: {
-    error: {
-      control: {
-        type: 'text',
-      },
-      description: 'Error message to display',
-    },
-    warning: {
-      control: {
-        type: 'text',
-      },
-      description: 'Warning message to display',
-    },
-    success: {
-      control: {
-        type: 'text',
-      },
-      description: 'Success message to display',
-    },
-    customClass: {
-      control: {
-        type: 'text',
-      },
-      description: 'Custom class to apply',
-    },
-  },
-};
+  tags: ['autodocs'],
+} satisfies Meta<typeof TextArea>;
 
 export default meta;
-
-type Story = StoryObj<typeof TextArea>;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: (args) => <TextArea {...args} placeholder="default" />,
   args: {
-    error: '',
-    warning: '',
-    success: '',
-    customClass: '',
-  },
-};
-
-export const Error: Story = {
-  render: (args) => <TextArea {...args} placeholder="error" />,
-  args: {
-    error: 'Error message',
-    warning: '',
-    success: '',
-    customClass: '',
-  },
-};
-
-export const Warning: Story = {
-  render: (args) => <TextArea {...args} placeholder="warning" />,
-  args: {
-    error: '',
-    warning: 'Warning message',
-    success: '',
-    customClass: '',
-  },
-};
-
-export const Success: Story = {
-  render: (args) => <TextArea {...args} placeholder="success" />,
-  args: {
-    error: '',
-    warning: '',
-    success: 'Success message',
-    customClass: '',
+    placeholder: 'Type your message here...',
+    className: 'w-96',
   },
 };
