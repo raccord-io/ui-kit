@@ -38,11 +38,17 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props, ref) => {
   return (
     <div
       className={cn(
-        'flex items-center gap-2',
+        'flex items-center justify-between gap-2',
         inputVariants({ inputSize, className }),
       )}
     >
-      <input type={type} data-testid="password" ref={ref} {...rest} />
+      <input
+        type={type}
+        data-testid="password"
+        ref={ref}
+        className="w-full"
+        {...rest}
+      />
       <button
         type="button"
         className="bg-transparent flex items-center justify-center"
