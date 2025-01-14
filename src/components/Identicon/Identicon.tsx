@@ -4,7 +4,7 @@ import { forwardRef, useMemo } from 'react';
 
 import { minidenticon } from 'minidenticons';
 
-import { cn } from '@/lib/utils';
+import { cn } from '../../lib/utils';
 
 export interface IdenticonProps
   extends React.ImgHTMLAttributes<HTMLImageElement> {
