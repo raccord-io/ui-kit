@@ -87,3 +87,92 @@ export const Default: Story = {
     durationMs: 5000,
   },
 };
+
+export const Error: Story = {
+  render: () => (
+    <>
+      <Button
+        variant="secondary"
+        model="outline"
+        onClick={() => toast.error('Create Error Toast')}
+      >
+        Create Error Toast
+      </Button>
+      <Toast durationMs={5000} />
+    </>
+  ),
+  args: {
+    durationMs: 5000,
+  },
+};
+
+export const Loading: Story = {
+  render: () => (
+    <>
+      <Button
+        variant="secondary"
+        model="outline"
+        onClick={() => {
+          toast.promise(new Promise((resolve) => setTimeout(resolve, 1000)), {
+            loading: 'Loading...',
+            success: 'Success',
+            error: 'Error',
+          });
+        }}
+      >
+        Create a Success Promise Toast
+      </Button>
+      <Toast durationMs={5000} />
+    </>
+  ),
+  args: {
+    durationMs: 5000,
+  },
+};
+
+export const ErrorPromise: Story = {
+  render: () => (
+    <>
+      <Button
+        variant="secondary"
+        model="outline"
+        onClick={() => {
+          toast.promise(
+            new Promise((_resolve, reject) => setTimeout(reject, 1000)),
+            {
+              loading: 'Loading...',
+              success: 'Success',
+              error: 'Error',
+            },
+          );
+        }}
+      >
+        Create an Error Promise Toast
+      </Button>
+      <Toast durationMs={5000} />
+    </>
+  ),
+  args: {
+    durationMs: 5000,
+  },
+};
+
+export const CustomIcon: Story = {
+  render: () => (
+    <>
+      <Button
+        variant="secondary"
+        model="outline"
+        onClick={() => {
+          toast('Hello World', { icon: '👏' });
+        }}
+      >
+        Custom Icon Toast
+      </Button>
+      <Toast durationMs={5000} />
+    </>
+  ),
+  args: {
+    durationMs: 5000,
+  },
+};

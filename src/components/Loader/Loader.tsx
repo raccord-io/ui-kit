@@ -3,8 +3,9 @@ import React, { forwardRef } from 'react';
 import { LoaderCircle } from 'lucide-react';
 import Image from 'next/image';
 
+import { cn } from '@/lib/utils';
+
 import loader from '../../assets/loader/mini-loading-logo.gif';
-import { cn } from '../../lib/utils';
 
 interface LoaderProps extends React.HTMLAttributes<SVGSVGElement> {
   size?: number;

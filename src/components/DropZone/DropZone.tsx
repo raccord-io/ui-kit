@@ -4,7 +4,7 @@ import React, { ChangeEvent, DragEvent, forwardRef, useState } from 'react';
 
 import { Check, CloudAlert, Inbox } from 'lucide-react';
 
-import { cn } from '../../lib/utils';
+import { cn } from '@/lib/utils';
 
 interface IDragDropProps extends React.HTMLProps<HTMLInputElement> {
   placeholder: string;
