@@ -31,11 +31,14 @@ const Toast = forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
         toastOptions={{
           duration: durationMs ?? defaultDurationMs,
           style: {
-            background: 'var(--bg-secondary)',
-            border: '2px solid',
-            borderColor: 'var(--border-secondary)',
+            background: 'rgba(var(--bg-primary))',
+            border: '1px solid',
+            borderColor: 'rgba(var(--border-secondary))',
             padding: '1rem',
             borderRadius: '0.375rem',
+            boxShadow:
+              '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+            zIndex: 100,
           },
           success: {
             iconTheme: {

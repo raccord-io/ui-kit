@@ -4,8 +4,9 @@ import { forwardRef } from 'react';
 
 import { Circle, Check } from 'lucide-react';
 
+import { cn } from '@/lib/utils';
+
 import { Label } from '../';
-import { cn } from '../../lib/utils';
 
 export interface StepperProps extends React.HTMLAttributes<HTMLOListElement> {
   steps: string[];
