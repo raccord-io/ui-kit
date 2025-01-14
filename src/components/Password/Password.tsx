@@ -3,8 +3,9 @@ import { forwardRef, useState } from 'react';
 import { type VariantProps } from 'class-variance-authority';
 import { Eye, EyeOff } from 'lucide-react';
 
+import { cn } from '@/lib/utils';
+
 import { inputVariants } from '../';
-import { cn } from '../../lib/utils';
 
 export interface PasswordProps
   extends React.ComponentProps<'input'>,
@@ -36,22 +37,20 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props, ref) => {
   }
 
   return (
-    <div
-      className={cn(
-        'flex items-center justify-between gap-2',
-        inputVariants({ inputSize, className }),
-      )}
-    >
+    <div className="relative w-fit">
       <input
+        ref={ref}
         type={type}
         data-testid="password"
-        ref={ref}
-        className="w-full"
+        className={cn(
+          inputVariants({ inputSize, className }),
+          'flex items-center justify-between gap-2 pr-10',
+        )}
         {...rest}
       />
       <button
         type="button"
-        className="bg-transparent flex items-center justify-center"
+        className="absolute right-3 top-2.5 bg-transparent flex items-center justify-center"
         data-testid="password-icon"
         onClick={toggleIcon}
       >
