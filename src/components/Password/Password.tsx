@@ -36,7 +36,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>((props, ref) => {
   }
 
   return (
-    <div className="relative w-fit">
+    <div className="relative w-full">
       <input
         ref={ref}
         type={type}
