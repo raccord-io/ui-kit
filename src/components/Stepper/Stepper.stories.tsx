@@ -32,7 +32,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     step: 0,
-    steps: ['One', 'Two', 'Three'],
-    className: 'w-80',
+    steps: ['Step One', 'Step Two', 'Step Three'],
+    className: 'w-96',
   },
 };
