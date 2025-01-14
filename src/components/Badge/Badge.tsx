@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { X } from 'lucide-react';
 
-import { cn } from '@/lib/utils';
+import { cn } from '../../lib/utils';
 
 export const badgeVariants = cva('rounded-[4px] w-fit flex items-center', {
   variants: {
